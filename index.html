@@ -4,9 +4,122 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Theo Saroglou - Job Market</title>
-    <link rel="stylesheet" href="style.css">
-    <!-- Import Google Fonts -->
+
+    <!-- Google Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap">
+
+    <style>
+        /* Apply the new font */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Container for layout consistency */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Header styling */
+        .main-header {
+            background-color: #333;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .main-header h1 {
+            font-size: 3rem;
+            margin: 0;
+        }
+
+        .main-header p {
+            font-size: 1.2rem;
+            margin: 10px 0 0 0;
+        }
+
+        /* About section styling */
+        .about-section {
+            padding: 40px 0;
+        }
+
+        .profile-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin-right: 20px;
+        }
+
+        .about-text {
+            flex-grow: 1;
+            max-width: 600px;
+        }
+
+        .about-text h2 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        /* Button styling */
+        .buttons {
+            margin-top: 20px;
+        }
+
+        .button {
+            background-color: #0073e6;
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin-right: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #005bb5;
+        }
+
+        /* Footer styling */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            margin-top: 40px;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        footer a {
+            color: #0073e6;
+            text-decoration: none;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .profile-container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .profile-img {
+                margin: 0 auto 20px auto;
+            }
+        }
+    </style>
 </head>
 <body>
     <header class="main-header">
@@ -20,7 +133,7 @@
         <div class="container">
             <div class="profile-container">
                 <!-- Add the Image -->
-                <img src="images/theodoros-2.jpg" alt="Theodoros Saroglou" class="profile-img">
+                <img src="images/profile.jpg" alt="Theodoros Saroglou" class="profile-img">
                 <div class="about-text">
                     <h2>About Me</h2>
                     <p>I am a PhD candidate at the University of Barcelona with a focus on self-deception, altruism, and inequality beliefs. Currently seeking academic and research positions.</p>
