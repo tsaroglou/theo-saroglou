@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Microwelt Research Note</title>
+
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap">
+
+    <style>
+         .buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .button {
+            background-color: #0073e6;
+            color: white;
+            text-decoration: none;
+            padding: 15px 20px;
+            border-radius: 5px;
+            text-align: center;
+            flex: 1 1 200px;
+            transition: background-color 0.3s ease;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            background-color: #003366;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin: 0;
+        }
+
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+        }
+
+        section {
+            padding: 40px 0;
+        }
+
+        section h2 {
+            color: #003366;
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        a {
+            color: #0073e6;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #005bb5;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            margin-top: 40px;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        footer a {
+            color: #0073e6;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Selected Research</h1>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="research.html">Research</a>
+            </nav>
+        </div>
+    </header>
+
+   <section>
+    <div class="container">
+        <h2>Imputing Parenthood Status in EU-SILC using SHARE for Spain, Austria, and Finland</h2>
+        <p>
+            <strong>Co-authors:</strong> G. Abio*, M. Fink+, A. Stoyanova* (*University of Barcelona; +Austrian Institute of Economic Research)
+        </p>
+        <p>
+        Part of the <a href="https://www.weltransim.eu/" style="color: black; text-decoration: underline;">WELTRANSIM</a> Project.
+         </p>
+        <p>
+            The research note addresses the challenge of identifying parenthood status when children have left the household, which often leads to incomplete information in surveys like EU-SILC. To bridge this gap, the research uses data from the Survey of Health, Ageing, and Retirement in Europe (SHARE) to develop an imputation model applicable to individuals aged 50 and above in Austria, Spain, and Finland.
+        </p>
+        <h3>Methodology</h3>
+        <ol>
+            <li>
+                <strong>Data Sources:</strong>
+                <ul>
+                    <li>The study combines data from SHARE (waves 4 and 7) and EU-SILC.</li>
+                    <li>The sample includes 6,856 individuals from Austria, Spain, and Finland, with final models based on reduced samples due to data cleaning.</li>
+                </ul>
+            </li>
+            <li>
+                <strong>Regression Models:</strong>
+                <ul>
+                    <li>Four models were developed to predict parenthood status, incorporating variables such as age, education, income, and partnership status.</li>
+                    <li>Education and income were categorized into quartiles, and logistic regression was employed to estimate the probability of parenthood.</li>
+                </ul>
+            </li>
+        </ol>
+        <h3>Key Findings</h3>
+        <ul>
+            <li>
+                <strong>Gender Differences:</strong>
+                <ul>
+                    <li><em>For Women:</em> Higher education correlates with lower likelihoods of parenthood, especially among Austrian women. For Finnish women, the effect is not as consistent.</li>
+                    <li><em>For Men:</em> Higher education often increases the probability of parenthood, particularly for Spanish men.</li>
+                </ul>
+            </li>
+            <li>
+                <strong>Income Effects:</strong> Higher individual and household incomes generally increase the probability of parenthood, with some exceptions, like Spanish males in lower quartiles.
+            </li>
+            <li>
+                <strong>Imputation Process:</strong> Using regression results and SHARE data, the imputation assigns parenthood status to individuals in EU-SILC aged 50+. Adjustments were made for couples and single individuals based on probabilities and demographic distributions from SHARE.
+            </li>
+        </ul>
+        <h3>Implications</h3>
+        <p>
+            The method provides a comprehensive approach to improve the accuracy of parenthood data in EU-SILC, enabling better demographic and policy analysis. However, challenges remain, such as data limitations for specific age and education groups, particularly in Finland.
+        </p>
+        <div class="buttons">
+                <a href="chapter1.html" class="button">Altruistic Self-Image and Self-Deception</a>
+                <a href="chapter2.html" class="button">Project Choice and Social Image Concerns</a>
+                <a href="chapter3.html" class="button">Expectations and Preferences for Redistribution</a>
+            </div>
+    </div>
+</section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Theo Saroglou</p>
+        </div>
+    </footer>
+</body>
+</html>

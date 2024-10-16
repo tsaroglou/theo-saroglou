@@ -20,6 +20,7 @@
             width: 90%;
             max-width: 1200px;
             margin: 0 auto;
+            padding: 20px;
         }
 
         header {
@@ -34,10 +35,20 @@
             margin: 0;
         }
 
+        nav {
+            text-align: center;
+            margin-top: 10px;
+        }
+
         nav a {
             color: white;
             margin: 0 15px;
             text-decoration: none;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            color: #005bb5;
         }
 
         section {
@@ -50,9 +61,10 @@
             margin-bottom: 20px;
         }
 
-        p, li {
+        p {
             font-size: 1.1rem;
             line-height: 1.6;
+            margin-bottom: 20px;
         }
 
         ul {
@@ -60,13 +72,27 @@
             margin-left: 20px;
         }
 
-        a {
-            color: #0073e6;
-            text-decoration: none;
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            gap: 15px;
+            flex-wrap: wrap;
         }
 
-        a:hover {
-            color: #005bb5;
+        .button {
+            background-color: #0073e6;
+            color: white;
+            text-decoration: none;
+            padding: 15px 20px;
+            border-radius: 5px;
+            text-align: center;
+            flex: 1 1 200px;
+            transition: background-color 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #005bb5;
         }
 
         footer {
@@ -75,10 +101,6 @@
             text-align: center;
             padding: 10px 0;
             margin-top: 40px;
-        }
-
-        footer p {
-            margin: 0;
         }
 
         footer a {
@@ -101,31 +123,27 @@
     <section>
         <div class="container">
             <h2>Research Overview</h2>
-            <p>As a PhD candidate at the University of Barcelona, my research focuses on topics related to behavioral and experimental economics, with specific attention to self-deception, altruism, and inequality beliefs.</p>
+            <p>My research explores the complex interplay between economic behavior, self and social image, and decision-making, particularly focusing on how self-deception, altruism, and expectations influence individual choices. Through experimental and theoretical approaches, I examine how these factors drive decisions in various contexts, from organizations to public policy preferences, and how they can lead to suboptimal outcomes.</p>
 
             <h2>Key Research Areas</h2>
-            <ul>
-                <li>Self-deception and Altruism: Investigating how individuals' beliefs about themselves influence their altruistic behavior.</li>
-                <li>Inequality Beliefs: Exploring how perceptions of inequality impact decision-making and redistribution preferences.</li>
-                <li>Social-image and Task Uptake: Studying how social-image concerns influence individuals' willingness to engage in tasks.</li>
-            </ul>
+          <p>I investigate three main areas: (1) the role of self-deception and altruism in shaping prosocial behavior, examining when individuals act out of genuine concern versus image-driven motives and the potential side-effects; (2) the impact of social image concerns on task selection, exploring how individuals’ desire for reputation influences their willingness to undertake challenges; and (3) how expectations shape attitudes towards redistribution, revealing how beliefs interact with economic policy preferences.</p>
+
 
             <h2>Selected Research Projects</h2>
-            <ul>
-                <!--<li><strong>Job Market Paper:</strong> <a href="https://rebrand.ly/ch-3-live" target="_blank">Expectations and Preferences for Redistribution</a></li> -->
+            <p>You can find out more about by clicking on the buttons below.</p>
 
-                <li><strong>Job Market Paper:</strong> Expectations and Preferences for Redistribution</a></li>
-                <p>Work in Progress:</p>
-
-                <li><strong></strong> Self-deception and Altruism, a Non-Monotonic Relationship.</li>
-                <li><strong></strong> Understanding the Role of Social-Image in Task Uptake.</li>
-            </ul>
+            <div class="buttons">
+                <a href="chapter1.html" class="button">Altruistic Self-Image and Self-Deception</a>
+                <a href="chapter2.html" class="button">Project Choice and Social Image Concerns</a>
+                <a href="chapter3.html" class="button">Expectations and Preferences for Redistribution</a>
+                <a href="research-note.html" class="button">Microwelt Research Note</a>
+            </div>
         </div>
     </section>
 
     <footer>
         <div class="container">
-            <p>&copy; 2024 Theo Saroglou</p>
+            <p>&copy; 2024 Theo Saroglou | <a href="contact.html">Contact Me</a></p>
         </div>
     </footer>
 </body>
