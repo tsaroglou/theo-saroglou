@@ -26,19 +26,19 @@
 
         /* Header styling */
         .main-header {
-            background-color: #003366; /* Professional dark blue */
+            background-color: #003366;
             color: white;
             padding: 20px 0;
             text-align: center;
         }
 
         .main-header h1 {
-            font-size: 3rem;
+            font-size: 2.5rem;
             margin: 0;
         }
 
         .main-header p {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             margin: 10px 0 0 0;
         }
 
@@ -49,13 +49,13 @@
         }
 
         .university-logo img {
-            max-width: 250px;
+            max-width: 200px;
             height: auto;
         }
 
         /* About section styling */
         .about-section {
-            padding: 40px 0;
+            padding: 20px 0;
         }
 
         .profile-container {
@@ -66,8 +66,9 @@
         }
 
         .profile-img {
-            width: 400px;
-            height: 400px;
+            width: 100%;
+            max-width: 300px;
+            height: auto;
             border-radius: 50%;
             margin-right: 20px;
             border: 3px solid #003366;
@@ -76,10 +77,11 @@
         .about-text {
             flex-grow: 1;
             max-width: 600px;
+            margin-top: 20px;
         }
 
         .about-text h2 {
-            font-size: 2rem;
+            font-size: 1.8rem;
             margin-bottom: 10px;
         }
 
@@ -96,6 +98,8 @@
             border-radius: 5px;
             margin-right: 10px;
             transition: background-color 0.3s ease;
+            display: inline-block;
+            margin-bottom: 10px;
         }
 
         .button:hover {
@@ -122,6 +126,14 @@
 
         /* Responsive Design */
         @media (max-width: 768px) {
+            .main-header h1 {
+                font-size: 2rem;
+            }
+
+            .main-header p {
+                font-size: 1rem;
+            }
+
             .profile-container {
                 flex-direction: column;
                 text-align: center;
@@ -129,6 +141,34 @@
 
             .profile-img {
                 margin: 0 auto 20px auto;
+                max-width: 200px;
+            }
+
+            .about-text {
+                margin: 0;
+            }
+
+            .about-text h2 {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-header h1 {
+                font-size: 1.8rem;
+            }
+
+            .main-header p {
+                font-size: 0.9rem;
+            }
+
+            .profile-img {
+                max-width: 150px;
+            }
+
+            .button {
+                padding: 8px 16px;
+                font-size: 0.9rem;
             }
         }
     </style>
