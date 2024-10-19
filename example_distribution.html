@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Graph - 10 Bars</title>
+
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap">
+
+    <style>
+        /* Hides the score values but keeps the element for functionality */
+        .score-value {
+            visibility: hidden;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 40px auto;
+        }
+
+        .main-header {
+            background-color: #003366;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            border-radius: 8px;
+        }
+
+        .main-header h1 {
+            font-size: 2.5rem;
+            margin: 0;
+        }
+
+        /* Interactive section box styling */
+       .experiment-box {
+           background-color: #fff;
+           border-radius: 12px;
+           padding: 40px;
+           box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+           margin-top: 20px;
+           width: 50%; /* You can adjust this value to make the box smaller */
+           margin: 0 auto; /* Center the box horizontally */
+}
+
+        .histogram-wrapper {
+            width: 100%;
+            margin-bottom: 40px;
+        }
+
+        .histogram-title {
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 20px;
+            color: #0056b3;
+        }
+
+        .histogram-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            height: 350px;
+            background-color: #f0f0f0;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .bar {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: calc(100% / 10 - 10px);
+            margin: 0 5px;
+        }
+
+        .bar-graph {
+            width: 100%;
+            text-align: center;
+            background-color: #007bff;
+            border-radius: 10px 10px 0 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+
+        .bar-graph span {
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        .horizontal-line {
+            position: absolute;
+            bottom: 50px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #ccc;
+        }
+
+        .slider {
+            width: 100%;
+            margin: 20px 0;
+        }
+
+        .sliders-container {
+            width: 100%;
+            text-align: center;
+        }
+
+        .sliders-container p {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .btn {
+            background-color: #0073e6;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .btn:hover {
+            background-color: #005bb5;
+        }
+
+        /* Styling for the sliders */
+        input[type="range"] {
+            -webkit-appearance: none;
+            width: 80%;
+            height: 10px;
+            background: #ddd;
+            border-radius: 5px;
+            outline: none;
+            opacity: 0.8;
+            transition: opacity 0.2s;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #007bff;
+            cursor: pointer;
+        }
+
+        input[type="range"]::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #007bff;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="main-header">
+        <div class="container">
+            <h1>Your True Distribution Estimation</h1>
+        </div>
+    </header>
+
+    <!-- Placeholder text for introduction -->
+    <div class="container">
+        <p style="text-align: justify; font-size: 18px;">Welcome to the interactive experiment! Below you will find a graph representing the distribution of values, which you can adjust using the sliders provided. The goal is to analyze how changes in slope, curvature, and overall height affect the distribution of scores and earnings. Use the sliders to experiment with different configurations and understand the underlying mechanics of the graph.</p>
+    </div>
+
+    <!-- Interactive section inside a box -->
+    <div class="container">
+        <div class="experiment-box">
+            <div class="experiment-container">
+                <!-- Interactive Graph -->
+                <div class="histogram-wrapper">
+                    <div class="histogram-title">Adjust the Distribution</div>
+                    <div class="histogram-container" id="interactiveHistogram">
+                        <!-- 10 bars -->
+                        <div class="bar">
+                            <div class="bar-graph" style="height: 80px;">
+                                <span class="score-value">2</span>
+                                <span class="money-earned">€0.33</span>
+                            </div>
+                        </div>
+                        <div class="bar">
+                            <div class="bar-graph" style="height: 100px;">
+                                <span class="score-value">3</span>
+                                <span class="money-earned">€0.50</span>
+                            </div>
+                        </div>
+                        <div class="bar">
+                            <div class="bar-graph" style="height: 120px;">
+                                <span class="score-value">4</span>
+                                <span class="money-earned">€0.67</span>
+                            </div>
+                        </div>
+                        <div class="bar">
+                            <div class="bar-graph" style="height: 160px;">
+                                <span class="score-value">6</span>
+                                <span class="money-earned">€1.00</span>
+                            </div>
+                        </div>
+                        <div class="bar">
+                            <div class="bar-graph" style="height: 200px;">
+                                <span class="score-value">8</span>
+                                <span class="money-earned">€1.33</span>
+                            </div>
+                        </div>
+                        <div class="bar">
+                            <div class="bar-graph" style="height: 220px;">
+                                <span class="score-value">9</span>
+                                <span class="money-earned">€1.50</span>
+                            </div>
+                        </div>
+                        <div class="bar">
+                            <div class="bar-graph" style="height: 250px;">
+                                <span class="score-value">10</span>
+                                <span class="money-earned">€1.67</span>
+                            </div>
+                        </div>
+                        <div class="bar">
+                            <div class="bar-graph" style="height: 270px;">
+                                <span class="score-value">12</span>
+                                <span class="money-earned">€2.00</span>
+                            </div>
+                        </div>
+                        <div class="bar">
+                            <div class="bar-graph" style="height: 300px;">
+                                <span class="score-value">13</span>
+                                <span class="money-earned">€2.17</span>
+                            </div>
+                        </div>
+                        <div class="bar">
+                            <div class="bar-graph" style="height: 330px;">
+                                <span class="score-value">15</span>
+                                <span class="money-earned">€2.50</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slider Inputs -->
+                <div class="sliders-container">
+                    <p>Adjust Slope</p>
+                    <input type="range" class="slider" id="slopeSlider" min="0" max="10" step="1" value="0">
+                    <p>Adjust Curvature</p>
+                    <input type="range" class="slider" id="curveSlider" min="0" max="20" step="1" value="0">
+                    <p>Adjust Overall Height</p>
+                    <input type="range" class="slider" id="heightSlider" min="0" max="15" step="1" value="2">
+                </div>
+
+                <!-- Submit Button -->
+                <button class="btn" id="submitButton">Submit</button>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Placeholder text for conclusion or further explanation -->
+    <div class="container">
+        <p style="text-align: justify; font-size: 18px;">The graph above demonstrates how the distribution changes in real time based on your input. These interactive controls allow you to visualize the impact of different factors on the earnings distribution. Adjust the parameters and observe the changes, which reflect the real-world scenarios modeled in this experiment.</p>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const bars = document.querySelectorAll('#interactiveHistogram .bar-graph');
+            const heightSlider = document.getElementById('heightSlider');
+            const slopeSlider = document.getElementById('slopeSlider');
+            const curveSlider = document.getElementById('curveSlider');
+            const submitButton = document.getElementById('submitButton');
+            const maxScore = 15;
+
+            function updateBars() {
+                const baseScore = parseInt(heightSlider.value);
+                const slope = slopeSlider.value / 10;
+                const curvature = curveSlider.value / 10;
+                const numBars = bars.length;
+
+                bars.forEach((bar, index) => {
+                    const positionFactor = index / (numBars - 1);
+                    const curveFactor = Math.pow(positionFactor, 1 + curvature * 2);
+                    let newScore = baseScore + slope * positionFactor * maxScore * curveFactor;
+                    newScore = Math.max(0, Math.min(newScore, maxScore));
+                    const newHeightPx = (newScore / maxScore) * 330 + 35; // Adjust max height scaling
+                    bar.style.height = `${newHeightPx}px`;
+
+                    const scoreValue = bar.querySelector('.score-value');
+                    scoreValue.innerText = newScore.toFixed(0);
+
+                    const moneyEarned = bar.querySelector('.money-earned');
+                    const moneyValue = (newScore / maxScore * 2.5).toFixed(2);
+                    moneyEarned.innerText = `€${moneyValue}`;
+                });
+            }
+
+            updateBars();
+
+            heightSlider.addEventListener('input', updateBars);
+            slopeSlider.addEventListener('input', updateBars);
+            curveSlider.addEventListener('input', updateBars);
+        });
+    </script>
+
+</body>
+
+</html>

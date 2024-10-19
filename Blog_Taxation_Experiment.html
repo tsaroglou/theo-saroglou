@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>oTree Interactive Graph - Code Explanation</title>
+
+    <!-- Include Prism.js CSS for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+
+    <style>
+
+        .download-buttons {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .download-buttons a {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 5px;
+            text-decoration: none;
+            color: white;
+            background-color: #007bff;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .download-buttons a:hover {
+            background-color: #0056b3;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+            margin: 20px;
+        }
+        h1 {
+            color: #e3e5e6;
+        }
+
+        h2 {
+            color: #0056b3;
+        }
+
+        h3 {
+            color: #044595;
+            display: flex;
+            font-size: 20;
+            position: center;
+            flex-wrap: wrap;
+            width: 90%;
+            max-width: 1200px;
+            margin: 40px auto;
+            text-align: justify;
+
+        }
+        .code-section {
+            display: flex;
+            justify-content: space-evenly;
+            margin-bottom: 20px;
+            flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+        }
+        .explanation {
+            width: 45%;       /* Adjust width of the text on desktop */
+            margin-right: 10px;
+            font-size: 24px;
+        }
+        .code-snippet {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+            width: 45%;       /* Adjust width of the code box on desktop */
+            max-width: 700px;  /* Set a maximum width for the code box */
+        }
+
+        /* Media query for mobile devices */
+        @media (max-width: 768px) {
+            .code-section {
+                flex-direction: column; /* Stack vertically on smaller screens */
+            }
+            .explanation, .code-snippet {
+                width: 100%;     /* Full width for both text and code on mobile */
+                margin-right: 0; /* Remove margin on smaller screens */
+            }
+            .code-snippet {
+                margin-top: 10px; /* Add some space between explanation and code on mobile */
+            }
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 40px auto;
+        }
+
+        .main-header {
+            background-color: #003366;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            border-radius: 8px;
+        }
+
+        .main-header h1 {
+            font-size: 2.5rem;
+            margin: 0;
+        }
+
+        .experiment-box {
+            background-color: #fff;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+            width: 70%;
+            margin: 0 auto;
+        }
+
+        .histogram-wrapper {
+            width: 100%;
+            margin-bottom: 40px;
+        }
+
+        .histogram-title {
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 20px;
+            color: #0056b3;
+        }
+
+        .histogram-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            height: 350px;
+            background-color: #f0f0f0;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .bar {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: calc(100% / 10 - 10px);
+            margin: 0 5px;
+        }
+
+        .bar-graph {
+            width: 100%;
+            text-align: center;
+            background-color: #007bff;
+            border-radius: 10px 10px 0 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            position: relative;
+        }
+
+        .earnings-value {
+            position: absolute;
+            top: -25px; /* Adjust top to move earnings closer to the bar */
+            width: 100%;
+            text-align: center;
+            font-weight: bold;
+            color: #1c6cdf;
+        }
+
+        .score-value {
+            font-size: 12px;
+            color: white;
+            font-weight: bold;
+            position: absolute;
+            bottom: 5px;
+            width: 100%;
+            text-align: center;
+            visibility: hidden;
+        }
+
+        .icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-top: 10px;
+            transition: transform 0.3s ease;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .icon:hover {
+            transform: scale(1.2);
+        }
+
+        .horizontal-line {
+            position: absolute;
+            bottom: 50px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #ccc;
+        }
+
+        .sliders-container {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        input[type="range"] {
+            -webkit-appearance: none;
+            width: 80%;
+            height: 10px;
+            background: #ddd;
+            border-radius: 5px;
+            outline: none;
+            opacity: 0.8;
+            transition: opacity 0.2s;
+            margin-bottom: 10px;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #007bff;
+            cursor: pointer;
+        }
+
+        input[type="range"]::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #007bff;
+            cursor: pointer;
+        }
+
+        .slider-value {
+            font-size: 18px;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+    </style>
+
+    <!-- Include Prism.js JavaScript for syntax highlighting -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-java.min.js"></script>
+
+</head>
+
+<body>
+
+    <header class="main-header">
+        <h1>Interactive Taxation Voting, Code Explanation</h1>
+    </header>
+   <h3> In experimental economics, participants are often asked to vote on tax rates. When measured, these votes are usually a central part of the research. Nevertheless, it is hard to know whether the participant possess an accurate understanding of their voted tax rate's effect. In one of my experimental studies, I tried to remedy this by providing participants with a graph of other participants' scores and a slider through which they can set their desired tax rate. As the slider moves, the distribution changes accordingly, reflecting the impact that a given tax rate would have on the distribution if it were to be applied. The colors of the icons represent the income quintile that each participant belongs to. </h3>
+    <div class="container">
+        <!-- Interactive Graph -->
+        <div class="experiment-box">
+            <div class="histogram-wrapper">
+                <div class="histogram-title">Interactive Distribution of Scores</div>
+                <div class="histogram-container" id="iconsHistogramInteractive">
+                    <div class="horizontal-line"></div>
+
+                    <!-- 10 income bars with alternating icons -->
+                    <div class="bar">
+                        <div class="bar-graph" style="height: 80px;">
+                            <span class="earnings-value">€0.50</span>
+                            <div class="score-value">4</div>
+                        </div>
+                        <img src="images/blue_human.png" class="icon">
+                    </div>
+
+                    <div class="bar">
+                        <div class="bar-graph" style="height: 100px;">
+                            <span class="earnings-value">€0.67</span>
+                            <div class="score-value">5</div>
+                        </div>
+                        <img src="images/blue_human.png" class="icon">
+                    </div>
+
+                    <div class="bar">
+                        <div class="bar-graph" style="height: 120px;">
+                            <span class="earnings-value">€0.84</span>
+                            <div class="score-value">6</div>
+                        </div>
+                        <img src="images/red_human.png" class="icon">
+                    </div>
+
+                    <div class="bar">
+                        <div class="bar-graph" style="height: 140px;">
+                            <span class="earnings-value">€1.00</span>
+                            <div class="score-value">7</div>
+                        </div>
+                        <img src="images/red_human.png" class="icon">
+                    </div>
+
+                    <div class="bar">
+                        <div class="bar-graph" style="height: 180px;">
+                            <span class="earnings-value">€1.33</span>
+                            <div class="score-value">8</div>
+                        </div>
+                        <img src="images/yellow_human.png" class="icon">
+                    </div>
+
+                    <div class="bar">
+                        <div class="bar-graph" style="height: 200px;">
+                            <span class="earnings-value">€1.50</span>
+                            <div class="score-value">9</div>
+                        </div>
+                        <img src="images/yellow_human.png" class="icon">
+                    </div>
+
+                    <div class="bar">
+                        <div class="bar-graph" style="height: 220px;">
+                            <span class="earnings-value">€1.67</span>
+                            <div class="score-value">10</div>
+                        </div>
+                        <img src="images/green_human.png" class="icon">
+                    </div>
+
+                    <div class="bar">
+                        <div class="bar-graph" style="height: 240px;">
+                            <span class="earnings-value">€1.84</span>
+                            <div class="score-value">11</div>
+                        </div>
+                        <img src="images/green_human.png" class="icon">
+                    </div>
+
+                    <div class="bar">
+                        <div class="bar-graph" style="height: 260px;">
+                            <span class="earnings-value">€2.00</span>
+                            <div class="score-value">12</div>
+                        </div>
+                        <img src="images/human.png" class="icon">
+                    </div>
+
+                    <div class="bar">
+                        <div class="bar-graph" style="height: 280px;">
+                            <span class="earnings-value">€2.50</span>
+                            <div class="score-value">15</div>
+                        </div>
+                        <img src="images/human.png" class="icon">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tax Slider -->
+            <div class="sliders-container">
+                <p>Adjust Tax Rate</p>
+                <input type="range" id="taxRateSlider" min="0" max="100" value="0">
+                <p class="slider-value">Tax Rate: <span id="taxRateValue">0%</span></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const taxRateSlider = document.getElementById('taxRateSlider');
+            const taxRateValue = document.getElementById('taxRateValue');
+            const bars = document.querySelectorAll('.bar-graph');
+            const earnings = [
+                0.50, 0.67, 0.84, 1.00, 1.33, 1.50, 1.67, 1.84, 2.00, 2.50
+            ]; // Original earnings
+            const heights = [
+                80, 100, 120, 140, 180, 200, 220, 240, 260, 280
+            ]; // Original heights (px)
+            const numBars = bars.length;
+
+            taxRateSlider.addEventListener('input', function () {
+                const taxRate = parseFloat(this.value);
+                taxRateValue.innerText = `${taxRate}%`;
+
+                let totalDeduction = 0;
+                const newEarnings = earnings.map((earning, index) => {
+                    const deducted = earning * taxRate / 100;
+                    totalDeduction += deducted;
+                    return earning - deducted;
+                });
+
+                // Redistribute the total deducted equally among all bars
+                const redistribution = totalDeduction / numBars;
+                const adjustedEarnings = newEarnings.map(earning => earning + redistribution);
+
+                bars.forEach((bar, index) => {
+                    const newHeightPx = (adjustedEarnings[index] / 2.5) * 280 ;  // Adjust heights based on max height and earnings
+                    bar.style.height = `${newHeightPx}px`;
+                    bar.querySelector('.earnings-value').innerText = `€${adjustedEarnings[index].toFixed(2)}`;
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+
+   <div class="download-buttons">
+        <a href="python_code_taxing.py" download="python_code_taxing.py">Download Python Code</a>
+        <a href="html_code_taxing" download="html_code_taxing">Download HTML/Java Code</a>
+    </div>
+   <br>
+
+    <!-- Step 1: Python Code Initialization -->
+    <div class="code-section">
+        <div class="explanation">
+                <h2>Step 1: Python Code Initialization</h2>
+
+            <p>This part of the Python code initializes the page class and sets the conditions for when the page is displayed. It also defines the player form model and fields.</p>
+        </div>
+        <div class="code-snippet">
+            <pre class="language-python"><code class="language-python">
+class InteractiveGraph(Page):
+    form_model = 'player'
+    form_fields = ['tax_vote']
+
+    def is_displayed(player):
+        return player.consent and not player.remove
+            </code></pre>
+        </div>
+    </div>
+
+    <!-- Step 2: Processing Player Data -->
+    <div class="code-section">
+        <div class="explanation">
+
+                <h2>Step 2: Processing Player Data</h2>
+
+            <p>This part of the Python code handles the core logic for generating the player data used to display the interactive graph. It processes the players' group type, rankings, and calculates the scores and bar heights for the graph.</p>
+        </div>
+        <div class="code-snippet">
+            <pre class="language-python"><code class="language-python">
+def vars_for_template(player):
+    current_player = player
+    player_group_type = current_player.group_type
+    player.percentage_ranking_100 = 100 - current_player.percentage_ranking * 100
+
+    players = sorted(
+        [p for p in player.group.get_players() if p.group_type != player_group_type and p.field_maybe_none('score2') is not None],
+        key=lambda p: p.score2
+    )
+    scores2 = [p.score2 for p in players]
+    id_in_group_list = [p.id_in_group for p in players]
+            </code></pre>
+        </div>
+    </div>
+
+    <!-- Step 3: Assigning Colors and Handling Timeout -->
+    <div class="code-section">
+        <div class="explanation">
+                <h2>Step 3: Assigning Colors and Handling Timeout</h2>
+
+            <p>The final part of the Python code assigns colors to players based on their rankings and prepares the data for the front-end. It also handles players who time out before progressing to the next page.</p>
+        </div>
+        <div class="code-snippet">
+            <pre class="language-python"><code class="language-python">
+    for player in players:
+        if player.percentage_ranking &lt; 0.20:
+            player.color = 'red_human.png'
+        elif player.percentage_ranking &lt; 0.40:
+            player.color = 'yellow_human.png'
+        elif player.percentage_ranking &lt; 0.60:
+            player.color = 'green_human.png'
+        elif player.percentage_ranking &lt; 0.80:
+            player.color = 'orange_human.png'
+        else:
+            player.color = 'blue_human.png'
+
+    player_colors = [f"/static/Test_Luck_Merit/Images/{p.color}" for p in players]
+    bar_heights = [score * 20 + 5 for score in scores2]
+    rankings = [f"{(1 - p.percentage_ranking) * 100:.2f}%" for p in players]
+    money_earned = [f"€{(score / 15) * 2.5:.2f}" for score in scores2]
+
+                scores_and_colors = zip(scores2, player_colors, bar_heights, rankings, money_earned, id_in_group_list)
+
+        return {
+            'scores_and_colors': list(scores_and_colors),  # Convert zip to list
+            'percentage_ranking_100': current_player.percentage_ranking_100,
+            'participant_color': current_player.field_maybe_none('color') or 'default_icon.png',
+            'specific_participant_id_in_group': current_player.id_in_group,
+            'bin_index': player.get_rank_bin(),
+            'all_histogram': [],  # Provide a default value for all_histogram
+            'bins_labels': [str(i) for i in range(len(players))]  # Use indices as dummy labels
+        }
+
+    def before_next_page(player, timeout_happened):
+        if timeout_happened:
+            player.remove = True
+            </code></pre>
+        </div>
+    </div>
+
+    <!-- Step 4: HTML Structure for Graph -->
+    <div class="code-section">
+        <div class="explanation">
+                <h2>Step 4: HTML Structure for Graph</h2>
+
+            <p>The HTML structure defines the layout and basic styles for the interactive graph. This section includes the main wrapper and style settings for the histogram.</p>
+        </div>
+        <div class="code-snippet">
+                      <pre class="language-html"><code class="language-html">
+
+&lt;style&gt;
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f5f5f5;
+        color: #333;
+    }
+
+    .histogram-wrapper {
+        width: 100%;
+        margin: 20px auto;
+        background: #ffffff;
+        padding: 20px;
+        border-radius: 15px;
+    }
+&lt;/style&gt;
+
+&lt;div class="histogram-wrapper"&gt;
+    &lt;div class="histogram-title"&gt;Interactive Distribution of Scores&lt;/div&gt;
+            </code></pre>
+        </div>
+    </div>
+
+    <!-- Step 5: Dynamic Bar Graph -->
+    <div class="code-section">
+        <div class="explanation">
+                        <h2>Step 5: Dynamic Bar Graph</h2>
+
+            <p>This part of the HTML handles the dynamic bar graph. Each player is represented by a bar, and the heights of these bars change based on their score. The `icon` image is used to mark each participant.</p>
+        </div>
+        <div class="code-snippet">
+            <pre class="language-html"><code class="language-html">
+&lt;div class="histogram-container" id="iconsHistogramInteractive"&gt;
+    &lt;div class="horizontal-line"&gt;&lt;/div&gt;
+    {% for score, icon, height, ranking, money, id_in_group in scores_and_colors %}
+    &lt;div class="bar" style="flex: 1 1 calc((100% / {{ scores_and_colors|length }}) - 4px);"&gt;
+        &lt;div class="bar-graph" style="height: {{ height }}px;"&gt;
+            &lt;span class="earnings-value"&gt;{{ money }}&lt;/span&gt;
+            &lt;div class="score-value"&gt;{{ score }}&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;img src="{{ icon }}" class="icon {% if specific_participant_id_in_group == id_in_group %}highlight pulse-effect{% endif %}"&gt;
+    &lt;/div&gt;
+    {% endfor %}
+&lt;/div&gt;
+            </code></pre>
+        </div>
+    </div>
+
+    <!-- Step 6: Explanation Box and Slider -->
+    <div class="code-section">
+        <div class="explanation">
+                <h2>Step 6: Explanation Box and Slider</h2>
+
+            <p>This part adds an explanation box at the bottom of the graph, where users are informed that they need to move the slider to adjust the tax rate. The slider controls the tax rate, and the graph dynamically updates based on the selected value.</p>
+        </div>
+        <div class="code-snippet">
+            <pre class="language-html"><code class="language-html">
+&lt;div class="explanation-box"&gt;
+    &lt;p&gt;You must move the slider in order to continue, even if you move it only to bring it back to zero.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;div class="explanation-box"&gt;
+    &lt;label for="taxRateSlider"&gt;Tax Rate:&lt;/label&gt;
+    &lt;input type="range" id="taxRateSlider" name="taxRateSlider" min="0" max="100" value="0"&gt;
+    &lt;span id="taxRateValue"&gt;0%&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;form id="taxVoteForm" method="post"&gt;
+    {{ form }}
+    &lt;input type="hidden" id="taxVoteInput" name="tax_vote" value="0"&gt;
+    &lt;button type="submit" id="nextButton" class="btn btn-primary" disabled&gt;Next&lt;/button&gt;
+&lt;/form&gt;
+            </code></pre>
+        </div>
+    </div>
+
+    <!-- Step 7: JavaScript Slider and Real-time Updates -->
+    <div class="code-section">
+        <div class="explanation">
+                <h2>Step 7: JavaScript Slider and Real-time Updates</h2>
+
+            <p>This part of the JavaScript listens for changes to the tax rate slider. When the user adjusts the slider, the tax rate is applied to each player's score, and the graph is updated in real-time to reflect the new earnings for each player.</p>
+        </div>
+        <div class="code-snippet">
+<pre class="language-java"><code class="language-java">
+&lt;script&gt;
+document.addEventListener('DOMContentLoaded', function() {
+    const taxRateSlider = document.getElementById('taxRateSlider');
+    taxRateSlider.addEventListener('input', function() {
+        const taxRate = parseFloat(this.value);
+        document.getElementById('taxRateValue').innerText = `${taxRate}%`;
+
+        const bars = document.querySelectorAll('.bar-graph');
+        const originalScores = Array.from(document.querySelectorAll('.icon')).map(icon =&gt; parseFloat(icon.getAttribute('data-original-score')));
+
+        const deductedScores = originalScores.map(score =&gt; score - (score * taxRate / 100));
+        const totalDeduction = originalScores.reduce((acc, score) =&gt; acc + (score * taxRate / 100), 0);
+        const redistributedScore = totalDeduction / originalScores.length;
+
+        bars.forEach((bar, index) =&gt; {
+            const newScore = deductedScores[index] + redistributedScore;
+            const newHeight = newScore * 20 + 5;
+            bar.style.height = `${newHeight}px`;
+            bar.querySelector('.earnings-value').innerText = `€${(newScore / 15 * 2.5).toFixed(2)}`;
+        });
+    });
+});
+            </code></pre>
+        </div>
+    </div>
+
+    <!-- Step 8: Form Submission -->
+    <div class="code-section">
+        <div class="explanation">
+                <h2>Step 8: Form Submission</h2>
+
+            <p>This final part ensures that the form submission captures the selected tax rate. It also handles the enabling of the "Next" button once the slider is moved.</p>
+        </div>
+        <div class="code-snippet">
+<pre class="language-java"><code class="language-java">
+const taxVoteForm = document.getElementById('taxVoteForm');
+const nextButton = document.getElementById('nextButton');
+let sliderMoved = false;
+
+taxRateSlider.addEventListener('input', function() {
+    if (!sliderMoved) {
+        sliderMoved = true;
+        nextButton.disabled = false;
+    }
+});
+
+taxVoteForm.addEventListener('submit', function(event) {
+    taxVoteInput.value = taxRateSlider.value;
+});
+&lt;/script&gt;
+                </code></pre>
+<pre class="language-html"><code class="language-html">
+
+    {% endblock %}
+                    </code></pre>
+
+        </div>
+    </div>
+
+</body>
+</html>

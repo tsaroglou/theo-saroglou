@@ -1,0 +1,299 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block content %}
+<style>
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+.histogram-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    margin: 20px auto;
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.histogram-title {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #0056b3;
+}
+
+.histogram-container {
+    display: flex;
+    align-items: flex-end;
+    width: 100%;
+    height: 450px;
+    background-color: #f0f0f0;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    position: relative;
+}
+
+.horizontal-line {
+    position: absolute;
+    bottom: 50px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #ccc;
+}
+
+.bar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    margin: 0 2px; /* Add margin between bars */
+}
+
+.icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+}
+
+.icon:hover {
+    transform: scale(1.2);
+}
+
+.bar-graph {
+    width: 100%;
+    text-align: center;
+    font-size: 10px;
+    color: white;
+    position: relative;
+    background-color: #007bff;
+    border-radius: 10px 10px 0 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.bar-graph span {
+    position: absolute;
+    top: -23px;
+    width: 100%;
+    left: 0;
+    text-align: center;
+    color: #2776e8;
+    font-weight: bold;
+    font-size: 13px; /* Increase font size here */
+}
+
+.bar-graph .money-earned {
+    position: absolute;
+    bottom: 5px;
+    width: 100%;
+    left: 0;
+    text-align: center;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.tooltip {
+    position: absolute;
+    display: none;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 5px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    pointer-events: none;
+    z-index: 1000;
+    font-size: 12px;
+}
+
+.earnings-value {
+    position: absolute;
+    top: -20px;  /* Position it above the bar */
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+    font-size: 14px;  /* Adjust the font size as needed */
+}
+
+.score-value {
+    font-size: 12px;  /* Adjust the size of the score text */
+    font-weight: bold;
+}
+
+
+.histogram-legend {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    width: 100%;
+    flex-wrap: wrap;
+    padding: 10px;
+    font: 14pt;
+    margin-top: 20px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    margin: 5px 20px;
+    font: 14pt;
+}
+
+.legend-color {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    display: inline-block;
+}
+
+.legend-color.red { background-color: #FF0000; }
+.legend-color.orange { background-color: #FFA500; }
+.legend-color.green { background-color: #008000; }
+.legend-color.yellow { background-color: #FFFF00; }
+.legend-color.blue { background-color: #0000FF; }
+.highlight {
+    border: 3px solid #ffd700;
+    box-shadow: 0 0 5px 5px #ffd700;
+    border-radius: 35%;
+}
+.pulse-effect {
+    animation: pulse 2s infinite;
+    z-index: 10;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+.explanation-box {
+    background-color: #e0f7fa;
+    border: 1px solid #b2ebf2;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #00796b;
+}
+
+#taxRateSlider {
+    width: 80%; /* Increase the width of the slider */
+    margin: 10px auto; /* Center the slider */
+    display: block; /* Make it a block element */
+}
+
+</style>
+
+
+<div class="explanation-box">
+    <p>Below you can see the score distributions of the participants in the <b>other group</b>. Please vote for the tax rate that you believe is appropriate. <b>The average tax rate voted by your group will be applied on the other group.</b></p>
+    <p>At the bottom of each bar you can see the point score of each participant and at the top their earnings.</p>
+    <p>Use the slider below to set the tax rate. The bars will update to show the effect of the tax rate on the earnings of the participants of the other group.</p>
+</div>
+
+<div class="histogram-wrapper">
+    <div class="histogram-title">Interactive Distribution of Scores</div>
+    <div class="histogram-container" id="iconsHistogramInteractive">
+        <div class="horizontal-line"></div>
+        {% for score, icon, height, ranking, money, id_in_group in scores_and_colors %}
+        <div class="bar" style="flex: 1 1 calc((100% / {{ scores_and_colors|length }}) - 4px);">
+            <div class="bar-graph" style="height: {{ height }}px; position: relative;">
+                <!-- Display earnings at the top in blue -->
+                <span class="earnings-value" style="color: #1c6cdf; position: absolute; top: -20px; width: 100%; text-align: center;">{{ money }}</span>
+
+                <!-- Display score2 at the bottom in white -->
+                <div class="score-value" style="color: white; position: absolute; bottom: 5px; width: 100%; text-align: center;">{{ score }}</div>
+            </div>
+            <img src="{{ icon }}" class="icon {% if specific_participant_id_in_group == id_in_group %}highlight pulse-effect{% endif %}"
+                 data-original-score="{{ score }}"
+                 data-original-money="{{ money }}"
+                 data-ranking="{{ ranking }}">
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+    <div class="explanation-box" style="text-align: center;">
+        <p>You must move the slider in order to continue, even if you move it only to bring it back to zero.</p>
+    </div>
+
+<div class="histogram-legend">
+    <!-- Legend remains unchanged -->
+</div>
+
+<div class="explanation-box">
+    <label for="taxRateSlider">Tax Rate:</label>
+    <input type="range" id="taxRateSlider" name="taxRateSlider" min="0" max="100" value="0">
+    <span id="taxRateValue">0%</span>
+</div>
+
+<form id="taxVoteForm" method="post">
+    {{ form }}
+    <input type="hidden" id="taxVoteInput" name="tax_vote" value="0">
+    <button type="submit" id="nextButton" class="btn btn-primary" disabled>Next</button>
+</form>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const icons = document.querySelectorAll('.icon');
+    const taxRateSlider = document.getElementById('taxRateSlider');
+    const taxRateValue = document.getElementById('taxRateValue');
+    const taxVoteInput = document.getElementById('taxVoteInput');
+    const taxVoteForm = document.getElementById('taxVoteForm');
+    const nextButton = document.getElementById('nextButton');
+    let sliderMoved = false; // Flag to track if the slider was moved
+
+    taxRateSlider.addEventListener('input', function() {
+        const taxRate = parseFloat(this.value);
+        taxRateValue.innerText = `${taxRate}%`;
+        taxVoteInput.value = taxRate;
+
+        if (!sliderMoved) {
+            sliderMoved = true;
+            nextButton.disabled = false; // Enable the "Next" button once the slider is moved
+        }
+
+        const bars = document.querySelectorAll('.bar-graph');
+        const originalScores = Array.from(icons).map(icon => parseFloat(icon.getAttribute('data-original-score'))); // Raw scores (score2)
+
+        // Deduct tax from each original score and redistribute proportionally
+        const deductedScores = originalScores.map(score => score - (score * taxRate / 100));
+        const totalDeduction = originalScores.reduce((acc, score) => acc + (score * taxRate / 100), 0);
+        const redistributedScore = totalDeduction / originalScores.length;
+
+        bars.forEach((bar, index) => {
+            const newScore = deductedScores[index] + redistributedScore; // Apply tax change to raw score
+            const newHeight = newScore * 20 + 5; // Update bar height based on new score
+
+            // Recalculate earnings based on new score2
+            const newEarnings = (newScore / 15) * 2.5;
+
+            // Set new bar height based on the new score (score2 after tax)
+            bar.style.height = `${newHeight}px`;
+
+            // Update earnings (displayed at the top)
+            bar.querySelector('.earnings-value').innerText = `€${newEarnings.toFixed(2)}`;
+
+            // Keep original displayed score (no update to .score-value)
+        });
+    });
+
+    taxVoteForm.addEventListener('submit', function(event) {
+        taxVoteInput.value = taxRateSlider.value;
+    });
+});
+</script>
+
+{% endblock %}
