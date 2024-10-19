@@ -260,6 +260,63 @@
             font-weight: bold;
         }
 
+        /* General mobile-friendly adjustments */
+@media (max-width: 768px) {
+    .histogram-container {
+        flex-direction: column; /* Stack bars vertically on smaller screens */
+        height: auto;
+        padding: 10px;
+    }
+
+    .bar {
+        width: 80%; /* Make bars take up more horizontal space */
+        margin-bottom: 20px; /* Add space between bars */
+    }
+
+    .bar-graph {
+        height: auto; /* Adjust height dynamically */
+    }
+
+    .icon {
+        width: 30px;
+        height: 30px;
+    }
+
+    .sliders-container {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .histogram-title {
+        font-size: 18px; /* Adjust title size for smaller screens */
+    }
+
+    .histogram-wrapper {
+        padding: 10px;
+        box-shadow: none; /* Simplify design for mobile */
+    }
+
+    .slider-value {
+        font-size: 16px;
+    }
+}
+
+/* For even smaller screens */
+@media (max-width: 480px) {
+    .bar {
+        width: 100%;
+    }
+
+    .icon {
+        width: 25px;
+        height: 25px;
+    }
+
+    .sliders-container {
+        margin-top: 10px;
+    }
+}
+
     </style>
 
     <!-- Include Prism.js JavaScript for syntax highlighting -->
