@@ -263,28 +263,26 @@
         /* General mobile-friendly adjustments */
 @media (max-width: 768px) {
     .histogram-container {
-        flex-direction: column; /* Stack bars vertically on smaller screens */
+        flex-wrap: nowrap; /* Ensure bars stay in a single row */
+        overflow-x: scroll; /* Allow horizontal scrolling if needed */
         height: auto;
         padding: 10px;
     }
 
     .bar {
-        width: 80%; /* Make bars take up more horizontal space */
-        margin-bottom: 20px; /* Add space between bars */
+        width: calc(100% / 15); /* Reduce width of bars */
+        margin: 0 3px; /* Reduce space between bars */
     }
 
     .bar-graph {
-        height: auto; /* Adjust height dynamically */
+        height: auto; /* Keep height dynamic */
+        padding: 5px; /* Adjust padding inside bars */
     }
 
     .icon {
         width: 30px;
-        height: 30px;
-    }
-
-    .sliders-container {
-        width: 100%;
-        padding: 10px;
+        height: 30px; /* Make icons smaller */
+        margin-top: 5px; /* Adjust margin for smaller screens */
     }
 
     .histogram-title {
@@ -301,15 +299,15 @@
     }
 }
 
-/* For even smaller screens */
+/* Even smaller screens (mobile phones) */
 @media (max-width: 480px) {
     .bar {
-        width: 100%;
+        width: calc(100% / 20); /* Make bars even narrower */
     }
 
     .icon {
         width: 25px;
-        height: 25px;
+        height: 25px; /* Smaller icons for smaller screens */
     }
 
     .sliders-container {
