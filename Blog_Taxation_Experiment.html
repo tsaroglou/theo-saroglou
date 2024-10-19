@@ -263,30 +263,36 @@
         /* General mobile-friendly adjustments */
 @media (max-width: 768px) {
     .histogram-container {
-        flex-wrap: nowrap; /* Ensure bars stay in a single row */
-        overflow-x: scroll; /* Allow horizontal scrolling if needed */
-        height: auto;
+        height: 250px; /* Reduce the height of the entire graph */
         padding: 10px;
     }
 
     .bar {
-        width: calc(100% / 15); /* Reduce width of bars */
-        margin: 0 3px; /* Reduce space between bars */
+        width: calc(100% / 12); /* Slightly reduce the bar width */
+        margin: 0 2px; /* Reduce space between bars */
     }
 
     .bar-graph {
-        height: auto; /* Keep height dynamic */
-        padding: 5px; /* Adjust padding inside bars */
+        height: auto; /* Let the height adjust based on score */
+        padding: 3px; /* Adjust padding for smaller screens */
     }
 
     .icon {
-        width: 30px;
-        height: 30px; /* Make icons smaller */
-        margin-top: 5px; /* Adjust margin for smaller screens */
+        width: 25px; /* Make icons smaller */
+        height: 25px;
+        margin-top: 3px; /* Adjust margin for smaller screens */
+    }
+
+    .earnings-value {
+        font-size: 12px; /* Reduce the size of the earnings text */
+    }
+
+    .score-value {
+        font-size: 10px; /* Smaller font for scores */
     }
 
     .histogram-title {
-        font-size: 18px; /* Adjust title size for smaller screens */
+        font-size: 16px; /* Smaller title font for smaller screens */
     }
 
     .histogram-wrapper {
@@ -295,25 +301,38 @@
     }
 
     .slider-value {
-        font-size: 16px;
+        font-size: 14px; /* Adjust slider label font */
     }
 }
 
 /* Even smaller screens (mobile phones) */
 @media (max-width: 480px) {
+    .histogram-container {
+        height: 200px; /* Further reduce height for smaller phones */
+    }
+
     .bar {
-        width: calc(100% / 20); /* Make bars even narrower */
+        width: calc(100% / 15); /* Make bars narrower for smaller screens */
     }
 
     .icon {
-        width: 25px;
-        height: 25px; /* Smaller icons for smaller screens */
+        width: 20px; /* Make icons even smaller */
+        height: 20px;
+    }
+
+    .earnings-value {
+        font-size: 10px; /* Smaller font for earnings */
+    }
+
+    .score-value {
+        font-size: 8px; /* Smaller font for scores */
     }
 
     .sliders-container {
         margin-top: 10px;
     }
 }
+
 
     </style>
 
