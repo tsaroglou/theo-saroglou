@@ -1,0 +1,235 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block content %}
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f5f5f5;
+        color: #333;
+    }
+
+
+    .histogram-wrapper {
+        width: 100%;
+        height: auto;
+    }
+
+    .histogram-title {
+        font-size: 24px;
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 20px;
+        color: #0056b3;
+    }
+
+    .histogram-container {
+        display: flex;
+        align-items: flex-end;
+        width: 100%;
+        height: 450px;
+        background-color: #f0f0f0;
+        border-radius: 15px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        position: relative;
+        margin-bottom: 20px;
+    }
+
+    .horizontal-line {
+        position: absolute;
+        bottom: 50px;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: #ccc;
+    }
+
+    .bar {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+        margin: 0 2px;
+    }
+
+
+
+    .bar-graph {
+        width: 100%;
+        text-align: center;
+        font-size: 10px;
+        color: white;
+        position: relative;
+        background-color: #007bff;
+        border-radius: 10px 10px 0 0;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .bar-graph span {
+        position: absolute;
+        width: 100%;
+        left: 0;
+        text-align: center;
+        color: black;
+        font-weight: bold;
+    }
+
+    .score-value {
+        top: -30px;
+        font-size: medium;
+    }
+
+    .money-earned {
+        bottom: 5px;
+        font-stretch: bold;
+        font-size: medium;
+    }
+
+    .sliders-container {
+        margin-bottom: 30px;
+        text-align: center;
+    }
+
+    .slider {
+        width: 80%;
+        margin: 10px auto;
+    }
+</style>
+
+<!-- Original Content Section, you can add other information here -->
+<div class="content-section">
+
+    <div style="transform: scale(0.65); transform-origin: top left; margin-right: 20px;">
+
+
+
+</div>
+
+<div class="next-section"">
+
+<!-- Interactive section -->
+<div class="sliders-container">
+    <p>Adjust Slope</p>
+    <input type="range" id="slopeSlider" class="slider" min="0" max="10" step="1" value="0">
+    <p>Adjust Curvature</p>
+    <input type="range" id="curveSlider" class="slider" min="0" max="20" step="1" value="0">
+    <p>Adjust Overall Height</p>
+    <input type="range" id="heightSlider" class="slider" min="0" max="15" step="1" value="2">
+</div>
+
+<div class="histogram-wrapper">
+    <div class="histogram-title">Your True Distribution Estimation</div>
+    <div class="histogram-container" id="interactiveHistogram">
+        <div class="horizontal-line"></div>
+        {% for value in predefined_distribution %}
+        <div class="bar" style="flex: 1 1 calc((100% / {{ predefined_distribution|length }}) - 4px);">
+            <div class="bar-graph" style="height: {{ value.money_height }}px;" data-index="{{ forloop.counter0 }}">
+                <span class="score-value"  style="color: #0a53be; position: absolute; top: -20px; width: 100%; text-align: center;">>{{ value.score }}</span>
+
+                <div class="money-earned" style="color: white; position: absolute; top: 10px; font-size: 8pt; bottom: 5px; width: 100%; text-align: center;">>€{{ value.money }}</div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<form id="adjustmentForm" method="post">
+    <input type="hidden" id="adjustmentValues" name="adjustment_values" value="">
+    <button type="submit" id="submitButton" class="btn btn-primary" disabled>Submit</button>
+</form>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const bars = document.querySelectorAll('#interactiveHistogram .bar-graph');
+    const heightSlider = document.getElementById('heightSlider');
+    const slopeSlider = document.getElementById('slopeSlider');
+    const curveSlider = document.getElementById('curveSlider');
+    const adjustmentValues = document.getElementById('adjustmentValues');  // Hidden input to store money-earned values
+    const submitButton = document.getElementById('submitButton');  // Standard submit button
+
+    const maxScore = 15;
+    const maxHeightPx = document.querySelector('#interactiveHistogram').clientHeight;
+
+    // Flags to track whether each slider has been moved
+    let heightMoved = false;
+    let slopeMoved = false;
+    let curveMoved = false;
+
+    function updateBars() {
+        const baseScore = parseInt(heightSlider.value);
+        const slope = slopeSlider.value / 10;
+        const curvature = curveSlider.value / 10;
+        const numBars = bars.length;
+
+        const moneyValues = [];
+
+        bars.forEach((bar, index) => {
+            const positionFactor = index / (numBars - 1);
+            const curveFactor = Math.pow(positionFactor, 1 + curvature * 2);
+
+            let newScore = baseScore + slope * positionFactor * maxScore * curveFactor;
+            newScore = Math.max(0, Math.min(newScore, maxScore));
+            newScore = Math.round(newScore);
+
+            const newHeightPx = (newScore / maxScore) * maxHeightPx;
+            bar.style.height = `${newHeightPx}px`;
+
+            const scoreValue = bar.querySelector('.score-value');
+            const moneyEarned = bar.querySelector('.money-earned');
+            const moneyValue = (newScore / maxScore * 2.5).toFixed(2);
+
+            scoreValue.innerText = newScore;
+            moneyEarned.innerText = `€${moneyValue}`;
+
+            // Add the money value to the array
+            moneyValues.push(moneyValue);
+        });
+
+        // Store the money-earned values in the hidden input field
+        adjustmentValues.value = moneyValues.join(',');
+    }
+
+    // Function to enable the submit button if all sliders have been moved
+    function enableSubmitIfNeeded() {
+        if (heightMoved && slopeMoved && curveMoved) {
+            submitButton.disabled = false;  // Enable the submit button
+        }
+    }
+
+    updateBars();
+
+    // Mark sliders as "moved" when interacted with
+    heightSlider.addEventListener('input', function() {
+        heightMoved = true;
+        updateBars();
+        enableSubmitIfNeeded();
+    });
+
+    slopeSlider.addEventListener('input', function() {
+        slopeMoved = true;
+        updateBars();
+        enableSubmitIfNeeded();
+    });
+
+    curveSlider.addEventListener('input', function() {
+        curveMoved = true;
+        updateBars();
+        enableSubmitIfNeeded();
+    });
+
+    // Prevent form submission if all sliders haven't been moved (as an extra safeguard)
+    document.getElementById('adjustmentForm').addEventListener('submit', function(event) {
+        if (!heightMoved || !slopeMoved || !curveMoved) {
+            event.preventDefault();
+            alert("Please move all sliders before submitting.");
+        }
+    });
+});
+</script>
+
+
+
+
+{% endblock %}

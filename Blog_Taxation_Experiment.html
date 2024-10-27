@@ -10,6 +10,89 @@
 
     <style>
 
+        /* Navigation styling */
+nav {
+    background-color: #005bb5;
+    display: flex;
+    justify-content: center;
+    padding: 15px 0;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+nav ul li {
+    position: relative;
+    margin: 0 20px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 10px 15px;
+    display: block;
+    transition: background-color 0.3s ease;
+}
+
+nav ul li a:hover {
+    background-color: #003366;
+    border-radius: 5px;
+}
+
+/* Dropdown menu for Research and Otree Blogs */
+nav ul li ul {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #005bb5;
+    list-style-type: none;
+    padding: 10px 0;
+    border-radius: 5px;
+    min-width: 200px; /* Set a minimum width to ensure enough space for the content */
+}
+
+/* Show dropdown when hovering */
+nav ul li:hover ul {
+    display: block;
+}
+
+nav ul li ul li {
+    margin: 0;
+}
+
+    /* Footer styling */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            margin-top: 40px;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        footer a {
+            color: #0073e6;
+            text-decoration: none;
+        }
+
+nav ul li ul li a {
+    padding: 10px 20px;
+    white-space: nowrap; /* Ensure text doesn't wrap to a new line */
+}
+ .university-logo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
         .download-buttons {
             text-align: center;
             margin-bottom: 20px;
@@ -24,6 +107,11 @@
             background-color: #007bff;
             border-radius: 5px;
             font-weight: bold;
+        }
+
+          .university-logo img {
+            max-width: 350px;
+            height: auto;
         }
 
         .download-buttons a:hover {
@@ -57,6 +145,17 @@
             text-align: justify;
 
         }
+
+        h4 {font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+            margin: 20px;
+        }
+
+
+
+
         .code-section {
             display: flex;
             justify-content: space-evenly;
@@ -340,6 +439,66 @@
     .bar-graph {
         max-height: 70%; /* Ensure bars do not overflow the container */
     }
+
+     /* Navigation styling */
+        nav {
+            background-color: #005bb5;
+            display: flex;
+            justify-content: center;
+            padding: 15px 0;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+
+        nav ul li {
+            position: relative;
+            margin: 0 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 10px 15px;
+            display: block;
+            transition: background-color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            background-color: #003366;
+            border-radius: 5px;
+        }
+
+        nav ul li ul {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #005bb5;
+            list-style-type: none;
+            padding: 10px 0;
+            border-radius: 5px;
+            min-width: 200px;
+        }
+
+        nav ul li:hover ul {
+            display: block;
+        }
+
+        nav ul li ul li {
+            margin: 0;
+        }
+
+        nav ul li ul li a {
+            padding: 10px 20px;
+            white-space: nowrap;
+        }
+
 }
 
 
@@ -351,15 +510,56 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-java.min.js"></script>
 
+
 </head>
+
+ <!-- Navigation Bar -->
+
 
 <body>
 
     <header class="main-header">
         <h1>Interactive Taxation Voting, Code Explanation</h1>
     </header>
-   <h3> In experimental economics, participants are often asked to vote on tax rates. When measured, these votes are usually a central part of the research. Nevertheless, it is hard to know whether the participant possess an accurate understanding of their voted tax rate's effect. In one of my experimental studies, I tried to remedy this by providing participants with a graph of other participants' scores and a slider through which they can set their desired tax rate. As the slider moves, the distribution changes accordingly, reflecting the impact that a given tax rate would have on the distribution if it were to be applied. The colors of the icons represent the income quintile that each participant belongs to. </h3>
+
+     <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="chapter3.html">Job Market Paper</a></li>
+            <li>
+                <a href="#">Research</a>
+                <ul>
+                    <li><a href="research.html">Overview</a></li>
+                    <li><a href="chapter1.html">Chapter 1</a></li>
+                    <li><a href="chapter2.html">Chapter 2</a></li>
+                    <li><a href="chapter3.html">Chapter 3</a></li>
+                    <li><a href="research-note.html">Research Note</a></li>
+                </ul>
+            </li>
+            <li><a href="Courses.html">Courses</a></li>
+            <li>
+                <a href="#">Otree Tutorials</a>
+                <ul>
+                    <li><a href="tutorials.html">Introduction</a></li>
+                    <li><a href="Blog_Taxation_Experiment.html">Interactive Taxation Tutorial</a></li>
+                    <li><a href="Blog_Distribution_Estimate_Experiment.html">Estimating Distributions Tutorial</a></li>
+                </ul>
+            </li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
     <div class="container">
+
+ <p style="font-size:20px"> In experimental economics, participants are often asked to vote on tax or redistribution rates. When measured, these votes are usually a central part of the research. Nevertheless, it is hard to know whether the participant possesses an accurate understanding of their chosen tax rate's effect.</p>
+        <p style="font-size:20px">In one of my experimental studies, I tried to remedy this by providing participants with a graph of other participants' scores and a slider through which they can set their desired tax rate. </p>
+        <p style="font-size:20px"> As the slider moves, the distribution changes accordingly, reflecting the impact that a given tax rate would have on the distribution if it were to be applied.</p>
+        <p style="font-size:20px"> The colors of the icons represent the income quintile that each participant belongs to. When applied in an interactive experiment, the columns and icons of the interactive graph below refer to real participants. </p>
+        <p style="font-size:20px"> You can test the example below before moving on to learning how to apply it in your experiments. </p>
+
+    </div>
+    </div>
+    <div class="container">
+
         <!-- Interactive Graph -->
         <div class="experiment-box">
             <div class="histogram-wrapper">
@@ -496,20 +696,19 @@
         });
     </script>
 </head>
-<body>
 
    <div class="download-buttons">
-        <a href="python_code_taxing.py" download="python_code_taxing.py">Download Python Code</a>
-        <a href="html_code_taxing" download="html_code_taxing">Download HTML/Java Code</a>
+        <a href="python_code_redistribution.py" download="python_code_redistribution.py">Download Python Code</a>
+        <a href="html_code_redistribution" download="html_code_redistribution">Download HTML/Java Code</a>
     </div>
    <br>
 
     <!-- Step 1: Python Code Initialization -->
     <div class="code-section">
         <div class="explanation">
-                <h2>Step 1: Python Code Initialization</h2>
+                <h2>Step 1: Code Initialization (Python)</h2>
 
-            <p>This part of the Python code initializes the page class and sets the conditions for when the page is displayed. It also defines the player form model and fields.</p>
+            <p>This part of the Python code initializes the page class and sets the conditions for when the page is displayed. It also defines the player form model and fields, so that we can collect the tax votes properly.</p>
         </div>
         <div class="code-snippet">
             <pre class="language-python"><code class="language-python">
@@ -527,9 +726,10 @@ class InteractiveGraph(Page):
     <div class="code-section">
         <div class="explanation">
 
-                <h2>Step 2: Processing Player Data</h2>
+                <h2>Step 2: Processing Player Data (Python)</h2>
 
             <p>This part of the Python code handles the core logic for generating the player data used to display the interactive graph. It processes the players' group type, rankings, and calculates the scores and bar heights for the graph.</p>
+            <p>In this specific case, I have split the participants in two groups. The redistribution rate chosen by each participant will only apply to the participants of the other group, so we are only going to display to each participant the data of that other group.
         </div>
         <div class="code-snippet">
             <pre class="language-python"><code class="language-python">
@@ -551,9 +751,9 @@ def vars_for_template(player):
     <!-- Step 3: Assigning Colors and Handling Timeout -->
     <div class="code-section">
         <div class="explanation">
-                <h2>Step 3: Assigning Colors and Handling Timeout</h2>
+                <h2>Step 3: Assigning Colors and Handling Timeout  (Python)</h2>
 
-            <p>The final part of the Python code assigns colors to players based on their rankings and prepares the data for the front-end. It also handles players who time out before progressing to the next page.</p>
+            <p>The final part of the Python code assigns colors to players based on their rankings and prepares the data for the front-end. This is where you can adjust the bar heights and payment structure depending on how much each question paid in your "score" task. It also handles players who time out before progressing to the next page.</p>
         </div>
         <div class="code-snippet">
             <pre class="language-python"><code class="language-python">
@@ -596,9 +796,9 @@ def vars_for_template(player):
     <!-- Step 4: HTML Structure for Graph -->
     <div class="code-section">
         <div class="explanation">
-                <h2>Step 4: HTML Structure for Graph</h2>
+                <h2>Step 4: Structure for Graph (HTML)</h2>
 
-            <p>The HTML structure defines the layout and basic styles for the interactive graph. This section includes the main wrapper and style settings for the histogram.</p>
+            <p>The HTML structure defines the layout and basic styles for the interactive graph. This is only a short sample of the styles, there are many others you could include, some more needed (such as containers) and others less (such as hover effects). You can always use a .css file instead. If you would like to see all styles, you can download the corresponding HTML code through the button above. </p>
         </div>
         <div class="code-snippet">
                       <pre class="language-html"><code class="language-html">
@@ -619,21 +819,23 @@ def vars_for_template(player):
     }
 &lt;/style&gt;
 
-&lt;div class="histogram-wrapper"&gt;
-    &lt;div class="histogram-title"&gt;Interactive Distribution of Scores&lt;/div&gt;
-            </code></pre>
+ </code></pre>
         </div>
     </div>
 
     <!-- Step 5: Dynamic Bar Graph -->
     <div class="code-section">
         <div class="explanation">
-                        <h2>Step 5: Dynamic Bar Graph</h2>
+                        <h2>Step 5: Dynamic Bar Graph (HTML)</h2>
 
-            <p>This part of the HTML handles the dynamic bar graph. Each player is represented by a bar, and the heights of these bars change based on their score. The `icon` image is used to mark each participant.</p>
+            <p>This section includes the main wrapper and style settings for the histogram and handles the dynamic bar graph. Each player is represented by a bar, and the heights of these bars change based on their score. The `icon` image is used to mark each participant. The information displayed on the graph (money, score) has been defined earlier in our Python code and can be adjusted stylistically in the styles block.</p>
         </div>
         <div class="code-snippet">
             <pre class="language-html"><code class="language-html">
+
+&lt;div class="histogram-wrapper"&gt;
+    &lt;div class="histogram-title"&gt;Interactive Distribution of Scores&lt;/div&gt;
+
 &lt;div class="histogram-container" id="iconsHistogramInteractive"&gt;
     &lt;div class="horizontal-line"&gt;&lt;/div&gt;
     {% for score, icon, height, ranking, money, id_in_group in scores_and_colors %}
@@ -653,9 +855,10 @@ def vars_for_template(player):
     <!-- Step 6: Explanation Box and Slider -->
     <div class="code-section">
         <div class="explanation">
-                <h2>Step 6: Explanation Box and Slider</h2>
+                <h2>Step 6: Explanation Box and Slider (HTML)</h2>
 
-            <p>This part adds an explanation box at the bottom of the graph, where users are informed that they need to move the slider to adjust the tax rate. The slider controls the tax rate, and the graph dynamically updates based on the selected value.</p>
+            <p> Here we are adding the slider controls the tax rate (which we also saw earlier in the Python code), and the graph dynamically updates based on the selected value. The dynamic relationship is built later, in the JavaScript. We are also adding a button to submit the response.</p>
+            <p>This part also adds an explanation box at the bottom of the graph, where users are informed that they need to move the slider to adjust the tax rate. You do not need to include this part, but in the JavaScript later, you will see that I added a functionality that requires that the participants touch the slider before proceeding. I added the functionality to avoid people accidentally choosing a 0% rate and moving to the next page.</p>
         </div>
         <div class="code-snippet">
             <pre class="language-html"><code class="language-html">
@@ -681,9 +884,10 @@ def vars_for_template(player):
     <!-- Step 7: JavaScript Slider and Real-time Updates -->
     <div class="code-section">
         <div class="explanation">
-                <h2>Step 7: JavaScript Slider and Real-time Updates</h2>
+                <h2>Step 7: Slider and Real-time Updates (JavaScript)</h2>
 
             <p>This part of the JavaScript listens for changes to the tax rate slider. When the user adjusts the slider, the tax rate is applied to each player's score, and the graph is updated in real-time to reflect the new earnings for each player.</p>
+            <p>Here you can adjust the type of redistribution you want to apply on the graph (but you need a separate Python code to actually apply the redistribution when making the payments). In this case, the deduction is proportionally applied to everyone and then the same deduction is equally redistributed to each participant. </p>
         </div>
         <div class="code-snippet">
 <pre class="language-java"><code class="language-java">
@@ -716,9 +920,9 @@ document.addEventListener('DOMContentLoaded', function() {
     <!-- Step 8: Form Submission -->
     <div class="code-section">
         <div class="explanation">
-                <h2>Step 8: Form Submission</h2>
+                <h2>Step 8: Form Submission  (JavaScript)</h2>
 
-            <p>This final part ensures that the form submission captures the selected tax rate. It also handles the enabling of the "Next" button once the slider is moved.</p>
+            <p>This final part ensures that the form submission captures the selected tax rate. It also handles the enabling of the "Next" button once the slider is moved. This is the functionality I mentioned in Step 6 when I included the explanation box.</p>
         </div>
         <div class="code-snippet">
 <pre class="language-java"><code class="language-java">
@@ -737,14 +941,26 @@ taxVoteForm.addEventListener('submit', function(event) {
     taxVoteInput.value = taxRateSlider.value;
 });
 &lt;/script&gt;
-                </code></pre>
-<pre class="language-html"><code class="language-html">
+            </code></pre>
 
-    {% endblock %}
-                    </code></pre>
 
         </div>
     </div>
+ <div class="container">
+<br>
+     <p style="font-size:25px">Thank you for reading through this tutorial, if you have any questions, please don't hesitate to contact me. </p>
+    </div>
+    <br>
 
+     <footer>
+        <div class="container">
+            <p>&copy; 2024 Theo Saroglou | <a href="contact.html">Contact Me</a></p>
+        </div>
+
+    </footer>
+ <br>
+          <div class="university-logo">
+                <img src="images/Logo_Universitat_de_Barcelona.png" alt="Universitat de Barcelona Logo">
+            </div>
 </body>
 </html>

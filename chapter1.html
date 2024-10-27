@@ -177,18 +177,111 @@
                 font-size: 0.9rem;
             }
         }
+
+           /* Navigation styling */
+
+          nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-size: 12pt;
+        }
+
+        nav {
+            background-color: #005bb5;
+            display: flex;
+            justify-content: center;
+            padding: 15px 0;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+
+        nav ul li {
+            position: relative;
+            margin: 0 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 10px 15px;
+            display: block;
+            transition: background-color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            background-color: #003366;
+            border-radius: 5px;
+        }
+
+        /* Dropdown menu for Research and Otree Blogs */
+      nav ul li ul {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #005bb5;
+    list-style-type: none;
+    padding: 10px 0;
+    border-radius: 5px;
+    min-width: 200px; /* Set a minimum width to ensure enough space for the content */
+}
+
+
+        /* Show dropdown when hovering */
+      nav ul li:hover ul {
+    display: block;
+}
+
+        nav ul li ul li {
+            margin: 0;
+        }
+
+       nav ul li ul li a {
+    padding: 10px 20px;
+    white-space: nowrap; /* Ensure text doesn't wrap to a new line */
+}
     </style>
 </head>
 <body>
     <header>
         <div class="container">
             <h1>Selected Research</h1>
-            <nav>
-                <a href="index.html">Home</a>
-                <a href="research.html">Research</a>
-            </nav>
+
         </div>
     </header>
+      <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="chapter3.html">Job Market Paper</a></li>
+            <li>
+                <a href="#">Research</a>
+                <ul>
+                    <li><a href="research.html">Overview</a></li>
+                    <li><a href="chapter1.html">Chapter 1</a></li>
+                    <li><a href="chapter2.html">Chapter 2</a></li>
+                    <li><a href="chapter3.html">Chapter 3</a></li>
+                    <li><a href="research-note.html">Research Note</a></li>
+                </ul>
+            </li>
+            <li><a href="Courses.html">Courses</a></li>
+            <li>
+                <a href="#">Otree Tutorials</a>
+                <ul>
+                    <li><a href="tutorials.html">Introduction</a></li>
+                    <li><a href="Blog_Taxation_Experiment.html">Interactive Taxation Tutorial</a></li>
+                    <li><a href="Blog_Distribution_Estimate_Experiment.html">Estimating Distributions Tutorial</a></li>
+                </ul>
+            </li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
 
     <section>
     <div class="container">
@@ -233,6 +326,7 @@
         <p>
             The findings imply that self-deception varies based on the balance of motivations (altruism vs. personal gain). Understanding these dynamics is crucial for further research into belief-based utility and how people reconcile their actions with their self-image.
         </p>
+        <p><b>Other projects: </b></p>
         <div class="buttons">
                 <a href="chapter2.html" class="button">Project Choice and Social Image Concerns</a>
                 <a href="chapter3.html" class="button">Expectations and Preferences for Redistribution</a>

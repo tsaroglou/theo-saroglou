@@ -52,12 +52,7 @@
             margin: 0;
         }
 
-        nav a {
-            color: white;
-            margin: 0 15px;
-            text-decoration: none;
-            font-size: 15pt;
-        }
+
 
         section {
             padding: 40px 0;
@@ -100,6 +95,78 @@
             color: #0073e6;
             text-decoration: none.
         }
+
+           /* Navigation styling */
+
+          nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-size: 12pt;
+        }
+
+        nav {
+            background-color: #005bb5;
+            display: flex;
+            justify-content: center;
+            padding: 15px 0;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+
+        nav ul li {
+            position: relative;
+            margin: 0 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 10px 15px;
+            display: block;
+            transition: background-color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            background-color: #003366;
+            border-radius: 5px;
+        }
+
+        /* Dropdown menu for Research and Otree Blogs */
+      nav ul li ul {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #005bb5;
+    list-style-type: none;
+    padding: 10px 0;
+    border-radius: 5px;
+    min-width: 200px; /* Set a minimum width to ensure enough space for the content */
+}
+
+
+        /* Show dropdown when hovering */
+      nav ul li:hover ul {
+    display: block;
+}
+
+        nav ul li ul li {
+            margin: 0;
+        }
+
+       nav ul li ul li a {
+    padding: 10px 20px;
+    white-space: nowrap; /* Ensure text doesn't wrap to a new line */
+}
+
+
         /* Responsive Design */
        @media (max-width: 768px) {
         /* Center profile container */
@@ -176,55 +243,402 @@
                 font-size: 0.9rem;
             }
         }
+
+           .experiment-box {
+            background-color: #fff;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+            width: 70%;
+            margin: 0 auto;
+        }
+
+        .histogram-wrapper {
+            width: 100%;
+            margin-bottom: 40px;
+        }
+
+        .histogram-title {
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 20px;
+            color: #0056b3;
+        }
+
+        .histogram-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            height: 350px;
+            background-color: #f0f0f0;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .bar {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: calc(100% / 10 - 10px);
+            margin: 0 5px;
+        }
+
+        .bar-graph {
+            width: 100%;
+            text-align: center;
+            background-color: #007bff;
+            border-radius: 10px 10px 0 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            position: relative;
+        }
+
+        .earnings-value {
+            position: absolute;
+            top: -25px; /* Adjust top to move earnings closer to the bar */
+            width: 100%;
+            text-align: center;
+            font-weight: bold;
+            color: #1c6cdf;
+        }
+
+        .score-value {
+            font-size: 12px;
+            color: white;
+            font-weight: bold;
+            position: absolute;
+            bottom: 5px;
+            width: 100%;
+            text-align: center;
+            visibility: hidden;
+        }
+
+        .icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-top: 10px;
+            transition: transform 0.3s ease;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .icon:hover {
+            transform: scale(1.2);
+        }
+
+        .horizontal-line {
+            position: absolute;
+            bottom: 50px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #ccc;
+        }
+
+        .sliders-container {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        input[type="range"] {
+            -webkit-appearance: none;
+            width: 80%;
+            height: 10px;
+            background: #ddd;
+            border-radius: 5px;
+            outline: none;
+            opacity: 0.8;
+            transition: opacity 0.2s;
+            margin-bottom: 10px;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #007bff;
+            cursor: pointer;
+        }
+
+        input[type="range"]::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #007bff;
+            cursor: pointer;
+        }
+
+        .slider-value {
+            font-size: 18px;
+            margin-top: 10px;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
     <header>
         <div class="container">
             <h1>Selected Research</h1>
-            <nav>
-                <a href="index.html">Home</a>
-                <a href="research.html">Research</a>
-            </nav>
         </div>
     </header>
 
-    <section>
-    <div class="container">
-        <h2>Merit Beliefs and Preferences for Redistribution: The Role of Expectations</h2>
-        <p>
-            The paper examines how people's belief in the meritocratic nature of income distribution affects their support for redistribution. This belief often leads to a "winner's bias," where those who benefit from the system justify inequality by attributing their success to merit. The study introduces expectations as a factor, measuring how people's anticipated performance and the accuracy of those expectations impact their redistributive preferences. When people’s results don’t meet their expectations, they may attribute the outcome to luck. This serves to protect their self-image, influencing their support for redistributive policies.
-        </p>
-        <h3>Experimental Design</h3>
-        <p>
-            The experiment involved a test where participants received scores affected by varying levels of noise (uncertainty). Participants made predictions about their performance and later voted on redistribution levels after seeing their scores. By manipulating the noise level, the experiment explored how ambiguity influences self-serving interpretations of merit and luck.
-        </p>
-        <h3>Key Findings</h3>
+      <nav>
         <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="chapter3.html">Job Market Paper</a></li>
             <li>
-                <strong>Expectations and Redistribution:</strong> Participants whose scores fell short of their expectations were more likely to vote for higher redistribution, suggesting that unmet expectations trigger self-serving biases where individuals attribute outcomes to luck. However, in order to deploy motivated thinking, a noisy signal was required.
-            </li>
-            <li>
-                <strong>Types of Motivated Thinkers:</strong> The study differentiates between naive and sophisticated motivated thinkers:
+                <a href="#">Research</a>
                 <ul>
-                    <li><em>Naive Thinkers:</em> Bias was mainly driven by their scores.</li>
-                    <li><em>Sophisticated Thinkers:</em> Bias was influenced by how well their performance matched their expectations.</li>
+                    <li><a href="research.html">Overview</a></li>
+                    <li><a href="chapter1.html">Chapter 1</a></li>
+                    <li><a href="chapter2.html">Chapter 2</a></li>
+                    <li><a href="chapter3.html">Chapter 3</a></li>
+                    <li><a href="research-note.html">Research Note</a></li>
                 </ul>
             </li>
+            <li><a href="Courses.html">Courses</a></li>
             <li>
-                <strong>Group vs. Personal Merit Beliefs:</strong> Beliefs about personal merit often overshadow beliefs about group merit when determining redistributive preferences.
+                <a href="#">Otree Tutorials</a>
+                <ul>
+                    <li><a href="tutorials.html">Introduction</a></li>
+                    <li><a href="Blog_Taxation_Experiment.html">Interactive Taxation Tutorial</a></li>
+                    <li><a href="Blog_Distribution_Estimate_Experiment.html">Estimating Distributions Tutorial</a></li>
+                </ul>
             </li>
+            <li><a href="contact.html">Contact</a></li>
         </ul>
-        <h3>Implications</h3>
-        <p>
-            Understanding the role of self-image and expectations in shaping redistributive attitudes offers insights into public support for policies aimed at reducing inequality. The paper suggests addressing these biases through education or policy framing could promote more equitable redistribution.
-        </p>
+    </nav>
+
+    <section>
+ <div class="container">
+    <h2>Merit Beliefs and Preferences for Redistribution: The Role of Expectations</h2>
+    <p>
+        This study examines how individuals’ beliefs about merit, expectations, and self-image concerns influence their preferences for economic redistribution. The research builds on existing literature demonstrating that individuals who attribute success to their own effort are less likely to support redistribution, while those who believe luck plays a role in outcomes tend to favor higher redistributive policies. This experiment specifically explores the cognitive mechanisms behind these preferences, focusing on how individuals adjust their beliefs about merit and fairness based on whether their performance meets their initial expectations.
+    </p>
+    <h3>Background and Motivation</h3>
+    <p>
+        The study is motivated by a key question in economic psychology: why do some individuals support policies to reduce inequality while others resist them? The answer often lies in individuals’ beliefs about the sources of inequality—whether they see it as the result of a fair, meritocratic system or of external factors like luck. Prior studies have shown that those who view inequality as stemming from merit are less likely to support redistributive policies. However, most of this research has focused on cases with explicit monetary incentives or strong personal gains, leaving open the question of whether self-image alone can drive these beliefs.
+    </p>
+    <p>
+        To address this gap, the study examines how people’s redistribution preferences are shaped by their own expectations and self-beliefs in a controlled setting that isolates the effect of self-image concerns. By removing direct monetary incentives, the study aims to reveal whether beliefs about fairness and merit influence redistribution preferences solely to protect self-image.
+    </p>
+    <h3>Experimental Design</h3>
+    <p>
+        The experiment involved three main groups: a control group and two treatment groups with different levels of “noise” affecting participants’ performance scores. In the Profitable Noise treatment, noise in the grading mechanism increased scores randomly, resulting in an advantage for participants, while the Neutral Noise treatment added noise without consistently benefiting or harming participants. In the control group, no noise was introduced, allowing scores to reflect participants' actual test performance.
+    </p>
+    <p>
+        Participants first set initial expectations by predicting their own performance on a Raven’s Progressive Matrices test. This prediction served as a baseline self-belief, allowing the study to capture discrepancies between expected and actual performance. Participants then took the test, after which they were given feedback on their scores and asked to vote on a redistribution rate that would affect payments for other participants.
+    </p>
+    <p>
+        This design allowed the study to measure changes in participants' beliefs based on feedback, comparing how they adjusted their beliefs in response to success or failure. Additionally, the experiment tested for two distinct types of belief-based reasoning. Naive motivated thinkers primarily adjusted beliefs based on the raw score, while sophisticated motivated thinkers showed a greater tendency to modify beliefs according to how closely their performance matched initial expectations.
+    </p>
+
+      <div class="container">
+
+        <!-- Interactive Graph -->
+        <div class="experiment-box">
+            <div class="histogram-wrapper">
+                <div class="histogram-title">Interactive Distribution of Scores</div>
+                <div class="histogram-container" id="iconsHistogramInteractive">
+                    <div class="horizontal-line"></div>
+
+                    <!-- 10 income bars with alternating icons -->
+                    <div class="bar">
+                        <div class="bar-graph" style="height: 80px;">
+                            <span class="earnings-value">€0.50</span>
+                            <div class="score-value">4</div>
+                        </div>
+                        <img src="images/blue_human.png" class="icon">
+                    </div>
+
+                    <div class="bar">
+                        <div class="bar-graph" style="height: 100px;">
+                            <span class="earnings-value">€0.67</span>
+                            <div class="score-value">5</div>
+                        </div>
+                        <img src="images/blue_human.png" class="icon">
+                    </div>
+
+                    <div class="bar">
+                        <div class="bar-graph" style="height: 120px;">
+                            <span class="earnings-value">€0.84</span>
+                            <div class="score-value">6</div>
+                        </div>
+                        <img src="images/red_human.png" class="icon">
+                    </div>
+
+                    <div class="bar">
+                        <div class="bar-graph" style="height: 140px;">
+                            <span class="earnings-value">€1.00</span>
+                            <div class="score-value">7</div>
+                        </div>
+                        <img src="images/red_human.png" class="icon">
+                    </div>
+
+                    <div class="bar">
+                        <div class="bar-graph" style="height: 180px;">
+                            <span class="earnings-value">€1.33</span>
+                            <div class="score-value">8</div>
+                        </div>
+                        <img src="images/yellow_human.png" class="icon">
+                    </div>
+
+                    <div class="bar">
+                        <div class="bar-graph" style="height: 200px;">
+                            <span class="earnings-value">€1.50</span>
+                            <div class="score-value">9</div>
+                        </div>
+                        <img src="images/yellow_human.png" class="icon">
+                    </div>
+
+                    <div class="bar">
+                        <div class="bar-graph" style="height: 220px;">
+                            <span class="earnings-value">€1.67</span>
+                            <div class="score-value">10</div>
+                        </div>
+                        <img src="images/green_human.png" class="icon">
+                    </div>
+
+                    <div class="bar">
+                        <div class="bar-graph" style="height: 240px;">
+                            <span class="earnings-value">€1.84</span>
+                            <div class="score-value">11</div>
+                        </div>
+                        <img src="images/green_human.png" class="icon">
+                    </div>
+
+                    <div class="bar">
+                        <div class="bar-graph" style="height: 260px;">
+                            <span class="earnings-value">€2.00</span>
+                            <div class="score-value">12</div>
+                        </div>
+                        <img src="images/human.png" class="icon">
+                    </div>
+
+                    <div class="bar">
+                        <div class="bar-graph" style="height: 280px;">
+                            <span class="earnings-value">€2.50</span>
+                            <div class="score-value">15</div>
+                        </div>
+                        <img src="images/human.png" class="icon">
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Tax Slider -->
+            <div class="sliders-container">
+                <p>Adjust Tax Rate</p>
+                <input type="range" id="taxRateSlider" min="0" max="100" value="0">
+                <p class="slider-value">Tax Rate: <span id="taxRateValue">0%</span></p>
+
+            </div>
+
+        </div>
+<center> <figcaption>Interactive Example of Redistribution Voting.</figcaption>
+</center>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const taxRateSlider = document.getElementById('taxRateSlider');
+            const taxRateValue = document.getElementById('taxRateValue');
+            const bars = document.querySelectorAll('.bar-graph');
+            const earnings = [
+                0.50, 0.67, 0.84, 1.00, 1.33, 1.50, 1.67, 1.84, 2.00, 2.50
+            ]; // Original earnings
+            const heights = [
+                80, 100, 120, 140, 180, 200, 220, 240, 260, 280
+            ]; // Original heights (px)
+            const numBars = bars.length;
+
+            taxRateSlider.addEventListener('input', function () {
+                const taxRate = parseFloat(this.value);
+                taxRateValue.innerText = `${taxRate}%`;
+
+                let totalDeduction = 0;
+                const newEarnings = earnings.map((earning, index) => {
+                    const deducted = earning * taxRate / 100;
+                    totalDeduction += deducted;
+                    return earning - deducted;
+                });
+
+                // Redistribute the total deducted equally among all bars
+                const redistribution = totalDeduction / numBars;
+                const adjustedEarnings = newEarnings.map(earning => earning + redistribution);
+
+                bars.forEach((bar, index) => {
+                    const newHeightPx = (adjustedEarnings[index] / 2.5) * 280 ;  // Adjust heights based on max height and earnings
+                    bar.style.height = `${newHeightPx}px`;
+                    bar.querySelector('.earnings-value').innerText = `€${adjustedEarnings[index].toFixed(2)}`;
+                });
+            });
+        });
+    </script>
+
+    <h3>Key Findings</h3>
+    <ul>
+        <li>
+            <strong>Attribution of Success to Merit or Luck:</strong> Participants who exceeded their expectations in the Profitable Noise treatment were more likely to attribute their high performance to personal merit and voted for lower redistribution rates. Conversely, participants in the Neutral Noise treatment who scored lower than expected attributed their results to luck, leading them to vote for higher redistribution rates. This aligns with the concept of self-image maintenance, where individuals favor explanations that protect their self-worth.
+        </li>
+        <li>
+            <strong>Role of Expectations and Cognitive Biases:</strong> Participants who entered the experiment with high expectations were more likely to demonstrate confirmation bias if their performance met or exceeded these expectations. The figure below illustrates that overconfident participants who expected high scores but underperformed tended to support higher redistribution, possibly as a means of attributing outcomes to external factors like luck.
+        </li>
+        <li>
+            <strong>Personal vs. Group-Level Beliefs:</strong> The experiment further distinguished between personal merit beliefs and group merit beliefs, showing that participants could attribute personal outcomes to luck or merit while holding different beliefs about the fairness of the group’s distribution. For example, some participants perceived their performance as a product of merit but viewed the group distribution as luck-driven, leading to differing redistribution preferences at the personal and group levels.
+        </li>
+        <li>
+            <strong>Self-Serving Beliefs and Winner’s Bias:</strong> The study found that participants who outperformed their expectations displayed a "winner’s bias," ascribing success to their own merit. This bias persisted even without monetary incentives, suggesting that self-serving beliefs about merit can be driven by self-image concerns alone. This finding reinforces prior research on winner’s bias, highlighting its robustness in the absence of financial motivations.
+        </li>
+        <li>
+            <strong>Cognitive Sophistication and Belief Adjustment:</strong> The study also observed differences in belief updating between naive and sophisticated thinkers. While naive participants were more likely to adjust beliefs based solely on performance scores, sophisticated thinkers considered both their scores and the alignment between their actual performance and initial expectations. This finding underscores the role of cognitive sophistication in belief manipulation, suggesting that more cognitively advanced individuals may be more adept at sustaining positive self-images even when results do not fully align with expectations.
+        </li>
+    </ul>
+        <div class="experiment-box">
+            <center>
+        <img src="images/quartile graph.png" alt="Quartile Graph showing redistribution preferences" width="800">
+
+   </center>
+        </div>
+   <center>  <figcaption>Redistribution preferences by income quartile, over treatment and overconfidence.</figcaption></center>
+    <h3>Implications</h3>
+    <p>
+        The results underscore the importance of self-image in shaping economic preferences, suggesting that beliefs about merit and luck are not simply rational responses to outcomes but are also influenced by a need to maintain a positive self-image. This finding has implications for policy-making, particularly in contexts where public support for redistribution is essential for policy implementation. Policies that highlight the role of systemic inequality or the impact of external factors on individual success could potentially reduce winner’s bias and foster greater support for redistributive measures.
+    </p>
+    <p>
+        The study also suggests that efforts to mitigate self-serving biases should address cognitive factors that drive belief-based biases. For instance, educational programs that encourage accurate belief updating and reduce overconfidence could help individuals adopt a more balanced perspective on inequality and merit. This approach could lead to greater empathy for others’ economic circumstances, ultimately supporting fairer redistributive policies.
+    </p>
+    <h3>Conclusion</h3>
+    <p>
+        In conclusion, this study provides critical insights into the psychological drivers of redistribution preferences, revealing how self-image concerns and motivated reasoning contribute to beliefs about merit, fairness, and inequality. By isolating the role of expectations in winner’s bias, the experiment demonstrates that individuals adjust their beliefs about success and fairness to protect self-image, even in the absence of financial incentives. The findings highlight the nuanced relationship between personal and group merit beliefs, showing that self-serving biases can operate at multiple levels.
+    </p>
+    <p>
+        These insights advance our understanding of economic behavior, suggesting that individuals’ attitudes toward redistribution are shaped not only by rational considerations of fairness but also by cognitive mechanisms that support a favorable self-image. In light of these findings, policies aimed at fostering social equity should consider the cognitive and psychological factors underlying winner’s bias and other belief-based biases, paving the way for a more inclusive approach to addressing inequality.
+    </p>
+
+                <p><b>Other projects: </b></p>
+
         <div class="buttons">
-                <a href="chapter1.html" class="button">Altruistic Self-Image and Self-Deception</a>
-                <a href="chapter2.html" class="button">Project Choice and Social Image Concerns</a>
-                <a href="research-note.html" class="button">Microwelt Research Note</a>
+                <a href="chapter1.html" class="button">Altruism and Self-Deception</a>
+                <a href="chapter2.html" class="button">Project Choice and Social Image</a>
+                <a href="research-note.html" class="button">Imputing Parenthood Status</a>
             </div>
     </div>
+
+        </div>
+
 </section>
 
 

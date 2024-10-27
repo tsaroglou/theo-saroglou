@@ -1,0 +1,1109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>oTree Interactive Graph - Code Explanation</title>
+
+    <!-- Include Prism.js CSS for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+
+    <style>
+
+        /* Navigation styling */
+        nav {
+            background-color: #005bb5;
+            display: flex;
+            justify-content: center;
+            padding: 15px 0;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+
+        nav ul li {
+            position: relative;
+            margin: 0 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 10px 15px;
+            display: block;
+            transition: background-color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            background-color: #003366;
+            border-radius: 5px;
+        }
+
+        /* Dropdown menu for Research and Otree Blogs */
+        nav ul li ul {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #005bb5;
+            list-style-type: none;
+            padding: 10px 0;
+            border-radius: 5px;
+            min-width: 200px; /* Set a minimum width to ensure enough space for the content */
+        }
+
+        /* Show dropdown when hovering */
+        nav ul li:hover ul {
+            display: block;
+        }
+
+        nav ul li ul li {
+            margin: 0;
+        }
+
+        nav ul li ul li a {
+            padding: 10px 20px;
+            white-space: nowrap; /* Ensure text doesn't wrap to a new line */
+        }
+
+        .download-buttons {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .download-buttons a {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 5px;
+            text-decoration: none;
+            color: white;
+            background-color: #007bff;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .download-buttons a:hover {
+            background-color: #0056b3;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+            margin: 20px;
+        }
+        h1 {
+            color: #e3e5e6;
+        }
+
+        h2 {
+            color: #0056b3;
+        }
+
+        h3 {
+            color: #044595;
+            display: flex;
+            font-size: 20;
+            position: center;
+            flex-wrap: wrap;
+            width: 90%;
+            max-width: 1200px;
+            margin: 40px auto;
+            text-align: justify;
+
+        }
+        .code-section {
+            display: flex;
+            justify-content: space-evenly;
+            margin-bottom: 20px;
+            flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+        }
+        .explanation {
+            width: 45%;       /* Adjust width of the text on desktop */
+            margin-right: 10px;
+            font-size: 24px;
+        }
+        .code-snippet {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+            width: 45%;       /* Adjust width of the code box on desktop */
+            max-width: 700px;  /* Set a maximum width for the code box */
+        }
+
+        /* Media query for mobile devices */
+        @media (max-width: 768px) {
+            .code-section {
+                flex-direction: column; /* Stack vertically on smaller screens */
+            }
+            .explanation, .code-snippet {
+                width: 100%;     /* Full width for both text and code on mobile */
+                margin-right: 0; /* Remove margin on smaller screens */
+            }
+            .code-snippet {
+                margin-top: 10px; /* Add some space between explanation and code on mobile */
+            }
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 40px auto;
+        }
+
+        .main-header {
+            background-color: #003366;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            border-radius: 8px;
+        }
+
+        .main-header h1 {
+            font-size: 2.5rem;
+            margin: 0;
+        }
+
+        .experiment-box {
+            background-color: #fff;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+            width: 70%;
+            margin: 0 auto;
+        }
+
+        .histogram-wrapper {
+            width: 100%;
+            margin-bottom: 40px;
+        }
+
+        .histogram-title {
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 20px;
+            color: #0056b3;
+        }
+
+        .histogram-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            height: 350px;
+            background-color: #f0f0f0;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .bar {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: calc(100% / 10 - 10px);
+            margin: 0 5px;
+        }
+
+        .bar-graph {
+            width: 100%;
+            text-align: center;
+            background-color: #007bff;
+            border-radius: 10px 10px 0 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            position: relative;
+        }
+
+        .earnings-value {
+            position: absolute;
+            top: -25px; /* Adjust top to move earnings closer to the bar */
+            width: 100%;
+            text-align: center;
+            font-weight: bold;
+            color: #1c6cdf;
+        }
+
+        .score-value {
+            font-size: 12px;
+            color: white;
+            font-weight: bold;
+            position: absolute;
+            bottom: 5px;
+            width: 100%;
+            text-align: center;
+            visibility: hidden;
+        }
+
+        .icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-top: 10px;
+            transition: transform 0.3s ease;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .icon:hover {
+            transform: scale(1.2);
+        }
+
+        .horizontal-line {
+            position: absolute;
+            bottom: 50px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #ccc;
+        }
+
+        .sliders-container {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        input[type="range"] {
+            -webkit-appearance: none;
+            width: 80%;
+            height: 10px;
+            background: #ddd;
+            border-radius: 5px;
+            outline: none;
+            opacity: 0.8;
+            transition: opacity 0.2s;
+            margin-bottom: 10px;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #007bff;
+            cursor: pointer;
+        }
+
+        input[type="range"]::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #007bff;
+            cursor: pointer;
+        }
+
+        .slider-value {
+            font-size: 18px;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        /* General mobile-friendly adjustments */
+        @media (max-width: 768px) {
+            .histogram-container {
+                height: 250px; /* Reduce the height of the entire graph */
+                padding: 10px;
+            }
+
+            .bar {
+                width: calc(100% / 12); /* Slightly reduce the bar width */
+                margin: 0 2px; /* Reduce space between bars */
+            }
+
+            .bar-graph {
+                height: auto; /* Let the height adjust based on score */
+                padding: 3px; /* Adjust padding for smaller screens */
+            }
+
+            .icon {
+                width: 25px; /* Make icons smaller */
+                height: 25px;
+                margin-top: 3px; /* Adjust margin for smaller screens */
+            }
+
+            .earnings-value {
+                font-size: 12px; /* Reduce the size of the earnings text */
+            }
+
+            .score-value {
+                font-size: 10px; /* Smaller font for scores */
+            }
+
+            .histogram-title {
+                font-size: 16px; /* Smaller title font for smaller screens */
+            }
+
+            .histogram-wrapper {
+                padding: 10px;
+                box-shadow: none; /* Simplify design for mobile */
+            }
+
+            .slider-value {
+                font-size: 14px; /* Adjust slider label font */
+            }
+        }
+
+        /* Even smaller screens (mobile phones) */
+        @media (max-width: 480px) {
+
+
+            .bar {
+                width: calc(100% / 15); /* Make bars narrower for smaller screens */
+            }
+
+            .icon {
+                width: 20px; /* Make icons even smaller */
+                height: 20px;
+            }
+
+            .earnings-value {
+                font-size: 8px; /* Smaller font for earnings */
+                margin-left: -5px;
+                margin-bottom: -1px;
+            }
+
+            .score-value {
+                font-size: 4px; /* Smaller font for scores */
+            }
+
+            .sliders-container {
+                margin-top: 10px;
+            }
+
+            .histogram-container {
+                height: 350px; /* Ensure the container has enough space */
+                padding: 10px;
+            }
+
+            .bar-graph {
+                max-height: 70%; /* Ensure bars do not overflow the container */
+            }
+
+             /* Navigation styling */
+            nav {
+                background-color: #005bb5;
+                display: flex;
+                justify-content: center;
+                padding: 15px 0;
+            }
+
+            nav ul {
+                list-style-type: none;
+                padding: 0;
+                margin: 0;
+                display: flex;
+            }
+
+            nav ul li {
+                position: relative;
+                margin: 0 20px;
+            }
+
+            nav ul li a {
+                color: white;
+                text-decoration: none;
+                font-weight: 600;
+                padding: 10px 15px;
+                display: block;
+                transition: background-color 0.3s ease;
+            }
+
+            nav ul li a:hover {
+                background-color: #003366;
+                border-radius: 5px;
+            }
+
+            nav ul li ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                background-color: #005bb5;
+                list-style-type: none;
+                padding: 10px 0;
+                border-radius: 5px;
+                min-width: 200px;
+            }
+
+            nav ul li:hover ul {
+                display: block;
+            }
+
+            nav ul li ul li {
+                margin: 0;
+            }
+
+            nav ul li ul li a {
+                padding: 10px 20px;
+                white-space: nowrap;
+            }
+
+        }
+
+
+     /* Hides the score values but keeps the element for functionality */
+        .score-value {
+            visibility: hidden;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 40px auto;
+        }
+
+        .main-header {
+            background-color: #003366;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            border-radius: 8px;
+        }
+
+        .main-header h1 {
+            font-size: 2.5rem;
+            margin: 0;
+        }
+
+        /* Interactive section box styling */
+       .experiment-box {
+           background-color: #fff;
+           border-radius: 12px;
+           padding: 40px;
+           box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+           margin-top: 20px;
+           width: 50%; /* You can adjust this value to make the box smaller */
+           margin: 0 auto; /* Center the box horizontally */
+}
+
+        .histogram-wrapper {
+            width: 100%;
+            margin-bottom: 40px;
+        }
+
+        .histogram-title {
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 20px;
+            color: #0056b3;
+        }
+
+        .histogram-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            height: 350px;
+            background-color: #f0f0f0;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .bar {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: calc(100% / 10 - 10px);
+            margin: 0 5px;
+        }
+
+        .bar-graph {
+            width: 100%;
+            text-align: center;
+            background-color: #007bff;
+            border-radius: 10px 10px 0 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+
+        .bar-graph span {
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        .horizontal-line {
+            position: absolute;
+            bottom: 50px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #ccc;
+        }
+
+        .slider {
+            width: 100%;
+            margin: 20px 0;
+        }
+
+        .sliders-container {
+            width: 100%;
+            text-align: center;
+        }
+
+        .sliders-container p {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .btn {
+            background-color: #0073e6;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .btn:hover {
+            background-color: #005bb5;
+        }
+
+        /* Styling for the sliders */
+        input[type="range"] {
+            -webkit-appearance: none;
+            width: 80%;
+            height: 10px;
+            background: #ddd;
+            border-radius: 5px;
+            outline: none;
+            opacity: 0.8;
+            transition: opacity 0.2s;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #007bff;
+            cursor: pointer;
+        }
+
+        input[type="range"]::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #007bff;
+            cursor: pointer;
+        }
+    </style>
+
+    <!-- Include Prism.js JavaScript for syntax highlighting -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-java.min.js"></script>
+
+</head>
+
+<!-- Navigation Bar -->
+
+
+<body>
+
+<header class="main-header">
+    <h1>Interactive Taxation Voting, Code Explanation</h1>
+</header>
+
+<nav>
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="chapter3.html">Job Market Paper</a></li>
+        <li>
+            <a href="#">Research</a>
+            <ul>
+                <li><a href="research.html">Overview</a></li>
+                <li><a href="chapter1.html">Chapter 1</a></li>
+                <li><a href="chapter2.html">Chapter 2</a></li>
+                <li><a href="chapter3.html">Chapter 3</a></li>
+                <li><a href="research-note.html">Research Note</a></li>
+            </ul>
+        </li>
+        <li><a href="Courses.html">Courses</a></li>
+        <li>
+            <a href="#">Otree Tutorials</a>
+            <ul>
+                <li><a href="tutorials.html">Introduction</a></li>
+                <li><a href="Blog_Taxation_Experiment.html">Interactive Taxation Tutorial</a></li>
+                <li><a href="Blog_Distribution_Estimate_Experiment.html">Estimating Distributions Tutorial</a></li>
+            </ul>
+        </li>
+        <li><a href="contact.html">Contact</a></li>
+    </ul>
+</nav>
+
+</head>
+
+<body>
+
+    <!-- Interactive section inside a box -->
+    <div class="container">
+        <div class="experiment-box">
+            <div class="experiment-container">
+                <!-- Interactive Graph -->
+                <div class="histogram-wrapper">
+                    <div class="histogram-title">Adjust the Distribution</div>
+                    <div class="histogram-container" id="interactiveHistogram">
+                        <!-- 10 bars -->
+                        <div class="bar">
+                            <div class="bar-graph" style="height: 80px;">
+                                <span class="score-value">2</span>
+                                <span class="money-earned">€0.33</span>
+                            </div>
+                        </div>
+                        <div class="bar">
+                            <div class="bar-graph" style="height: 80px;">
+                                <span class="score-value">2</span>
+                                <span class="money-earned">€0.33</span>
+                            </div>
+                        </div>
+                        <div class="bar">
+                            <div class="bar-graph" style="height: 80px;">
+                                <span class="score-value">2</span>
+                                <span class="money-earned">€0.33</span>
+                            </div>
+                        </div>
+                        <div class="bar">
+                            <div class="bar-graph" style="height: 80px;">
+                                <span class="score-value">2</span>
+                                <span class="money-earned">€0.33</span>
+                            </div>
+                        </div>
+                        <div class="bar">
+                            <div class="bar-graph" style="height: 80px;">
+                                <span class="score-value">2</span>
+                                <span class="money-earned">€0.33</span>
+                            </div>
+                        </div>
+                        <div class="bar">
+                            <div class="bar-graph" style="height: 80px;">
+                                <span class="score-value">2</span>
+                                <span class="money-earned">€0.33</span>
+                            </div>
+                        </div>
+                        <div class="bar">
+                            <div class="bar-graph" style="height: 80px;">
+                                <span class="score-value">2</span>
+                                <span class="money-earned">€0.33</span>
+                            </div>
+                        </div>
+                        <div class="bar">
+                            <div class="bar-graph" style="height: 80px;">
+                                <span class="score-value">2</span>
+                                <span class="money-earned">€0.33</span>
+                            </div>
+                        </div>
+                        <div class="bar">
+                            <div class="bar-graph" style="height: 80px;">
+                                <span class="score-value">2</span>
+                                <span class="money-earned">€0.33</span>
+                            </div>
+                        </div>
+                        <div class="bar">
+                            <div class="bar-graph" style="height: 80px;">
+                                <span class="score-value">2</span>
+                                <span class="money-earned">€0.33</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slider Inputs -->
+                <div class="sliders-container">
+                    <p>Adjust Slope</p>
+                    <input type="range" class="slider" id="slopeSlider" min="0" max="10" step="1" value="0">
+                    <p>Adjust Curvature</p>
+                    <input type="range" class="slider" id="curveSlider" min="0" max="20" step="1" value="0">
+                    <p>Adjust Overall Height</p>
+                    <input type="range" class="slider" id="heightSlider" min="0" max="15" step="1" value="2">
+                </div>
+
+                <!-- Submit Button -->
+                <button class="btn" id="submitButton">Submit</button>
+
+            </div>
+        </div>
+    </div>
+
+     <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const bars = document.querySelectorAll('#interactiveHistogram .bar-graph');
+            const heightSlider = document.getElementById('heightSlider');
+            const slopeSlider = document.getElementById('slopeSlider');
+            const curveSlider = document.getElementById('curveSlider');
+            const submitButton = document.getElementById('submitButton');
+            const maxScore = 15;
+
+            function updateBars() {
+                const baseScore = parseInt(heightSlider.value);
+                const slope = slopeSlider.value / 10;
+                const curvature = curveSlider.value / 10;
+                const numBars = bars.length;
+
+                bars.forEach((bar, index) => {
+                    const positionFactor = index / (numBars - 1);
+                    const curveFactor = Math.pow(positionFactor, 1 + curvature * 2);
+                    let newScore = baseScore + slope * positionFactor * maxScore * curveFactor;
+                    newScore = Math.max(0, Math.min(newScore, maxScore));
+                    const newHeightPx = (newScore / maxScore) * 330 + 35; // Adjust max height scaling
+                    bar.style.height = `${newHeightPx}px`;
+
+                    const scoreValue = bar.querySelector('.score-value');
+                    scoreValue.innerText = newScore.toFixed(0);
+
+                    const moneyEarned = bar.querySelector('.money-earned');
+                    const moneyValue = (newScore / maxScore * 2.5).toFixed(2);
+                    moneyEarned.innerText = `€${moneyValue}`;
+                });
+            }
+
+            updateBars();
+
+            heightSlider.addEventListener('input', updateBars);
+            slopeSlider.addEventListener('input', updateBars);
+            curveSlider.addEventListener('input', updateBars);
+        });
+    </script>
+
+
+
+<div class="download-buttons">
+    <a href="python_code_distribution.py" download="python_code_distribution.py">Download Python Code</a>
+    <a href="html_code_distribution" download="html_code_distribution">Download HTML/Java Code</a>
+</div>
+<br>
+
+<!-- Step 1: Python Code Initialization -->
+<div class="code-section">
+   <div class="explanation">
+    <h2>Step 1: Defining the oTree Page Class</h2>
+    <p>This code defines a page class in oTree. The `form_model` refers to the player model, and the `form_fields` list specifies the fields that will be included in the form (in this case, 'adjustment_values'). The `is_displayed` function determines if the page should be shown to the player, based on whether they have given consent and haven't been removed.</p>
+</div>
+    <div class="code-snippet">
+        <pre class="language-python"><code class="language-python">
+class SecondTaxRateVoting(Page):
+    form_model = 'player'
+    form_fields = ['adjustment_values']
+
+    def is_displayed(player):
+        return player.consent and not player.remove
+        </code></pre>
+    </div>
+</div>
+
+<!-- Step 2: Processing Player Data -->
+<div class="code-section">
+   <div class="explanation">
+    <h2>Step 2: Preparing Data for the Graph</h2>
+    <p>This function prepares data for use in the HTML template. It gathers players from the opposite group and sorts them based on their `test_score2` values. It returns the number of bars (players) to be displayed in the graph, which corresponds to the players from the opposite group.</p>
+</div>
+    <div class="code-snippet">
+        <pre class="language-python"><code class="language-python">
+def vars_for_template(player: Player):
+    current_player = player
+    player_group_type = current_player.group_type
+
+    # Get the players from the opposite group and filter out players with None test_score2
+    opposite_group_players = sorted(
+        [p for p in player.group.get_players() if
+         p.group_type != player_group_type and p.field_maybe_none('test_score2') is not None],
+        key=lambda p: p.field_maybe_none('test_score2')
+    )
+
+    num_bars = len(opposite_group_players)
+
+    # Create the predefined distribution for the interactive graph (using integers from 0 to 15)
+
+
+    return {
+        'num_bars': num_bars  # Send the number of sliders needed
+    }
+            </code></pre>
+    </div>
+</div>
+
+<!-- Step 3: Assigning Colors and Handling Timeout -->
+<div class="code-section">
+ <div class="explanation">
+    <h2>Step 3: Handling Adjustments and Timeout</h2>
+    <p>This function handles player actions before moving to the next page. It processes the player's adjustments, checks for errors, and handles timeout scenarios. If the player times out, their timeout count is incremented, and if they reach three timeouts, they are removed from the experiment.</p>
+</div>
+    <div class="code-snippet">
+        <pre class="language-python"><code class="language-python">
+def before_next_page(player: Player, timeout_happened):
+    # Handle adjustments only if there's no timeout
+    if not timeout_happened:
+        try:
+            # Convert the comma-separated string back into a list of floats
+            adjustment_values = [float(value) for value in player.adjustment_values.split(',')]
+        except ValueError:
+            player.participant.vars['adjustment_error'] = True
+            return
+
+        # Check if the length of adjustment values matches the number of players
+        opposite_group_players = [p for p in player.group.get_players() if p.group_type != player.group_type]
+        if len(adjustment_values) != len(opposite_group_players):
+            player.participant.vars['adjustment_error'] = True
+        else:
+            player.participant.vars['adjustment_error'] = False
+
+    # Handle the timeout scenario
+    if timeout_happened:
+        # Increment the timeout count stored in participant.vars
+        player.timeout_count += 1
+
+        # If the participant times out 3 times, mark them for exclusion
+        if player.timeout_count >= 3:
+            player.remove = True  # Mark player for removal
+            </code></pre>
+    </div>
+
+      <!-- Step 4: HTML Structure for Graph -->
+    <div class="code-section">
+       <div class="explanation">
+    <h2>Step 4: Structuring the HTML for the Graph</h2>
+    <p>This block defines the basic structure and style of the histogram for the interactive graph. It includes the title and wrapper for the graph, which will later hold the dynamically generated bars representing players' data.</p>
+</div>
+        <div class="code-snippet">
+                      <pre class="language-html"><code class="language-html">
+
+&lt;style&gt;
+   body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f5f5f5;
+        color: #333;
+    }
+
+
+    .histogram-wrapper {
+        width: 100%;
+        height: auto;
+    }
+
+    .histogram-title {
+        font-size: 24px;
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 20px;
+        color: #0056b3;
+    }
+&lt;/style&gt;
+
+            </code></pre>
+        </div>
+    </div>
+
+
+     <!-- Step 5: Dynamic Bar Graph -->
+    <div class="code-section">
+        <div class="explanation">
+    <h2>Step 5: Creating the Dynamic Bar Graph</h2>
+    <p>This HTML section defines the structure of the dynamic bar graph. It includes sliders for adjusting slope, curvature, and height, as well as a container for the bars representing each player's score. The bars' heights will be dynamically updated based on player scores.</p>
+</div>
+        <div class="code-snippet">
+            <pre class="language-html"><code class="language-html">
+
+&lt;!-- Interactive section --&gt;
+&lt;div class="sliders-container"&gt;
+    &lt;p&gt;Adjust Slope&lt;/p&gt;
+    &lt;input type="range" id="slopeSlider" class="slider" min="0" max="10" step="1" value="0"&gt;
+    &lt;p&gt;Adjust Curvature&lt;/p&gt;
+    &lt;input type="range" id="curveSlider" class="slider" min="0" max="20" step="1" value="0"&gt;
+    &lt;p&gt;Adjust Overall Height&lt;/p&gt;
+    &lt;input type="range" id="heightSlider" class="slider" min="0" max="15" step="1" value="2"&gt;
+&lt;/div&gt;
+
+&lt;div class="histogram-wrapper"&gt;
+    &lt;div class="histogram-container" id="interactiveHistogram"&gt;
+        &lt;div class="horizontal-line"&gt;&lt;/div&gt;
+        {% for value in predefined_distribution %}
+        &lt;div class="bar" style="flex: 1 1 calc((100% / {{ predefined_distribution|length }}) - 4px);"&gt;
+            &lt;div class="bar-graph" style="height: {{ value.money_height }}px;" data-index="{{ forloop.counter0 }}"&gt;
+                &lt;span class="score-value"  style="color: #0a53be; position: absolute; top: -20px; width: 100%; text-align: center;"&gt;&gt;{{ value.score }}&lt;/span&gt;
+
+                &lt;div class="money-earned" style="color: white; position: absolute; top: 10px; font-size: 8pt; bottom: 5px; width: 100%; text-align: center;"&gt;&gt;€{{ value.money }}&lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        {% endfor %}
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;form id="adjustmentForm" method="post"&gt;
+    &lt;input type="hidden" id="adjustmentValues" name="adjustment_values" value=""&gt;
+    &lt;button type="submit" id="submitButton" class="btn btn-primary" disabled&gt;Submit&lt;/button&gt;
+&lt;/form&gt;
+            </code></pre>
+        </div>
+    </div>
+
+      <!-- Step 6: JavaScript Slider and Real-time Updates -->
+    <div class="code-section">
+       <div class="explanation">
+    <h2>Step 6: Updating the Bar Graph in Real-Time</h2>
+    <p>This JavaScript code handles updating the bar graph in real-time as the user interacts with the sliders. It calculates new heights for the bars based on the slope, curvature, and height values, and updates both the scores and the earnings shown for each player.</p>
+</div>
+        <div class="code-snippet">
+<pre class="language-java"><code class="language-java">
+
+&lt;script&gt;
+document.addEventListener('DOMContentLoaded', function() {
+    const bars = document.querySelectorAll('#interactiveHistogram .bar-graph');
+    const heightSlider = document.getElementById('heightSlider');
+    const slopeSlider = document.getElementById('slopeSlider');
+    const curveSlider = document.getElementById('curveSlider');
+    const adjustmentValues = document.getElementById('adjustmentValues');  // Hidden input to store money-earned values
+    const submitButton = document.getElementById('submitButton');  // Standard submit button
+
+    const maxScore = 15;
+    const maxHeightPx = document.querySelector('#interactiveHistogram').clientHeight;
+
+    // Flags to track whether each slider has been moved
+    let heightMoved = false;
+    let slopeMoved = false;
+    let curveMoved = false;
+
+    function updateBars() {
+        const baseScore = parseInt(heightSlider.value);
+        const slope = slopeSlider.value / 10;
+        const curvature = curveSlider.value / 10;
+        const numBars = bars.length;
+
+        const moneyValues = [];
+
+        bars.forEach((bar, index) =&gt; {
+            const positionFactor = index / (numBars - 1);
+            const curveFactor = Math.pow(positionFactor, 1 + curvature * 2);
+
+            let newScore = baseScore + slope * positionFactor * maxScore * curveFactor;
+            newScore = Math.max(0, Math.min(newScore, maxScore));
+            newScore = Math.round(newScore);
+
+            const newHeightPx = (newScore / maxScore) * maxHeightPx;
+            bar.style.height = `${newHeightPx}px`;
+
+            const scoreValue = bar.querySelector('.score-value');
+            const moneyEarned = bar.querySelector('.money-earned');
+            const moneyValue = (newScore / maxScore * 2.5).toFixed(2);
+
+            scoreValue.innerText = newScore;
+            moneyEarned.innerText = `€${moneyValue}`;
+
+            // Add the money value to the array
+            moneyValues.push(moneyValue);
+        });
+
+        // Store the money-earned values in the hidden input field
+        adjustmentValues.value = moneyValues.join(',');
+    }
+
+
+            </code></pre>
+
+
+        </div>
+    </div>
+
+
+      <!-- Step 7: JavaScript Slider and Real-time Updates -->
+    <div class="code-section">
+       <div class="explanation">
+    <h2>Step 7: Enabling Submit and Safeguarding Form Submission</h2>
+    <p>This section adds additional functionality to the sliders. It enables the submit button once all sliders have been moved, and prevents the form from being submitted unless the sliders have been adjusted. The function ensures that the correct adjustments are applied before submission.</p>
+</div>
+        <div class="code-snippet">
+<pre class="language-java"><code class="language-java">
+
+    // Function to enable the submit button if all sliders have been moved
+    function enableSubmitIfNeeded() {
+        if (heightMoved && slopeMoved && curveMoved) {
+            submitButton.disabled = false;  // Enable the submit button
+        }
+    }
+
+    updateBars();
+
+    // Mark sliders as "moved" when interacted with
+    heightSlider.addEventListener('input', function() {
+        heightMoved = true;
+        updateBars();
+        enableSubmitIfNeeded();
+    });
+
+    slopeSlider.addEventListener('input', function() {
+        slopeMoved = true;
+        updateBars();
+        enableSubmitIfNeeded();
+    });
+
+    curveSlider.addEventListener('input', function() {
+        curveMoved = true;
+        updateBars();
+        enableSubmitIfNeeded();
+    });
+
+    // Prevent form submission if all sliders haven't been moved (as an extra safeguard)
+    document.getElementById('adjustmentForm').addEventListener('submit', function(event) {
+        if (!heightMoved || !slopeMoved || !curveMoved) {
+            event.preventDefault();
+            alert("Please move all sliders before submitting.");
+        }
+    });
+});
+
+&lt;/script&gt;
+            </code></pre>
+
+            </code></pre>
+<pre class="language-html"><code class="language-html">
+    {% endblock %}
+</code></pre>
+
+
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>
