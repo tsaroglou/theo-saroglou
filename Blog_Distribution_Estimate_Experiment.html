@@ -244,6 +244,34 @@
             font-weight: bold;
             color: #1c6cdf;
         }
+              /* Footer styling */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            margin-top: 40px;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        footer a {
+            color: #0073e6;
+            text-decoration: none;
+        }
+
+        /* University logo styling */
+        .university-logo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .university-logo img {
+            max-width: 350px;
+            height: auto;
+        }
 
         .score-value {
             font-size: 12px;
@@ -401,6 +429,8 @@
             .bar-graph {
                 max-height: 70%; /* Ensure bars do not overflow the container */
             }
+
+
 
              /* Navigation styling */
             nav {
@@ -1127,16 +1157,19 @@ document.addEventListener('DOMContentLoaded', function() {
 &lt;/script&gt;
             </code></pre>
 
-            </code></pre>
-<pre class="language-html"><code class="language-html">
-    {% endblock %}
-</code></pre>
-
 
         </div>
     </div>
 </div>
 
+ <!-- Footer Section -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Theo Saroglou | <a href="contact.html">Contact Me</a></p>
+        </div>
+    </footer>
 
+<div class="university-logo">
+        <img src="images/Logo_Universitat_de_Barcelona.png" alt="Universitat de Barcelona Logo">
+    </div>
 </body>
-</html>
