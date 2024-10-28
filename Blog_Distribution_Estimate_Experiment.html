@@ -647,31 +647,43 @@
 </header>
 
 <nav>
-    <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="chapter3.html">Job Market Paper</a></li>
-        <li>
-            <a href="#">Research</a>
-            <ul>
-                <li><a href="research.html">Overview</a></li>
-                <li><a href="chapter1.html">Chapter 1</a></li>
-                <li><a href="chapter2.html">Chapter 2</a></li>
-                <li><a href="chapter3.html">Chapter 3</a></li>
-                <li><a href="research-note.html">Research Note</a></li>
-            </ul>
-        </li>
-        <li><a href="Courses.html">Courses</a></li>
-        <li>
-            <a href="#">Otree Tutorials</a>
-            <ul>
-                <li><a href="tutorials.html">Introduction</a></li>
-                <li><a href="Blog_Taxation_Experiment.html">Interactive Taxation Tutorial</a></li>
-                <li><a href="Blog_Distribution_Estimate_Experiment.html">Estimating Distributions Tutorial</a></li>
-            </ul>
-        </li>
-        <li><a href="contact.html">Contact</a></li>
-    </ul>
-</nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="expectations-redistribution.html">Job Market Paper</a></li>
+            <li>
+                <a href="#">Research</a>
+                <ul>
+                    <li><a href="research.html">Overview</a></li>
+                    <li><a href="altruism-self-deception.html">Altruism and Self-Deception</a></li>
+                    <li><a href="social-image-project-choice.html">Project Choice and Social Image</a></li>
+                    <li><a href="expectations-redistribution.html">Expectations and Redistribution</a></li>
+                    <li><a href="parenthood-imputation.html">Imputing Parenthood Status</a></li>
+                </ul>
+            </li>
+            <li><a href="Courses.html">Teaching</a></li>
+            <li>
+                <a href="#">oTree Tutorials</a>
+                <ul>
+                    <li><a href="tutorials.html">Motivation</a></li>
+                    <li><a href="Blog_Taxation_Experiment.html">Interactive Taxation Tutorial</a></li>
+                    <li><a href="Blog_Distribution_Estimate_Experiment.html">Estimating Distributions Tutorial</a></li>
+                </ul>
+            </li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+ <div class="container">
+
+ <p style="font-size:20px">Despite receiving various pieces of information and signals, some participants
+ might not have a clear picture of what the income distribution is. Perception is often more important than reality, and in some experimental economics contexts, we need to assess whether these perceptions do indeed match reality.</p>
+           <p style="font-size:20px">Asking participants to report their perceived inequality level can be tricky, to improve on this measurement I constructed the interactive graph below. Participants can adjust the slope, curvature, and overall height of the bars through three sliders. This approach is more interactive and visual and could possibly result in more accurate responses </p>
+
+        <p style="font-size:20px"> You can test the example below before moving on to learning how to apply it in your experiments. </p>
+
+
+
+    </div>
 
 </head>
 
@@ -817,7 +829,7 @@
 <!-- Step 1: Python Code Initialization -->
 <div class="code-section">
    <div class="explanation">
-    <h2>Step 1: Defining the oTree Page Class</h2>
+    <h2>Step 1: Defining the oTree Page Class  (Python)</h2>
     <p>This code defines a page class in oTree. The `form_model` refers to the player model, and the `form_fields` list specifies the fields that will be included in the form (in this case, 'adjustment_values'). The `is_displayed` function determines if the page should be shown to the player, based on whether they have given consent and haven't been removed.</p>
 </div>
     <div class="code-snippet">
@@ -835,8 +847,16 @@ class SecondTaxRateVoting(Page):
 <!-- Step 2: Processing Player Data -->
 <div class="code-section">
    <div class="explanation">
-    <h2>Step 2: Preparing Data for the Graph</h2>
-    <p>This function prepares data for use in the HTML template. It gathers players from the opposite group and sorts them based on their `test_score2` values. It returns the number of bars (players) to be displayed in the graph, which corresponds to the players from the opposite group.</p>
+    <h2>Step 2: Preparing Data for the Graph  (Python)</h2>
+    <p>This function prepares data for use in the HTML template.
+        It gathers players from the opposite group and sorts them based on
+        their `test_score2` values. It returns the number of bars (players) to
+        be displayed in the graph, which corresponds to the players from the opposite group.</p>
+       <p>You don't need to perform this extensive sorting, the important part here is to create a
+           variable that holds the participants in the other group so we can match the number of bars
+       we want to display. If you want to have a fixed number of bars, no sorting is needed.
+           Nevertheless, keeping the sorting can be useful if you'd like to reveal the distribution to
+       participants at some point in the page (see redistribution tutorial).</p>
 </div>
     <div class="code-snippet">
         <pre class="language-python"><code class="language-python">
@@ -866,8 +886,14 @@ def vars_for_template(player: Player):
 <!-- Step 3: Assigning Colors and Handling Timeout -->
 <div class="code-section">
  <div class="explanation">
-    <h2>Step 3: Handling Adjustments and Timeout</h2>
-    <p>This function handles player actions before moving to the next page. It processes the player's adjustments, checks for errors, and handles timeout scenarios. If the player times out, their timeout count is incremented, and if they reach three timeouts, they are removed from the experiment.</p>
+    <h2>Step 3: Handling Adjustments and Timeout  (Python)</h2>
+    <p>This function handles player actions before moving to the next page.
+        It processes the player's adjustments, checks for errors, and handles timeout scenarios.
+        In this case, if the player times out, their timeout count is incremented,
+        and if they reach three timeouts,
+        they are removed from the experiment.</p>
+
+     <p>Note that adjustment values are lists of numbers which you can later use to perform calculations, such as finding the GINI coefficient, that allow for comparison between participants.</p>
 </div>
     <div class="code-snippet">
         <pre class="language-python"><code class="language-python">
@@ -902,8 +928,11 @@ def before_next_page(player: Player, timeout_happened):
       <!-- Step 4: HTML Structure for Graph -->
     <div class="code-section">
        <div class="explanation">
-    <h2>Step 4: Structuring the HTML for the Graph</h2>
-    <p>This block defines the basic structure and style of the histogram for the interactive graph. It includes the title and wrapper for the graph, which will later hold the dynamically generated bars representing players' data.</p>
+    <h2>Step 4: Structuring the HTML for the Graph (HTML)</h2>
+    <p>This block defines the basic structure and style of the histogram for the interactive graph.
+        It includes the title and wrapper for the graph, which will later hold the dynamically generated bars
+        This is only a short sample of the styles, there are many others you should include. You can always use a .css file instead. If you would like to see all styles, you can download the corresponding HTML code through the button above. </p>
+.</p>
 </div>
         <div class="code-snippet">
                       <pre class="language-html"><code class="language-html">
@@ -938,8 +967,8 @@ def before_next_page(player: Player, timeout_happened):
      <!-- Step 5: Dynamic Bar Graph -->
     <div class="code-section">
         <div class="explanation">
-    <h2>Step 5: Creating the Dynamic Bar Graph</h2>
-    <p>This HTML section defines the structure of the dynamic bar graph. It includes sliders for adjusting slope, curvature, and height, as well as a container for the bars representing each player's score. The bars' heights will be dynamically updated based on player scores.</p>
+    <h2>Step 5: Creating the Dynamic Bar Graph  (HTML)</h2>
+    <p>This HTML section defines the structure of the dynamic bar graph. It includes sliders for adjusting slope, curvature, and height, as well as a container for the bars representing each player's score. The bars' heights will be dynamically updated based on player scores. The dynamic relationship is specified in the Javascript below.</p>
 </div>
         <div class="code-snippet">
             <pre class="language-html"><code class="language-html">
@@ -980,8 +1009,12 @@ def before_next_page(player: Player, timeout_happened):
       <!-- Step 6: JavaScript Slider and Real-time Updates -->
     <div class="code-section">
        <div class="explanation">
-    <h2>Step 6: Updating the Bar Graph in Real-Time</h2>
-    <p>This JavaScript code handles updating the bar graph in real-time as the user interacts with the sliders. It calculates new heights for the bars based on the slope, curvature, and height values, and updates both the scores and the earnings shown for each player.</p>
+    <h2>Step 6: Updating the Bar Graph in Real-Time (Javascript)</h2>
+    <p>This JavaScript code handles updating the bar graph in real-time as the user
+        interacts with the sliders. It calculates new heights for the bars based on the slope,
+        curvature, and height values, and updates both the scores and the earnings shown
+        for each player.</p>
+           <p>Here you can also adjust the strength of the slope and curvature sliders if you would like them to be more or less sensitive. </p>
 </div>
         <div class="code-snippet">
 <pre class="language-java"><code class="language-java">
@@ -1048,7 +1081,7 @@ document.addEventListener('DOMContentLoaded', function() {
       <!-- Step 7: JavaScript Slider and Real-time Updates -->
     <div class="code-section">
        <div class="explanation">
-    <h2>Step 7: Enabling Submit and Safeguarding Form Submission</h2>
+    <h2>Step 7: Enabling Submit and Safeguarding Form Submission  (Javascript)</h2>
     <p>This section adds additional functionality to the sliders. It enables the submit button once all sliders have been moved, and prevents the form from being submitted unless the sliders have been adjusted. The function ensures that the correct adjustments are applied before submission.</p>
 </div>
         <div class="code-snippet">

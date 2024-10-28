@@ -1,16 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Theo Saroglou - oTree Blog Overview</title>
+    <title>Chapter 2: Social Image & Task Choice</title>
 
     <!-- Google Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap">
 
     <style>
-
          .buttons {
             display: flex;
             justify-content: space-between;
@@ -29,8 +27,6 @@
             flex: 1 1 200px;
             transition: background-color 0.3s ease;
         }
-
-        /* General styling */
         body {
             font-family: 'Poppins', sans-serif;
             background-color: #f4f4f4;
@@ -44,24 +40,76 @@
             margin: 0 auto;
         }
 
-        .main-header {
+        header {
             background-color: #003366;
             color: white;
             padding: 20px 0;
             text-align: center;
         }
 
-        .main-header h1 {
+        header h1 {
             font-size: 2.5rem;
             margin: 0;
         }
 
-        .main-header p {
-            font-size: 1.1rem;
-            margin: 10px 0 0 0;
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-size: 20pt;
         }
 
-        /* Navigation styling */
+        section {
+            padding: 40px 0;
+        }
+
+        section h2 {
+            color: #003366;
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        a {
+            color: #0073e6;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #005bb5;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            margin-top: 40px.
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        footer a {
+            color: #0073e6;
+            text-decoration: none;
+        }
+
+          /* Navigation styling */
+
+          nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-size: 12pt;
+        }
+
         nav {
             background-color: #005bb5;
             display: flex;
@@ -95,75 +143,33 @@
             border-radius: 5px;
         }
 
-        nav ul li ul {
-            display: none;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            background-color: #005bb5;
-            list-style-type: none;
-            padding: 10px 0;
-            border-radius: 5px;
-            min-width: 200px;
-        }
+        /* Dropdown menu for Research and Otree Blogs */
+      nav ul li ul {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #005bb5;
+    list-style-type: none;
+    padding: 10px 0;
+    border-radius: 5px;
+    min-width: 200px; /* Set a minimum width to ensure enough space for the content */
+}
 
-        nav ul li:hover ul {
-            display: block;
-        }
+
+        /* Show dropdown when hovering */
+      nav ul li:hover ul {
+    display: block;
+}
 
         nav ul li ul li {
             margin: 0;
         }
 
-        nav ul li ul li a {
-            padding: 10px 20px;
-            white-space: nowrap;
-        }
-
-        /* Section styling */
-        .content-section {
-            padding: 20px 0;
-            background-color: #fff;
-            margin: 20px 0;
-        }
-
-        .content-section p {
-            font-size: 1.1rem;
-            line-height: 1.6;
-            color: #333;
-            text-align: justify;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        /* Footer styling */
-        footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 10px 0;
-            margin-top: 40px;
-        }
-
-        footer p {
-            margin: 0;
-        }
-
-        footer a {
-            color: #0073e6;
-            text-decoration: none;
-        }
-
-        /* University logo styling */
-        .university-logo {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .university-logo img {
-            max-width: 350px;
-            height: auto;
-        }
+       nav ul li ul li a {
+    padding: 10px 20px;
+    white-space: nowrap; /* Ensure text doesn't wrap to a new line */
+}
 
         /* Responsive Design */
        @media (max-width: 768px) {
@@ -241,22 +247,17 @@
                 font-size: 0.9rem;
             }
         }
-
     </style>
 </head>
-
 <body>
-    <!-- Header Section -->
-    <header class="main-header">
+    <header>
         <div class="container">
-            <h1>Theo Saroglou</h1>
-            <p>PhD Candidate | Behavioral & Experimental Economics</p>
-            <p>Working Group Member at <a href="https://www.ub.edu/sustainwell-eu-project/the-project/" target="_blank" style="color: white; text-decoration: underline;">SUSTAINWELL</a></p>
+            <h1>Selected Research</h1>
+
         </div>
     </header>
 
-    <!-- Navigation Bar -->
-   <nav>
+      <nav>
         <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="expectations-redistribution.html">Job Market Paper</a></li>
@@ -283,46 +284,40 @@
         </ul>
     </nav>
 
-    <!-- Content Section -->
-    <section class="content-section">
-        <div class="container">
-            <p>
-                Designing and implementing experiments can often be challenging, especially during the one's early efforts. I’ve learned from experience that it’s not always easy to have the resources or know-how to streamline the process.</p> <br> <p> This is why I’ve decided to share my insights and walk through some of the oTree code I’ve used in my own experiments—code that I believe can provide significant value for fellow experimental economists.
-            </p> <br>
-            <p>
-                The goal of the blogs in this section is not to teach the full process of building oTree experiments from scratch but rather to provide targeted tutorials on specific elements. </p> <br> <p> These elements are techniques and methodologies that I have found to be useful in my work. The main focus is improving upon common experimental measures.
-            </p> <br>
-            <p>
-                Please note, this content is not a step-by-step course in Python, HTML, or Java. Some prior knowledge of these languages is helpful. I aim to present examples that are accessible but still grounded in the practical challenges of running economic experiments.
-            </p>
-              </p> <br>
-<p style="font-size:24px; text-align:center;">Tutorials:</p>
-
-
-             <div class="buttons">
-                <a href="Blog_Taxation_Experiment.html" class="button">Interactive Taxation Vote</a>
-                <a href="Blog_Distribution_Estimate_Experiment.html" class="button">Income Distribution Estimation</a>
+ <section>
+    <div class="container">
+        <h2>Project Choice and Social Image Concerns</h2>
+        <p>
+            <strong>Co-authors:</strong> A. De Chiara*, E. Manna* & C. Cerrone+ (*University of Barcelona; +City, University of London)
+        </p>
+        <p>
+            The paper investigates how social image affects decision-making in organizational settings, particularly when workers accept tasks outside their skill set to signal competence.
+        </p>
+        <h3>Key Points</h3>
+        <ul>
+            <li>
+                <strong>Social Image Dynamics:</strong> Workers may take on difficult tasks not for direct financial gain but to enhance their reputation, which can lead to suboptimal outcomes. This study builds on past research on social image influencing economic behavior but focuses on organizational hierarchies.
+            </li>
+            <li>
+                <strong>Implications:</strong> Social image concerns can drive inefficient choices in organizations. Employers should recognize how visibility and signaling opportunities influence decision-making, potentially leading to inefficiencies.
+            </li>
+        </ul>
+        <p>Data collection for this project is in its final stages.</p>
+                <p><b>Other projects: </b></p>
+        <div class="buttons">
+                <a href="chapter1.html" class="button">Altruistic Self-Image and Self-Deception</a>
+                <a href="chapter3.html" class="button">Expectations and Preferences for Redistribution</a>
+                <a href="research-note.html" class="button">Microwelt Research Note</a>
             </div>
-
-        </div>
-
-
-
-    </section>
-
-    <!-- University Logo -->
+    </div>
+</section>
 
 
-    <!-- Footer Section -->
+
     <footer>
         <div class="container">
-            <p>&copy; 2024 Theo Saroglou | <a href="contact.html">Contact Me</a></p>
+            <p>&copy; 2024 Theo Saroglou</p>
         </div>
     </footer>
-
-<div class="university-logo">
-        <img src="images/Logo_Universitat_de_Barcelona.png" alt="Universitat de Barcelona Logo">
-    </div>
 </body>
-
 </html>
