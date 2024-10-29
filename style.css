@@ -620,6 +620,65 @@ nav a {
     header h1, .main-header h1 {
         font-size: 2rem;
     }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .container {
+        padding: 15px;
+    }
+
+    .button {
+        width: 100%;
+        font-size: 1rem;
+        max-width: none;
+    }
+
+    .explanation {
+        max-width: 100%; /* Full width on smaller screens */
+        padding: 10px;
+        font-size: 0.95rem;
+    }
+
+    .code-snippet {
+        font-size: 0.95rem;
+    }
+
+    .profile-img, .university-logo img {
+        width: 80%;
+        max-width: 250px;
+        margin: 0 auto 20px auto;
+    }
+
+    /* Experiment Box Adjustments */
+    .experiment-box {
+        background-color: #fff;
+        border-radius: 12px;
+        padding: 15px;
+        margin-top: 20px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+
+    .histogram-container {
+        height: auto;
+        padding: 15px;
+    }
+
+    .bar {
+        width: calc(100% / 10 - 5px); /* Adjusts bar width for tablets */
+        max-height: 80%; /* Keeps columns within container */
+    }
+
+    h2, h3, .about-text, p {
+        text-align: left;
+        font-size: 1.1rem;
+    }
+    header h1, .main-header h1 {
+        font-size: 2rem;
+    }
      .histogram-container {
         height: 250px;
         padding: 10px;
@@ -698,6 +757,75 @@ nav a {
         align-items: center;
     }
 
+    .button {
+        padding: 10px;
+        font-size: 0.9rem;
+        width: 100%;
+        max-width: none;
+    }
+
+    .code-snippet {
+        font-size: 0.85rem; /* Smaller font for mobile readability */
+    }
+
+    .profile-img, .university-logo img {
+        width: 70%;
+        max-width: 200px;
+    }
+
+    .container {
+        padding: 10px;
+    }
+
+    .explanation {
+        max-width: 100%; /* Full width on mobile */
+        padding: 8px;
+        font-size: 0.85rem;
+    }
+
+    /* Histogram adjustments for mobile */
+    .histogram-container {
+        height: auto;
+        padding: 10px;
+    }
+
+    .bar {
+        width: calc(100% / 8 - 5px); /* Narrower for mobile */
+        max-height: 70%;
+    }
+
+    /* Dropdown Menu Adjustments */
+    nav ul li ul {
+        position: relative;
+        width: 100%;
+        min-width: 0;
+    }
+
+    nav ul li a {
+        padding: 8px;
+        font-size: 0.9rem;
+    }
+
+    /* Experiment Box for mobile */
+    .experiment-box {
+        background-color: #fff;
+        border-radius: 12px;
+        padding: 10px;
+        margin-top: 15px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+
+    .histogram-title {
+        font-size: 1.3rem;
+        margin: 8px 0;
+    }
+
+    /* Code Box Sizing */
+    .code-snippet {
+        font-size: 0.8rem;
+    }
+
     .button, .experiment-box {
         padding: 10px;
         font-size: 0.9rem;
@@ -758,10 +886,7 @@ nav a {
         margin: 8px 0;
     }
 
-    /* Code Block Adjustments for Small Screens */
-    .code-snippet {
-        font-size: 0.8rem; /* Further reduce font size for readability */
-    }
+
 }
 
 /* Responsive Images */
