@@ -220,7 +220,6 @@
     padding: 10px 20px;
     white-space: nowrap; /* Ensure text doesn't wrap to a new line */
 }
-
 /* Base Responsive Adjustments */
 body {
     font-family: 'Poppins', sans-serif;
@@ -294,10 +293,22 @@ nav ul li ul {
     padding: 10px 0;
     border-radius: 5px;
     min-width: 200px;
+    z-index: 10;
 }
 
 nav ul li:hover ul {
     display: block;
+}
+
+/* 1. Code Blocks */
+.code-snippet {
+    background-color: #333;
+    color: #fff;
+    padding: 15px;
+    border-radius: 5px;
+    overflow-x: auto;
+    max-width: 100%; /* Ensures it stays within screen bounds */
+    font-size: 0.9rem; /* Adjust font size */
 }
 
 /* Responsive Adjustments by Screen Size */
@@ -335,15 +346,33 @@ nav ul li:hover ul {
     .histogram-container {
         height: 250px;
         padding: 10px;
+        overflow: hidden; /* Ensures bars don’t overflow the container */
     }
     .bar {
         width: calc(100% / 8 - 10px);
+        max-height: 100%; /* Keeps bars within the container */
     }
 
     /* Text adjustments */
     .about-text, p, section h2, h2 {
-        text-align: center;
+        text-align: left; /* Prevents centering for default text */
         font-size: 1.1rem;
+    }
+
+    /* Responsive settings for histogram titles */
+    .histogram-title {
+        font-size: 1.5rem;
+        margin: 10px 0;
+    }
+
+    /* Experiment Box for Narrow Screens */
+    .experiment-box {
+        background-color: #fff;
+        border-radius: 12px;
+        padding: 15px;
+        margin-top: 20px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        text-align: center;
     }
 }
 
@@ -398,31 +427,7 @@ nav ul li:hover ul {
         padding: 8px;
         font-size: 0.9rem;
     }
-}
 
-/* Adjustments for Unique Sections */
-
-/* Tablet view (up to 768px) */
-@media (max-width: 768px) {
-    /* Experiment Box for Narrow Screens */
-    .experiment-box {
-        background-color: #fff;
-        border-radius: 12px;
-        padding: 15px;
-        margin-top: 20px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        text-align: center;
-    }
-
-    /* Responsive settings for histogram titles */
-    .histogram-title {
-        font-size: 1.5rem;
-        margin: 10px 0;
-    }
-}
-
-/* Mobile view (up to 480px) */
-@media (max-width: 480px) {
     /* Experiment Box adjustments for very small screens */
     .experiment-box {
         background-color: #fff;
@@ -438,9 +443,21 @@ nav ul li:hover ul {
         font-size: 1.3rem;
         margin: 8px 0;
     }
+
+    /* Code Block Adjustments for Small Screens */
+    .code-snippet {
+        font-size: 0.8rem; /* Further reduce font size for readability */
+    }
 }
 
-    </style>
+/* Responsive Images */
+.responsive-image {
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
+    display: block;
+}
+
 </head>
 <body>
     <header>
