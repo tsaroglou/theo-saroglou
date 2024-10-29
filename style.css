@@ -617,8 +617,49 @@ nav a {
 /* Tablet view (up to 768px) */
 @media (max-width: 768px) {
     header h1, .main-header h1 {
-        font-size: 2rem;
+        font-size: 3rem;
     }
+
+
+    nav ul {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    /* Adjust dropdown to open to the side */
+    nav ul li {
+        position: relative;
+    }
+
+    nav ul li ul {
+        display: none; /* Initially hidden */
+        position: absolute;
+        top: 0;
+        left: 100%; /* Opens to the right of the parent */
+        background-color: #005bb5;
+        list-style-type: none;
+        padding: 10px;
+        border-radius: 5px;
+        min-width: 200px;
+        z-index: 1;
+    }
+
+    /* Make submenu appear on hover or click */
+    nav ul li:hover ul, nav ul li:focus-within ul {
+        display: block;
+    }
+
+    /* Adjust styles for submenu items */
+    nav ul li ul li {
+        margin: 0;
+    }
+
+    nav ul li ul li a {
+        padding: 10px;
+        white-space: nowrap;
+        font-size: 0.9rem;
+    }
+}
 
     .container {
         padding: 15px;
@@ -676,10 +717,7 @@ nav a {
             margin-right: auto;
         }
 
-      nav ul {
-        flex-direction: column;
-        align-items: center;
-    }
+
 
     .histogram-container {
         height: 450px;
@@ -718,16 +756,7 @@ nav a {
     }
 
 
-    nav ul {
-        flex-direction: column;
-        align-items: center;
-    }
 
-       nav ul li ul {
-        position: page;
-        width: 100%;
-        min-width: 0;
-    }
 
     .container {
         padding: 15px;
@@ -785,10 +814,7 @@ nav a {
         font-size: 1.6rem;
     }
 
-    nav ul {
-        flex-direction: column;
-        align-items: center;
-    }
+
 
 
     .button {
@@ -865,17 +891,50 @@ nav a {
             position: relative;
         }
 
-    /* Dropdown Menu Adjustments */
-     nav ul li ul {
-        position: page;
-        width: 100%;
-        min-width: 0;
+
+      nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+    nav ul {
+        flex-direction: column;
+        align-items: flex-start;
     }
 
-    nav ul li a {
-        padding: 8px;
+    /* Adjust dropdown to open to the side */
+    nav ul li {
+        position: relative;
+    }
+
+    nav ul li ul {
+        display: none; /* Initially hidden */
+        position: absolute;
+        top: 0;
+        left: 100%; /* Opens to the right of the parent */
+        background-color: #005bb5;
+        list-style-type: none;
+        padding: 10px;
+        border-radius: 5px;
+        min-width: 200px;
+        z-index: 1;
+    }
+
+    /* Make submenu appear on hover or click */
+    nav ul li:hover ul, nav ul li:focus-within ul {
+        display: block;
+    }
+
+    /* Adjust styles for submenu items */
+    nav ul li ul li {
+        margin: 0;
+    }
+
+    nav ul li ul li a {
+        padding: 10px;
+        white-space: nowrap;
         font-size: 0.9rem;
     }
+}
 
     /* Experiment Box for mobile */
     .experiment-box {
@@ -932,16 +991,6 @@ nav a {
     }
 
 
-    /* Adjust dropdown navigation */
-    nav ul li ul {
-        position: relative;
-        width: 100%;
-        min-width: 0;
-    }
-    nav ul li a {
-        padding: 8px;
-        font-size: 0.9rem;
-    }
 
     /* Experiment Box adjustments for very small screens */
     .experiment-box {
