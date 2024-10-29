@@ -165,88 +165,6 @@
             height: auto;
         }
 
-        /* Responsive Design */
-       @media (max-width: 768px) {
-    .buttons {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .button {
-        width: 100%;
-        text-align: center;
-        padding: 15px;
-        margin: 10px 0;
-        font-size: 1rem;
-    }
-}
-        /* Adjust profile image */
-        .profile-img {
-            width: 80%; /* Scale the image relative to the screen */
-            max-width: 250px; /* Set a maximum width */
-            margin: 0 auto 20px auto; /* Center and add margin below */
-        }
-
-        /* Center the text content */
-        .about-text {
-            margin: 0 auto; /* Center text */
-            padding: 0 15px; /* Add padding to prevent overflow */
-            max-width: 100%; /* Ensure it fits within the screen */
-        }
-
-        /* Adjust button sizes and alignment */
-        .button {
-            width: 100%; /* Make buttons full-width */
-            padding: 10px 0; /* Adjust padding */
-            margin: 10px 0; /* Margin to separate buttons */
-            font-size: 1rem; /* Adjust font size */
-        }
-    }
-
-    @media (max-width: 480px) {
-        /* Further adjust the header and profile image for very small screens */
-        .main-header h1 {
-            font-size: 1.6rem;
-        }
-
-        .main-header p {
-            font-size: 0.9rem;
-            padding: 0 10px; /* Add padding to ensure text stays within bounds */
-        }
-
-        /* Profile image scaling */
-        .profile-img {
-            width: 70%; /* Further reduce size */
-            max-width: 200px; /* Set smaller max width */
-        }
-
-        /* Button adjustments for small screens */
-        .button {
-            padding: 8px 0;
-            font-size: 0.9rem;
-        }
-    }
-        }
-
-        @media (max-width: 480px) {
-            .main-header h1 {
-                font-size: 1.8rem;
-            }
-
-            .main-header p {
-                font-size: 0.9rem;
-            }
-
-            .profile-img {
-                max-width: 150px;
-            }
-
-            .button {
-                padding: 8px 16px;
-                font-size: 0.9rem;
-            }
-        }
-
          /* General Reset for Consistency */
 * {
     box-sizing: border-box;
@@ -411,6 +329,7 @@ nav ul li a:hover {
     border-radius: 5px;
 }
 
+/* Dropdown Menu */
 nav ul li ul {
     display: none;
     position: absolute;
@@ -428,15 +347,56 @@ nav ul li:hover ul {
     display: block;
 }
 
-/* 1. Code Blocks */
+nav ul li ul li a {
+    padding: 10px 20px;
+    white-space: nowrap;
+}
+
+/* 1. Code Boxes (Full Width, Resizable Text) */
 .code-snippet {
     background-color: #333;
     color: #fff;
     padding: 15px;
     border-radius: 5px;
     overflow-x: auto;
-    max-width: 100%; /* Ensures it stays within screen bounds */
-    font-size: 0.9rem; /* Adjust font size */
+    width: 100%; /* Takes full container width */
+    font-size: 1rem; /* Base font size, resizable */
+}
+
+/* 2. Interactive Graphs */
+.histogram-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    height: auto;
+    background-color: #f0f0f0;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow: hidden; /* Keeps bars contained */
+}
+
+.bar {
+    display: inline-block;
+    width: calc(100% / 12 - 5px); /* Adjusts for each screen size */
+    max-height: 100%; /* Prevents bars from overflowing */
+}
+
+/* 3. Buttons */
+.button {
+    background-color: #0073e6;
+    color: white;
+    padding: 12px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    text-align: center;
+    display: inline-block;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+    max-width: 200px; /* Sets a limit on button size */
+}
+
+.button:hover {
+    background-color: #005bb5;
 }
 
 /* Responsive Adjustments by Screen Size */
@@ -457,11 +417,14 @@ nav ul li:hover ul {
     }
 
     /* Adjust buttons, images, and text */
-    .button, .experiment-box {
+    .button {
         width: 100%;
-        padding: 12px;
         font-size: 1rem;
-        margin: 10px 0;
+        max-width: none; /* Allows full width */
+    }
+
+    .code-snippet {
+        font-size: 0.95rem; /* Slightly smaller for tablet */
     }
 
     .profile-img, .university-logo img {
@@ -470,30 +433,7 @@ nav ul li:hover ul {
         margin: 0 auto 20px auto;
     }
 
-    /* Specific adjustments for experiment sections */
-    .histogram-container {
-        height: 250px;
-        padding: 10px;
-        overflow: hidden; /* Ensures bars don’t overflow the container */
-    }
-    .bar {
-        width: calc(100% / 8 - 10px);
-        max-height: 100%; /* Keeps bars within the container */
-    }
-
-    /* Text adjustments */
-    .about-text, p, section h2, h2 {
-        text-align: left; /* Prevents centering for default text */
-        font-size: 1.1rem;
-    }
-
-    /* Responsive settings for histogram titles */
-    .histogram-title {
-        font-size: 1.5rem;
-        margin: 10px 0;
-    }
-
-    /* Experiment Box for Narrow Screens */
+    /* Experiment Box adjustments */
     .experiment-box {
         background-color: #fff;
         border-radius: 12px;
@@ -501,6 +441,21 @@ nav ul li:hover ul {
         margin-top: 20px;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         text-align: center;
+    }
+
+    .histogram-container {
+        height: auto;
+        padding: 15px;
+    }
+
+    .bar {
+        width: calc(100% / 8 - 5px); /* Adjusts bar width for tablets */
+    }
+
+    /* Text alignment reset */
+    h2, h3, .about-text, p {
+        text-align: left;
+        font-size: 1.1rem;
     }
 }
 
@@ -515,10 +470,15 @@ nav ul li:hover ul {
         align-items: center;
     }
 
-    .button, .experiment-box {
+    .button {
         padding: 10px;
         font-size: 0.9rem;
         width: 100%;
+        max-width: none;
+    }
+
+    .code-snippet {
+        font-size: 0.85rem; /* Smaller font for mobile readability */
     }
 
     .profile-img, .university-logo img {
@@ -526,7 +486,6 @@ nav ul li:hover ul {
         max-width: 200px;
     }
 
-    /* Text adjustments for readability */
     .container {
         padding: 10px;
     }
@@ -536,27 +495,29 @@ nav ul li:hover ul {
         padding: 0 10px;
     }
 
-    /* Experiment and Histogram Adjustments */
+    /* Histogram Container adjustments for small screens */
     .histogram-container {
-        height: 200px;
-        padding: 5px;
-    }
-    .bar {
-        width: calc(100% / 6 - 10px);
+        height: auto;
+        padding: 10px;
     }
 
-    /* Adjust dropdown navigation */
+    .bar {
+        width: calc(100% / 6 - 5px); /* Narrower for mobile */
+    }
+
+    /* Dropdown Menu Adjustments */
     nav ul li ul {
         position: relative;
         width: 100%;
         min-width: 0;
     }
+
     nav ul li a {
         padding: 8px;
         font-size: 0.9rem;
     }
 
-    /* Experiment Box adjustments for very small screens */
+    /* Experiment Box for mobile */
     .experiment-box {
         background-color: #fff;
         border-radius: 12px;
@@ -566,15 +527,14 @@ nav ul li:hover ul {
         text-align: center;
     }
 
-    /* Histogram title adjustments for mobile */
     .histogram-title {
         font-size: 1.3rem;
         margin: 8px 0;
     }
 
-    /* Code Block Adjustments for Small Screens */
+    /* Code Box Sizing */
     .code-snippet {
-        font-size: 0.8rem; /* Further reduce font size for readability */
+        font-size: 0.8rem;
     }
 }
 
