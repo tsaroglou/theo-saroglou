@@ -470,7 +470,7 @@
 
         .about-text {
             flex-grow: 1;
-            max-width: 600px;
+            max-width: 800px;
             margin-top: 20px;
         }
 
@@ -666,6 +666,11 @@ nav a {
         text-align: center;
     }
 
+      nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
     .histogram-container {
         height: auto;
         padding: 15px;
@@ -690,8 +695,8 @@ nav a {
 
 
     nav ul {
-        flex-direction: unset;
-        align-items: left;
+        flex-direction: column;
+        align-items: center;
     }
 
     .container {
@@ -754,9 +759,10 @@ nav a {
     }
 
     nav ul {
-        flex-direction: unset;
-        align-items: left;
+        flex-direction: column;
+        align-items: center;
     }
+
 
     .button {
         padding: 10px;
@@ -808,9 +814,9 @@ nav a {
     }
 
     /* Dropdown Menu Adjustments */
-    nav ul li ul {
-        position: sticky;
-        width: fit-content; /* Full width on mobile */
+     nav ul li ul {
+        position: relative;
+        width: 100%;
         min-width: 0;
     }
 
@@ -876,7 +882,7 @@ nav a {
 
     /* Adjust dropdown navigation */
     nav ul li ul {
-        position: page;
+        position: relative;
         width: 100%;
         min-width: 0;
     }
