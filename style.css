@@ -449,7 +449,7 @@
         }
 
         .about-section {
-            padding: 20px 0;
+            padding: 10px 0;
         }
 
         .profile-container {
@@ -475,7 +475,7 @@
         }
 
         .about-text h2 {
-            font-size: 1.8rem;
+            font-size: 2.3xrem;
             margin-bottom: 10px;
         }
 
@@ -690,7 +690,7 @@ nav a {
 
 
     nav ul {
-        flex-direction: row;
+        flex-direction: column;
         align-items: left;
     }
 
@@ -754,7 +754,7 @@ nav a {
     }
 
     nav ul {
-        flex-direction: row;
+        flex-direction: column;
         align-items: left;
     }
 
@@ -807,7 +807,7 @@ nav a {
 
     /* Dropdown Menu Adjustments */
     nav ul li ul {
-        position: relative;
+        position: page;
         width: 100%;
         min-width: 0;
     }
