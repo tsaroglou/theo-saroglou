@@ -8,9 +8,219 @@
     <!-- Google Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap">
 
-<style>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
 
-   /* Base Styles */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background-color: #003366;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin: 0;
+        }
+
+
+
+
+        section {
+            padding: 40px 0;
+        }
+
+        h2 {
+            color: #003366;
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        ul {
+            list-style-type: disc;
+            margin-left: 20px;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .button {
+            background-color: #0073e6;
+            color: white;
+            text-decoration: none;
+            padding: 15px 20px;
+            border-radius: 5px;
+            text-align: center;
+            flex: 1 1 200px;
+            transition: background-color 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #005bb5;
+        }
+
+         /* Footer styling */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            margin-top: 40px;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        footer a {
+            color: #0073e6;
+            text-decoration: none;
+        }
+
+        /* University logo styling */
+        .university-logo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .university-logo img {
+            max-width: 350px;
+            height: auto;
+        }
+        /* Responsive Design */
+     /* Tablet view adjustments */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2rem;
+    }
+
+    .buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .button {
+        width: 100%;
+        padding: 15px;
+        font-size: 1rem;
+    }
+}
+
+/* Mobile view adjustments */
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.6rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+        padding: 0 10px;
+    }
+
+    p {
+        padding: 0 10px;
+        font-size: 1rem;
+    }
+
+    .button {
+        padding: 10px;
+        font-size: 0.9rem;
+    }
+}
+
+ /* Navigation styling */
+
+          nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-size: 12pt;
+        }
+
+        nav {
+            background-color: #005bb5;
+            display: flex;
+            justify-content: center;
+            padding: 15px 0;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+
+        nav ul li {
+            position: relative;
+            margin: 0 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 10px 15px;
+            display: block;
+            transition: background-color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            background-color: #003366;
+            border-radius: 5px;
+        }
+
+        /* Dropdown menu for Research and Otree Blogs */
+      nav ul li ul {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #005bb5;
+    list-style-type: none;
+    padding: 10px 0;
+    border-radius: 5px;
+    min-width: 200px; /* Set a minimum width to ensure enough space for the content */
+}
+
+
+        /* Show dropdown when hovering */
+      nav ul li:hover ul {
+    display: block;
+}
+
+        nav ul li ul li {
+            margin: 0;
+        }
+
+       nav ul li ul li a {
+    padding: 10px 20px;
+    white-space: nowrap; /* Ensure text doesn't wrap to a new line */
+}
+/* Base Responsive Adjustments */
 body {
     font-family: 'Poppins', sans-serif;
     background-color: #f4f4f4;
@@ -29,7 +239,7 @@ header, footer {
     padding: 20px 0;
 }
 
-/* Header and Footer */
+/* Global Header and Footer */
 header h1 {
     font-size: 2.5rem;
     color: white;
@@ -39,15 +249,6 @@ header h1 {
 footer {
     background-color: #333;
     color: white;
-}
-
-footer p {
-    margin: 0;
-}
-
-footer a {
-    color: #0073e6;
-    text-decoration: none;
 }
 
 /* Navigation Menu */
@@ -82,7 +283,6 @@ nav ul li a:hover {
     border-radius: 5px;
 }
 
-/* Dropdown Menu */
 nav ul li ul {
     display: none;
     position: absolute;
@@ -100,148 +300,22 @@ nav ul li:hover ul {
     display: block;
 }
 
-nav ul li ul li {
-    display: block;
-    text-align: left;
-}
-
-nav ul li ul li a {
-    padding: 10px 20px;
-    white-space: nowrap;
-}
-
-nav ul li ul li a:hover {
-    background-color: #003366;
-}
-
-/* Text and Content */
-p, li {
-    font-size: 1.1rem;
-    line-height: 1.6;
-    margin-bottom: 10px;
-}
-
-h2 {
-    color: #003366;
-    font-size: 2rem;
-    margin-bottom: 20px;
-}
-
-h3 {
-    font-size: 1.5rem;
-    margin-top: 20px;
-    color: #333;
-}
-
-/* Explanation Boxes */
-.explanation {
-    width: 100%;
-    max-width: 800px;
-    margin: 0 auto 15px auto;
-    font-size: 1rem;
-    line-height: 1.5;
-    padding: 15px;
-    box-sizing: border-box;
-}
-
-/* Code Boxes */
+/* 1. Code Blocks */
 .code-snippet {
     background-color: #333;
     color: #fff;
     padding: 15px;
     border-radius: 5px;
     overflow-x: auto;
-    width: 100%;
-    font-size: 1rem;
-}
-
-/* Buttons */
-.button {
-    background-color: #0073e6;
-    color: white;
-    padding: 12px 20px;
-    text-decoration: none;
-    border-radius: 5px;
-    text-align: center;
-    display: inline-block;
-    font-size: 1rem;
-    transition: background-color 0.3s ease;
-    max-width: 200px;
-}
-
-.button:hover {
-    background-color: #005bb5;
-}
-
-/* Images */
-.responsive-image, .profile-img, .university-logo img {
-    max-width: 100%;
-    height: auto;
-    margin: 0 auto;
-    display: block;
-    border-radius: 50%;
-    border: 3px solid #003366;
-}
-
-/* Specific Layout Elements */
-.about-section {
-    padding: 20px 0;
-}
-
-.profile-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-}
-
-.about-text {
-    flex-grow: 1;
-    max-width: 600px;
-    margin-top: 20px;
-}
-
-.buttons {
-    margin-top: 20px;
-}
-
-.button-container {
-    display: flex;
-    justify-content: space-between;
-    gap: 15px;
-    flex-wrap: wrap;
-}
-
-.section {
-    padding: 40px 0;
-}
-
-.section h2 {
-    text-align: center;
-}
-
-.histogram-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    height: auto;
-    background-color: #f0f0f0;
-    padding: 20px;
-    box-sizing: border-box;
-    overflow: hidden;
-}
-
-.bar {
-    display: inline-block;
-    width: calc(100% / 15 - 5px);
-    max-height: 90%;
+    max-width: 100%; /* Ensures it stays within screen bounds */
+    font-size: 0.9rem; /* Adjust font size */
 }
 
 /* Responsive Adjustments by Screen Size */
 
 /* Tablet view (up to 768px) */
 @media (max-width: 768px) {
-    header h1 {
+    header h1, .main-header h1 {
         font-size: 2rem;
     }
 
@@ -254,46 +328,57 @@ h3 {
         padding: 15px;
     }
 
-    .button {
+    /* Adjust buttons, images, and text */
+    .button, .experiment-box {
         width: 100%;
+        padding: 12px;
         font-size: 1rem;
-        max-width: none;
-    }
-
-    .explanation {
-        max-width: 100%;
-        padding: 10px;
-        font-size: 0.95rem;
-    }
-
-    .code-snippet {
-        font-size: 0.95rem;
+        margin: 10px 0;
     }
 
     .profile-img, .university-logo img {
         width: 80%;
         max-width: 250px;
+        margin: 0 auto 20px auto;
     }
 
+    /* Specific adjustments for experiment sections */
     .histogram-container {
-        height: auto;
-        padding: 15px;
+        height: 250px;
+        padding: 10px;
+        overflow: hidden; /* Ensures bars don’t overflow the container */
     }
-
     .bar {
-        width: calc(100% / 10 - 5px);
-        max-height: 80%;
+        width: calc(100% / 8 - 10px);
+        max-height: 100%; /* Keeps bars within the container */
     }
 
-    h2, h3, .about-text, p {
-        text-align: left;
+    /* Text adjustments */
+    .about-text, p, section h2, h2 {
+        text-align: left; /* Prevents centering for default text */
         font-size: 1.1rem;
+    }
+
+    /* Responsive settings for histogram titles */
+    .histogram-title {
+        font-size: 1.5rem;
+        margin: 10px 0;
+    }
+
+    /* Experiment Box for Narrow Screens */
+    .experiment-box {
+        background-color: #fff;
+        border-radius: 12px;
+        padding: 15px;
+        margin-top: 20px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        text-align: center;
     }
 }
 
 /* Mobile view (up to 480px) */
 @media (max-width: 480px) {
-    header h1 {
+    header h1, .main-header h1 {
         font-size: 1.6rem;
     }
 
@@ -302,15 +387,10 @@ h3 {
         align-items: center;
     }
 
-    .button {
+    .button, .experiment-box {
         padding: 10px;
         font-size: 0.9rem;
         width: 100%;
-        max-width: none;
-    }
-
-    .code-snippet {
-        font-size: 0.85rem;
     }
 
     .profile-img, .university-logo img {
@@ -318,39 +398,66 @@ h3 {
         max-width: 200px;
     }
 
+    /* Text adjustments for readability */
     .container {
         padding: 10px;
     }
 
-    .explanation {
-        max-width: 100%;
-        padding: 8px;
-        font-size: 0.85rem;
+    h2, p, .about-text {
+        font-size: 0.9rem;
+        padding: 0 10px;
     }
 
+    /* Experiment and Histogram Adjustments */
     .histogram-container {
-        height: auto;
-        padding: 10px;
+        height: 200px;
+        padding: 5px;
     }
-
     .bar {
-        width: calc(100% / 8 - 5px);
-        max-height: 70%;
+        width: calc(100% / 6 - 10px);
     }
 
+    /* Adjust dropdown navigation */
     nav ul li ul {
         position: relative;
         width: 100%;
         min-width: 0;
     }
-
     nav ul li a {
         padding: 8px;
         font-size: 0.9rem;
     }
+
+    /* Experiment Box adjustments for very small screens */
+    .experiment-box {
+        background-color: #fff;
+        border-radius: 12px;
+        padding: 10px;
+        margin-top: 15px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+
+    /* Histogram title adjustments for mobile */
+    .histogram-title {
+        font-size: 1.3rem;
+        margin: 8px 0;
+    }
+
+    /* Code Block Adjustments for Small Screens */
+    .code-snippet {
+        font-size: 0.8rem; /* Further reduce font size for readability */
+    }
+}
+
+/* Responsive Images */
+.responsive-image {
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
+    display: block;
 }
 </style>
-
 </head>
 <body>
     <header>
