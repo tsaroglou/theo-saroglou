@@ -553,107 +553,11 @@ nav ul li ul li a {
 }
 
 
-
-         /* General Reset for Consistency */
+   /* General Reset for Consistency */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-}
-
-/* Desktop and large screens */
-body {
-    font-family: 'Poppins', sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 0;
-}
-
-.container {
-    width: 90%;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-header, footer {
-    text-align: center;
-    padding: 20px 0;
-}
-
-header h1 {
-    font-size: 2.5rem;
-    color: white;
-    margin: 0;
-}
-
-footer {
-    background-color: #333;
-    color: white;
-}
-
-/* Tablet view adjustments */
-@media (max-width: 768px) {
-    header h1, .main-header h1 {
-        font-size: 2rem;
-    }
-
-    nav ul {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .container {
-        padding: 15px;
-    }
-
-    .button {
-        width: 100%;
-        padding: 12px;
-        font-size: 1rem;
-        margin: 10px 0;
-    }
-
-    .profile-img, .university-logo img {
-        width: 80%;
-        max-width: 250px;
-        margin: 0 auto 20px auto;
-    }
-
-    .about-text, p, section h2, h2 {
-        text-align: center;
-        font-size: 1.1rem;
-    }
-}
-
-/* Mobile view adjustments */
-@media (max-width: 480px) {
-    header h1, .main-header h1 {
-        font-size: 1.6rem;
-    }
-
-    nav ul {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .button {
-        padding: 10px;
-        font-size: 0.9rem;
-    }
-
-    .profile-img, .university-logo img {
-        width: 70%;
-        max-width: 200px;
-    }
-
-    .container {
-        padding: 10px;
-    }
-
-    h2, p {
-        font-size: 0.9rem;
-        padding: 0 10px;
-    }
 }
 /* Base Responsive Adjustments */
 body {
@@ -730,10 +634,16 @@ nav ul li ul {
     border-radius: 5px;
     min-width: 200px;
     z-index: 10;
+    width: max-content; /* Allows dropdown to resize */
 }
 
 nav ul li:hover ul {
     display: block;
+}
+
+nav ul li ul li {
+    display: block;
+    text-align: left;
 }
 
 nav ul li ul li a {
@@ -741,18 +651,29 @@ nav ul li ul li a {
     white-space: nowrap;
 }
 
-/* 1. Code Boxes (Full Width, Resizable Text) */
+/* Explanation Boxes */
+.explanation {
+    width: 100%;
+    max-width: 800px; /* Sets a maximum width for readability */
+    margin: 0 auto 15px auto; /* Centers the explanation box */
+    font-size: 1rem;
+    line-height: 1.5;
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+/* Code Boxes */
 .code-snippet {
     background-color: #333;
     color: #fff;
     padding: 15px;
     border-radius: 5px;
     overflow-x: auto;
-    width: 100%; /* Takes full container width */
-    font-size: 1rem; /* Base font size, resizable */
+    width: 100%; /* Ensures full width in container */
+    font-size: 1rem;
 }
 
-/* 2. Interactive Graphs */
+/* Interactive Graphs */
 .histogram-container {
     display: flex;
     justify-content: space-between;
@@ -761,16 +682,16 @@ nav ul li ul li a {
     background-color: #f0f0f0;
     padding: 20px;
     box-sizing: border-box;
-    overflow: hidden; /* Keeps bars contained */
+    overflow: hidden; /* Contains columns within bounds */
 }
 
 .bar {
     display: inline-block;
-    width: calc(100% / 12 - 5px); /* Adjusts for each screen size */
-    max-height: 100%; /* Prevents bars from overflowing */
+    width: calc(100% / 15 - 5px); /* Narrower for better containment */
+    max-height: 90%; /* Shortens height to fit */
 }
 
-/* 3. Buttons */
+/* Buttons */
 .button {
     background-color: #0073e6;
     color: white;
@@ -805,15 +726,20 @@ nav ul li ul li a {
         padding: 15px;
     }
 
-    /* Adjust buttons, images, and text */
     .button {
         width: 100%;
         font-size: 1rem;
-        max-width: none; /* Allows full width */
+        max-width: none;
+    }
+
+    .explanation {
+        max-width: 100%; /* Full width on smaller screens */
+        padding: 10px;
+        font-size: 0.95rem;
     }
 
     .code-snippet {
-        font-size: 0.95rem; /* Slightly smaller for tablet */
+        font-size: 0.95rem;
     }
 
     .profile-img, .university-logo img {
@@ -822,7 +748,7 @@ nav ul li ul li a {
         margin: 0 auto 20px auto;
     }
 
-    /* Experiment Box adjustments */
+    /* Experiment Box Adjustments */
     .experiment-box {
         background-color: #fff;
         border-radius: 12px;
@@ -838,10 +764,10 @@ nav ul li ul li a {
     }
 
     .bar {
-        width: calc(100% / 8 - 5px); /* Adjusts bar width for tablets */
+        width: calc(100% / 10 - 5px); /* Adjusts bar width for tablets */
+        max-height: 80%; /* Keeps columns within container */
     }
 
-    /* Text alignment reset */
     h2, h3, .about-text, p {
         text-align: left;
         font-size: 1.1rem;
@@ -879,19 +805,21 @@ nav ul li ul li a {
         padding: 10px;
     }
 
-    h2, p, .about-text {
-        font-size: 0.9rem;
-        padding: 0 10px;
+    .explanation {
+        max-width: 100%; /* Full width on mobile */
+        padding: 8px;
+        font-size: 0.85rem;
     }
 
-    /* Histogram Container adjustments for small screens */
+    /* Histogram adjustments for mobile */
     .histogram-container {
         height: auto;
         padding: 10px;
     }
 
     .bar {
-        width: calc(100% / 6 - 5px); /* Narrower for mobile */
+        width: calc(100% / 8 - 5px); /* Narrower for mobile */
+        max-height: 70%;
     }
 
     /* Dropdown Menu Adjustments */
@@ -934,6 +862,7 @@ nav ul li ul li a {
     margin: 0 auto;
     display: block;
 }
+
 </style>
     <!-- Include Prism.js JavaScript for syntax highlighting -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>

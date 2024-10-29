@@ -491,6 +491,316 @@ nav ul li ul li a {
     margin: 0 auto;
     display: block;
 }
+</style>   /* General Reset for Consistency */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+/* Base Responsive Adjustments */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+header, footer {
+    text-align: center;
+    padding: 20px 0;
+}
+
+/* Global Header and Footer */
+header h1 {
+    font-size: 2.5rem;
+    color: white;
+    margin: 0;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+}
+
+/* Navigation Menu */
+nav {
+    background-color: #005bb5;
+    padding: 15px 0;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    position: relative;
+    margin: 0 20px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 10px 15px;
+    transition: background-color 0.3s ease;
+}
+
+nav ul li a:hover {
+    background-color: #003366;
+    border-radius: 5px;
+}
+
+/* Dropdown Menu */
+nav ul li ul {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #005bb5;
+    list-style-type: none;
+    padding: 10px 0;
+    border-radius: 5px;
+    min-width: 200px;
+    z-index: 10;
+    width: max-content; /* Allows dropdown to resize */
+}
+
+nav ul li:hover ul {
+    display: block;
+}
+
+nav ul li ul li {
+    display: block;
+    text-align: left;
+}
+
+nav ul li ul li a {
+    padding: 10px 20px;
+    white-space: nowrap;
+}
+
+/* Explanation Boxes */
+.explanation {
+    width: 100%;
+    max-width: 800px; /* Sets a maximum width for readability */
+    margin: 0 auto 15px auto; /* Centers the explanation box */
+    font-size: 1rem;
+    line-height: 1.5;
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+/* Code Boxes */
+.code-snippet {
+    background-color: #333;
+    color: #fff;
+    padding: 15px;
+    border-radius: 5px;
+    overflow-x: auto;
+    width: 100%; /* Ensures full width in container */
+    font-size: 1rem;
+}
+
+/* Interactive Graphs */
+.histogram-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    height: auto;
+    background-color: #f0f0f0;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow: hidden; /* Contains columns within bounds */
+}
+
+.bar {
+    display: inline-block;
+    width: calc(100% / 15 - 5px); /* Narrower for better containment */
+    max-height: 90%; /* Shortens height to fit */
+}
+
+/* Buttons */
+.button {
+    background-color: #0073e6;
+    color: white;
+    padding: 12px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    text-align: center;
+    display: inline-block;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+    max-width: 200px; /* Sets a limit on button size */
+}
+
+.button:hover {
+    background-color: #005bb5;
+}
+
+/* Responsive Adjustments by Screen Size */
+
+/* Tablet view (up to 768px) */
+@media (max-width: 768px) {
+    header h1, .main-header h1 {
+        font-size: 2rem;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .container {
+        padding: 15px;
+    }
+
+    .button {
+        width: 100%;
+        font-size: 1rem;
+        max-width: none;
+    }
+
+    .explanation {
+        max-width: 100%; /* Full width on smaller screens */
+        padding: 10px;
+        font-size: 0.95rem;
+    }
+
+    .code-snippet {
+        font-size: 0.95rem;
+    }
+
+    .profile-img, .university-logo img {
+        width: 80%;
+        max-width: 250px;
+        margin: 0 auto 20px auto;
+    }
+
+    /* Experiment Box Adjustments */
+    .experiment-box {
+        background-color: #fff;
+        border-radius: 12px;
+        padding: 15px;
+        margin-top: 20px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+
+    .histogram-container {
+        height: auto;
+        padding: 15px;
+    }
+
+    .bar {
+        width: calc(100% / 10 - 5px); /* Adjusts bar width for tablets */
+        max-height: 80%; /* Keeps columns within container */
+    }
+
+    h2, h3, .about-text, p {
+        text-align: left;
+        font-size: 1.1rem;
+    }
+}
+
+/* Mobile view (up to 480px) */
+@media (max-width: 480px) {
+    header h1, .main-header h1 {
+        font-size: 1.6rem;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .button {
+        padding: 10px;
+        font-size: 0.9rem;
+        width: 100%;
+        max-width: none;
+    }
+
+    .code-snippet {
+        font-size: 0.85rem; /* Smaller font for mobile readability */
+    }
+
+    .profile-img, .university-logo img {
+        width: 70%;
+        max-width: 200px;
+    }
+
+    .container {
+        padding: 10px;
+    }
+
+    .explanation {
+        max-width: 100%; /* Full width on mobile */
+        padding: 8px;
+        font-size: 0.85rem;
+    }
+
+    /* Histogram adjustments for mobile */
+    .histogram-container {
+        height: auto;
+        padding: 10px;
+    }
+
+    .bar {
+        width: calc(100% / 8 - 5px); /* Narrower for mobile */
+        max-height: 70%;
+    }
+
+    /* Dropdown Menu Adjustments */
+    nav ul li ul {
+        position: relative;
+        width: 100%;
+        min-width: 0;
+    }
+
+    nav ul li a {
+        padding: 8px;
+        font-size: 0.9rem;
+    }
+
+    /* Experiment Box for mobile */
+    .experiment-box {
+        background-color: #fff;
+        border-radius: 12px;
+        padding: 10px;
+        margin-top: 15px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+
+    .histogram-title {
+        font-size: 1.3rem;
+        margin: 8px 0;
+    }
+
+    /* Code Box Sizing */
+    .code-snippet {
+        font-size: 0.8rem;
+    }
+}
+
+/* Responsive Images */
+.responsive-image {
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
+    display: block;
+}
+
 </style>
 
 </head>
