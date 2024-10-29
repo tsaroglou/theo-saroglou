@@ -690,7 +690,7 @@ nav a {
 
 
     nav ul {
-        flex-direction: column;
+        flex-direction: unset;
         align-items: left;
     }
 
@@ -754,7 +754,7 @@ nav a {
     }
 
     nav ul {
-        flex-direction: column;
+        flex-direction: unset;
         align-items: left;
     }
 
@@ -767,7 +767,7 @@ nav a {
 
     .code-snippet {
         font-size: 0.85rem; /* Smaller font for mobile readability */
-        max-width: 100%; /* Full width on mobile */
+        width: fit-content; /* Full width on mobile */
 
     }
 
@@ -781,7 +781,7 @@ nav a {
     }
 
     .explanation {
-        max-width: 100%; /* Full width on mobile */
+        width: fit-content; /* Full width on mobile */
         padding: 0px;
         font-size: 0.85rem;
     }
@@ -790,25 +790,27 @@ nav a {
     .histogram-container {
         height: auto;
         padding: 10px;
+        width: fit-content; /* Full width on mobile */
+
     }
 
       .code-section {
             display: flex;
-            max-width: 100%; /* Full width on mobile */
+             width: fit-content; /* Full width on mobile */
             justify-content: space-evenly;
             margin-bottom: 3px;
             flex-wrap: wrap; /* Allow items to wrap on smaller screens */
         }
 
     .bar {
-        width: calc(100% / 24 - 5px); /* Narrower for mobile */
+        width: calc(100% / 30 - 5px); /* Narrower for mobile */
         max-height: 100%;
     }
 
     /* Dropdown Menu Adjustments */
     nav ul li ul {
-        position: page;
-        width: 100%;
+        position: sticky;
+        width: fit-content; /* Full width on mobile */
         min-width: 0;
     }
 
@@ -825,6 +827,8 @@ nav a {
         margin-top: 15px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         text-align: center;
+        width: fit-content; /* Full width on mobile */
+
     }
 
     .histogram-title {
@@ -889,6 +893,7 @@ nav a {
         margin-top: 15px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         text-align: center;
+        width: fit-content; /* Full width on mobile */
     }
 
     /* Histogram title adjustments for mobile */
