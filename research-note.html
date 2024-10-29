@@ -8,105 +8,9 @@
     <!-- Google Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap">
 
-    <style>
-         .buttons {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 30px;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
+<style>
 
-        .button {
-            background-color: #0073e6;
-            color: white;
-            text-decoration: none;
-            padding: 15px 20px;
-            border-radius: 5px;
-            text-align: center;
-            flex: 1 1 200px;
-            transition: background-color 0.3s ease;
-        }
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-        }
-
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        header {
-            background-color: #003366;
-            color: white;
-            padding: 20px 0;
-            text-align: center;
-        }
-
-        header h1 {
-            font-size: 2.5rem;
-            margin: 0;
-        }
-
-        nav a {
-            color: white;
-            margin: 0 15px;
-            text-decoration: none;
-            font-size: 15pt;
-        }
-
-        section {
-            padding: 40px 0;
-        }
-
-        section h2 {
-            color: #003366;
-            font-size: 2rem;
-            margin-bottom: 20px;
-        }
-
-        p {
-            font-size: 1.1rem;
-            line-height: 1.6;
-            margin-bottom: 10px;
-        }
-
-        a {
-            color: #0073e6;
-            text-decoration: none;
-        }
-
-        a:hover {
-            color: #005bb5;
-        }
-
-        footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 10px 0;
-            margin-top: 40px;
-        }
-
-        footer p {
-            margin: 0;
-        }
-
-        footer a {
-            color: #0073e6;
-            text-decoration: none;
-        }
-        /* General Reset for Consistency */
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-/* Base Responsive Adjustments */
+   /* Base Styles */
 body {
     font-family: 'Poppins', sans-serif;
     background-color: #f4f4f4;
@@ -125,7 +29,7 @@ header, footer {
     padding: 20px 0;
 }
 
-/* Global Header and Footer */
+/* Header and Footer */
 header h1 {
     font-size: 2.5rem;
     color: white;
@@ -135,6 +39,15 @@ header h1 {
 footer {
     background-color: #333;
     color: white;
+}
+
+footer p {
+    margin: 0;
+}
+
+footer a {
+    color: #0073e6;
+    text-decoration: none;
 }
 
 /* Navigation Menu */
@@ -181,7 +94,6 @@ nav ul li ul {
     border-radius: 5px;
     min-width: 200px;
     z-index: 10;
-    width: max-content; /* Allows dropdown to resize */
 }
 
 nav ul li:hover ul {
@@ -198,11 +110,34 @@ nav ul li ul li a {
     white-space: nowrap;
 }
 
+nav ul li ul li a:hover {
+    background-color: #003366;
+}
+
+/* Text and Content */
+p, li {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+h2 {
+    color: #003366;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+h3 {
+    font-size: 1.5rem;
+    margin-top: 20px;
+    color: #333;
+}
+
 /* Explanation Boxes */
 .explanation {
     width: 100%;
-    max-width: 800px; /* Sets a maximum width for readability */
-    margin: 0 auto 15px auto; /* Centers the explanation box */
+    max-width: 800px;
+    margin: 0 auto 15px auto;
     font-size: 1rem;
     line-height: 1.5;
     padding: 15px;
@@ -216,26 +151,8 @@ nav ul li ul li a {
     padding: 15px;
     border-radius: 5px;
     overflow-x: auto;
-    width: 100%; /* Ensures full width in container */
+    width: 100%;
     font-size: 1rem;
-}
-
-/* Interactive Graphs */
-.histogram-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    height: auto;
-    background-color: #f0f0f0;
-    padding: 20px;
-    box-sizing: border-box;
-    overflow: hidden; /* Contains columns within bounds */
-}
-
-.bar {
-    display: inline-block;
-    width: calc(100% / 15 - 5px); /* Narrower for better containment */
-    max-height: 90%; /* Shortens height to fit */
 }
 
 /* Buttons */
@@ -249,18 +166,82 @@ nav ul li ul li a {
     display: inline-block;
     font-size: 1rem;
     transition: background-color 0.3s ease;
-    max-width: 200px; /* Sets a limit on button size */
+    max-width: 200px;
 }
 
 .button:hover {
     background-color: #005bb5;
 }
 
+/* Images */
+.responsive-image, .profile-img, .university-logo img {
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
+    display: block;
+    border-radius: 50%;
+    border: 3px solid #003366;
+}
+
+/* Specific Layout Elements */
+.about-section {
+    padding: 20px 0;
+}
+
+.profile-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.about-text {
+    flex-grow: 1;
+    max-width: 600px;
+    margin-top: 20px;
+}
+
+.buttons {
+    margin-top: 20px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.section {
+    padding: 40px 0;
+}
+
+.section h2 {
+    text-align: center;
+}
+
+.histogram-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    height: auto;
+    background-color: #f0f0f0;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.bar {
+    display: inline-block;
+    width: calc(100% / 15 - 5px);
+    max-height: 90%;
+}
+
 /* Responsive Adjustments by Screen Size */
 
 /* Tablet view (up to 768px) */
 @media (max-width: 768px) {
-    header h1, .main-header h1 {
+    header h1 {
         font-size: 2rem;
     }
 
@@ -280,7 +261,7 @@ nav ul li ul li a {
     }
 
     .explanation {
-        max-width: 100%; /* Full width on smaller screens */
+        max-width: 100%;
         padding: 10px;
         font-size: 0.95rem;
     }
@@ -292,17 +273,6 @@ nav ul li ul li a {
     .profile-img, .university-logo img {
         width: 80%;
         max-width: 250px;
-        margin: 0 auto 20px auto;
-    }
-
-    /* Experiment Box Adjustments */
-    .experiment-box {
-        background-color: #fff;
-        border-radius: 12px;
-        padding: 15px;
-        margin-top: 20px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        text-align: center;
     }
 
     .histogram-container {
@@ -311,8 +281,8 @@ nav ul li ul li a {
     }
 
     .bar {
-        width: calc(100% / 10 - 5px); /* Adjusts bar width for tablets */
-        max-height: 80%; /* Keeps columns within container */
+        width: calc(100% / 10 - 5px);
+        max-height: 80%;
     }
 
     h2, h3, .about-text, p {
@@ -323,7 +293,7 @@ nav ul li ul li a {
 
 /* Mobile view (up to 480px) */
 @media (max-width: 480px) {
-    header h1, .main-header h1 {
+    header h1 {
         font-size: 1.6rem;
     }
 
@@ -340,7 +310,7 @@ nav ul li ul li a {
     }
 
     .code-snippet {
-        font-size: 0.85rem; /* Smaller font for mobile readability */
+        font-size: 0.85rem;
     }
 
     .profile-img, .university-logo img {
@@ -353,23 +323,21 @@ nav ul li ul li a {
     }
 
     .explanation {
-        max-width: 100%; /* Full width on mobile */
+        max-width: 100%;
         padding: 8px;
         font-size: 0.85rem;
     }
 
-    /* Histogram adjustments for mobile */
     .histogram-container {
         height: auto;
         padding: 10px;
     }
 
     .bar {
-        width: calc(100% / 8 - 5px); /* Narrower for mobile */
+        width: calc(100% / 8 - 5px);
         max-height: 70%;
     }
 
-    /* Dropdown Menu Adjustments */
     nav ul li ul {
         position: relative;
         width: 100%;
@@ -380,36 +348,7 @@ nav ul li ul li a {
         padding: 8px;
         font-size: 0.9rem;
     }
-
-    /* Experiment Box for mobile */
-    .experiment-box {
-        background-color: #fff;
-        border-radius: 12px;
-        padding: 10px;
-        margin-top: 15px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        text-align: center;
-    }
-
-    .histogram-title {
-        font-size: 1.3rem;
-        margin: 8px 0;
-    }
-
-    /* Code Box Sizing */
-    .code-snippet {
-        font-size: 0.8rem;
-    }
 }
-
-/* Responsive Images */
-.responsive-image {
-    max-width: 100%;
-    height: auto;
-    margin: 0 auto;
-    display: block;
-}
-
 </style>
            /* Navigation styling */
 
