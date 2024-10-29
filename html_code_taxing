@@ -1,299 +1,472 @@
-{% extends "global/Page.html" %}
-{% load otree static %}
 
-{% block content %}
-<style>
+    <style>
+
+         .buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .button {
+            background-color: #0073e6;
+            color: white;
+            text-decoration: none;
+            padding: 15px 20px;
+            border-radius: 5px;
+            text-align: center;
+            flex: 1 1 200px;
+            transition: background-color 0.3s ease;
+        }
+
+        /* General styling */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .main-header {
+            background-color: #003366;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .main-header h1 {
+            font-size: 2.5rem;
+            margin: 0;
+        }
+
+        .main-header p {
+            font-size: 1.1rem;
+            margin: 10px 0 0 0;
+        }
+
+        /* Navigation styling */
+        nav {
+            background-color: #005bb5;
+            display: flex;
+            justify-content: center;
+            padding: 15px 0;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+
+        nav ul li {
+            position: relative;
+            margin: 0 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 10px 15px;
+            display: block;
+            transition: background-color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            background-color: #003366;
+            border-radius: 5px;
+        }
+
+        nav ul li ul {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #005bb5;
+            list-style-type: none;
+            padding: 10px 0;
+            border-radius: 5px;
+            min-width: 200px;
+        }
+
+        nav ul li:hover ul {
+            display: block;
+        }
+
+        nav ul li ul li {
+            margin: 0;
+        }
+
+        nav ul li ul li a {
+            padding: 10px 20px;
+            white-space: nowrap;
+        }
+
+        /* Section styling */
+        .content-section {
+            padding: 20px 0;
+            background-color: #fff;
+            margin: 20px 0;
+        }
+
+        .content-section p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #333;
+            text-align: justify;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Footer styling */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            margin-top: 40px;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        footer a {
+            color: #0073e6;
+            text-decoration: none;
+        }
+
+        /* University logo styling */
+        .university-logo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .university-logo img {
+            max-width: 350px;
+            height: auto;
+        }
+
+
+    @media (max-width: 480px) {
+        /* Further adjust the header and profile image for very small screens */
+        .main-header h1 {
+            font-size: 1.6rem;
+        }
+
+        .main-header p {
+            font-size: 0.9rem;
+            padding: 0 10px; /* Add padding to ensure text stays within bounds */
+        }
+
+        /* Profile image scaling */
+        .profile-img {
+            width: 70%; /* Further reduce size */
+            max-width: 200px; /* Set smaller max width */
+        }
+
+        /* Button adjustments for small screens */
+        .button {
+            padding: 8px 0;
+            font-size: 0.9rem;
+        }
+    }
+        }
+
+        @media (max-width: 480px) {
+            .main-header h1 {
+                font-size: 1.8rem;
+            }
+
+            .main-header p {
+                font-size: 0.9rem;
+            }
+
+            .profile-img {
+                max-width: 150px;
+            }
+
+            .button {
+                padding: 8px 16px;
+                font-size: 0.9rem;
+            }
+        }
+
+
+/* Desktop and large screens */
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f5f5f5;
-    color: #333;
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
 }
 
-.histogram-wrapper {
-    position: relative;
-    width: 100%;
-    max-width: 100%;
-    margin: 20px auto;
-    background: #ffffff;
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-.histogram-title {
-    font-size: 24px;
-    font-weight: bold;
+header, footer {
     text-align: center;
-    margin-bottom: 20px;
-    color: #0056b3;
+    padding: 20px 0;
 }
 
-.histogram-container {
-    display: flex;
-    align-items: flex-end;
-    width: 100%;
-    height: 450px;
-    background-color: #f0f0f0;
-    border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    position: relative;
-}
-
-.horizontal-line {
-    position: absolute;
-    bottom: 50px;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background-color: #ccc;
-}
-
-.bar {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
-    margin: 0 2px; /* Add margin between bars */
-}
-
-.icon {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    transition: transform 0.3s ease;
-}
-
-.icon:hover {
-    transform: scale(1.2);
-}
-
-.bar-graph {
-    width: 100%;
-    text-align: center;
-    font-size: 10px;
+header h1 {
+    font-size: 2.5rem;
     color: white;
-    position: relative;
-    background-color: #007bff;
-    border-radius: 10px 10px 0 0;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    margin: 0;
 }
 
-.bar-graph span {
-    position: absolute;
-    top: -23px;
-    width: 100%;
-    left: 0;
-    text-align: center;
-    color: #2776e8;
-    font-weight: bold;
-    font-size: 13px; /* Increase font size here */
-}
-
-.bar-graph .money-earned {
-    position: absolute;
-    bottom: 5px;
-    width: 100%;
-    left: 0;
-    text-align: center;
+footer {
+    background-color: #333;
     color: white;
-    font-size: 12px;
-    font-weight: bold;
+}
+/* Base Responsive Adjustments */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
 }
 
-.tooltip {
-    position: absolute;
-    display: none;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    padding: 5px;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-    pointer-events: none;
-    z-index: 1000;
-    font-size: 12px;
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-.earnings-value {
-    position: absolute;
-    top: -20px;  /* Position it above the bar */
-    width: 100%;
+header, footer {
     text-align: center;
-    font-weight: bold;
-    font-size: 14px;  /* Adjust the font size as needed */
+    padding: 20px 0;
 }
 
-.score-value {
-    font-size: 12px;  /* Adjust the size of the score text */
-    font-weight: bold;
+/* Global Header and Footer */
+header h1 {
+    font-size: 2.5rem;
+    color: white;
+    margin: 0;
 }
 
+footer {
+    background-color: #333;
+    color: white;
+}
 
-.histogram-legend {
+/* Navigation Menu */
+nav {
+    background-color: #005bb5;
+    padding: 15px 0;
+}
+
+nav ul {
     display: flex;
     justify-content: center;
-    align-content: center;
-    align-items: center;
-    width: 100%;
-    flex-wrap: wrap;
-    padding: 10px;
-    font: 14pt;
-    margin-top: 20px;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
 }
 
-.legend-item {
-    display: flex;
-    align-items: center;
-    margin: 5px 20px;
-    font: 14pt;
+nav ul li {
+    position: relative;
+    margin: 0 20px;
 }
 
-.legend-color {
-    width: 20px;
-    height: 20px;
-    margin-right: 10px;
-    display: inline-block;
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 10px 15px;
+    transition: background-color 0.3s ease;
 }
 
-.legend-color.red { background-color: #FF0000; }
-.legend-color.orange { background-color: #FFA500; }
-.legend-color.green { background-color: #008000; }
-.legend-color.yellow { background-color: #FFFF00; }
-.legend-color.blue { background-color: #0000FF; }
-.highlight {
-    border: 3px solid #ffd700;
-    box-shadow: 0 0 5px 5px #ffd700;
-    border-radius: 35%;
+nav ul li a:hover {
+    background-color: #003366;
+    border-radius: 5px;
 }
-.pulse-effect {
-    animation: pulse 2s infinite;
+
+nav ul li ul {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #005bb5;
+    list-style-type: none;
+    padding: 10px 0;
+    border-radius: 5px;
+    min-width: 200px;
     z-index: 10;
 }
 
-@keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.2); }
-    100% { transform: scale(1); }
+nav ul li:hover ul {
+    display: block;
 }
 
-.explanation-box {
-    background-color: #e0f7fa;
-    border: 1px solid #b2ebf2;
-    border-radius: 8px;
+/* 1. Code Blocks */
+.code-snippet {
+    background-color: #333;
+    color: #fff;
     padding: 15px;
-    margin-bottom: 20px;
-    font-size: 14px;
-    line-height: 1.6;
-    color: #00796b;
+    border-radius: 5px;
+    overflow-x: auto;
+    max-width: 100%; /* Ensures it stays within screen bounds */
+    font-size: 0.9rem; /* Adjust font size */
 }
 
-#taxRateSlider {
-    width: 80%; /* Increase the width of the slider */
-    margin: 10px auto; /* Center the slider */
-    display: block; /* Make it a block element */
+/* Responsive Adjustments by Screen Size */
+
+/* Tablet view (up to 768px) */
+
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .container {
+        padding: 15px;
+    }
+
+    /* Adjust buttons, images, and text */
+    .button, .experiment-box {
+        width: 100%;
+        padding: 12px;
+        font-size: 1rem;
+        margin: 10px 0;
+    }
+
+    .profile-img, .university-logo img {
+        width: 80%;
+        max-width: 250px;
+        margin: 0 auto 20px auto;
+    }
+
+    /* Specific adjustments for experiment sections */
+    .histogram-container {
+        height: 250px;
+        padding: 10px;
+        overflow: hidden; /* Ensures bars don’t overflow the container */
+    }
+    .bar {
+        width: calc(100% / 8 - 10px);
+        max-height: 100%; /* Keeps bars within the container */
+    }
+
+    /* Text adjustments */
+    .about-text, p, section h2, h2 {
+        text-align: left; /* Prevents centering for default text */
+        font-size: 1.1rem;
+    }
+
+    /* Responsive settings for histogram titles */
+    .histogram-title {
+        font-size: 1.5rem;
+        margin: 10px 0;
+    }
+
+    /* Experiment Box for Narrow Screens */
+    .experiment-box {
+        background-color: #fff;
+        border-radius: 12px;
+        padding: 15px;
+        margin-top: 20px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
 }
 
+/* Mobile view (up to 480px) */
+@media (max-width: 480px) {
+    header h1, .main-header h1 {
+        font-size: 1.6rem;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .button, .experiment-box {
+        padding: 10px;
+        font-size: 0.9rem;
+        width: 100%;
+    }
+
+    .profile-img, .university-logo img {
+        width: 70%;
+        max-width: 200px;
+    }
+
+    /* Text adjustments for readability */
+    .container {
+        padding: 10px;
+    }
+
+    h2, p, .about-text {
+        font-size: 0.9rem;
+        padding: 0 10px;
+    }
+
+    /* Experiment and Histogram Adjustments */
+    .histogram-container {
+        height: 200px;
+        padding: 5px;
+    }
+    .bar {
+        width: calc(100% / 6 - 10px);
+    }
+
+    /* Adjust dropdown navigation */
+    nav ul li ul {
+        position: relative;
+        width: 100%;
+        min-width: 0;
+    }
+    nav ul li a {
+        padding: 8px;
+        font-size: 0.9rem;
+    }
+
+    /* Experiment Box adjustments for very small screens */
+    .experiment-box {
+        background-color: #fff;
+        border-radius: 12px;
+        padding: 10px;
+        margin-top: 15px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+
+    /* Histogram title adjustments for mobile */
+    .histogram-title {
+        font-size: 1.3rem;
+        margin: 8px 0;
+    }
+
+    /* Code Block Adjustments for Small Screens */
+    .code-snippet {
+        font-size: 0.8rem; /* Further reduce font size for readability */
+    }
+}
+
+/* Responsive Images */
+.responsive-image {
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
+    display: block;
+}
 </style>
 
 
-<div class="explanation-box">
-    <p>Below you can see the score distributions of the participants in the <b>other group</b>. Please vote for the tax rate that you believe is appropriate. <b>The average tax rate voted by your group will be applied on the other group.</b></p>
-    <p>At the bottom of each bar you can see the point score of each participant and at the top their earnings.</p>
-    <p>Use the slider below to set the tax rate. The bars will update to show the effect of the tax rate on the earnings of the participants of the other group.</p>
-</div>
 
-<div class="histogram-wrapper">
-    <div class="histogram-title">Interactive Distribution of Scores</div>
-    <div class="histogram-container" id="iconsHistogramInteractive">
-        <div class="horizontal-line"></div>
-        {% for score, icon, height, ranking, money, id_in_group in scores_and_colors %}
-        <div class="bar" style="flex: 1 1 calc((100% / {{ scores_and_colors|length }}) - 4px);">
-            <div class="bar-graph" style="height: {{ height }}px; position: relative;">
-                <!-- Display earnings at the top in blue -->
-                <span class="earnings-value" style="color: #1c6cdf; position: absolute; top: -20px; width: 100%; text-align: center;">{{ money }}</span>
 
-                <!-- Display score2 at the bottom in white -->
-                <div class="score-value" style="color: white; position: absolute; bottom: 5px; width: 100%; text-align: center;">{{ score }}</div>
-            </div>
-            <img src="{{ icon }}" class="icon {% if specific_participant_id_in_group == id_in_group %}highlight pulse-effect{% endif %}"
-                 data-original-score="{{ score }}"
-                 data-original-money="{{ money }}"
-                 data-ranking="{{ ranking }}">
-        </div>
-        {% endfor %}
-    </div>
-</div>
 
-    <div class="explanation-box" style="text-align: center;">
-        <p>You must move the slider in order to continue, even if you move it only to bring it back to zero.</p>
-    </div>
-
-<div class="histogram-legend">
-    <!-- Legend remains unchanged -->
-</div>
-
-<div class="explanation-box">
-    <label for="taxRateSlider">Tax Rate:</label>
-    <input type="range" id="taxRateSlider" name="taxRateSlider" min="0" max="100" value="0">
-    <span id="taxRateValue">0%</span>
-</div>
-
-<form id="taxVoteForm" method="post">
-    {{ form }}
-    <input type="hidden" id="taxVoteInput" name="tax_vote" value="0">
-    <button type="submit" id="nextButton" class="btn btn-primary" disabled>Next</button>
-</form>
-
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const icons = document.querySelectorAll('.icon');
-    const taxRateSlider = document.getElementById('taxRateSlider');
-    const taxRateValue = document.getElementById('taxRateValue');
-    const taxVoteInput = document.getElementById('taxVoteInput');
-    const taxVoteForm = document.getElementById('taxVoteForm');
-    const nextButton = document.getElementById('nextButton');
-    let sliderMoved = false; // Flag to track if the slider was moved
-
-    taxRateSlider.addEventListener('input', function() {
-        const taxRate = parseFloat(this.value);
-        taxRateValue.innerText = `${taxRate}%`;
-        taxVoteInput.value = taxRate;
-
-        if (!sliderMoved) {
-            sliderMoved = true;
-            nextButton.disabled = false; // Enable the "Next" button once the slider is moved
-        }
-
-        const bars = document.querySelectorAll('.bar-graph');
-        const originalScores = Array.from(icons).map(icon => parseFloat(icon.getAttribute('data-original-score'))); // Raw scores (score2)
-
-        // Deduct tax from each original score and redistribute proportionally
-        const deductedScores = originalScores.map(score => score - (score * taxRate / 100));
-        const totalDeduction = originalScores.reduce((acc, score) => acc + (score * taxRate / 100), 0);
-        const redistributedScore = totalDeduction / originalScores.length;
-
-        bars.forEach((bar, index) => {
-            const newScore = deductedScores[index] + redistributedScore; // Apply tax change to raw score
-            const newHeight = newScore * 20 + 5; // Update bar height based on new score
-
-            // Recalculate earnings based on new score2
-            const newEarnings = (newScore / 15) * 2.5;
-
-            // Set new bar height based on the new score (score2 after tax)
-            bar.style.height = `${newHeight}px`;
-
-            // Update earnings (displayed at the top)
-            bar.querySelector('.earnings-value').innerText = `€${newEarnings.toFixed(2)}`;
-
-            // Keep original displayed score (no update to .score-value)
-        });
-    });
-
-    taxVoteForm.addEventListener('submit', function(event) {
-        taxVoteInput.value = taxRateSlider.value;
-    });
-});
-</script>
-
-{% endblock %}
