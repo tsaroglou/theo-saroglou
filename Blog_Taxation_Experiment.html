@@ -10,61 +10,7 @@
 
     <style>
 
-        /* Navigation styling */
-nav {
-    background-color: #005bb5;
-    display: flex;
-    justify-content: center;
-    padding: 15px 0;
-}
 
-nav ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-}
-
-nav ul li {
-    position: relative;
-    margin: 0 20px;
-}
-
-nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-weight: 600;
-    padding: 10px 15px;
-    display: block;
-    transition: background-color 0.3s ease;
-}
-
-nav ul li a:hover {
-    background-color: #003366;
-    border-radius: 5px;
-}
-
-/* Dropdown menu for Research and Otree Blogs */
-nav ul li ul {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: #005bb5;
-    list-style-type: none;
-    padding: 10px 0;
-    border-radius: 5px;
-    min-width: 200px; /* Set a minimum width to ensure enough space for the content */
-}
-
-/* Show dropdown when hovering */
-nav ul li:hover ul {
-    display: block;
-}
-
-nav ul li ul li {
-    margin: 0;
-}
 
     /* Footer styling */
         footer {
@@ -84,10 +30,7 @@ nav ul li ul li {
             text-decoration: none;
         }
 
-nav ul li ul li a {
-    padding: 10px 20px;
-    white-space: nowrap; /* Ensure text doesn't wrap to a new line */
-}
+
  .university-logo {
             text-align: center;
             margin-bottom: 20px;
@@ -177,76 +120,6 @@ nav ul li ul li a {
             max-width: 700px;  /* Set a maximum width for the code box */
         }
 
-      /* General adjustments for tablets (max-width: 768px) */
-@media (max-width: 768px) {
-    .container {
-        padding: 10px; /* Reduce container padding for narrower screens */
-    }
-
-    .histogram-container {
-        height: 250px; /* Decrease height for smaller screens */
-    }
-
-    .bar {
-        width: calc(100% / 12); /* Adjust the bar width to fit within the screen */
-        margin: 0 2px; /* Reduce space between bars */
-    }
-
-    .icon {
-        width: 25px;
-        height: 25px;
-    }
-
-    .earnings-value, .score-value {
-        font-size: 10px; /* Smaller font for earnings and score values */
-    }
-
-    .experiment-box {
-        width: 90%; /* Reduce experiment box width on smaller screens */
-    }
-
-    /* Adjust navigation */
-    nav ul {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    nav ul li {
-        margin-bottom: 10px;
-    }
-}
-
-/* Adjustments for mobile devices (max-width: 480px) */
-@media (max-width: 480px) {
-    .container {
-        padding: 5px; /* Further reduce padding for mobile devices */
-    }
-
-    header h1 {
-        font-size: 1.8rem; /* Smaller header font size for mobile */
-    }
-
-    .bar {
-        width: calc(100% / 15); /* Narrower bars for small screens */
-    }
-
-    .icon {
-        width: 20px;
-        height: 20px;
-    }
-
-    .earnings-value {
-        font-size: 8px;
-    }
-
-    .experiment-box {
-        width: 95%; /* Full width for experiment box */
-    }
-
-    .histogram-container {
-        height: 200px;
-    }
-}
 
 
         .container {
@@ -410,147 +283,7 @@ nav ul li ul li a {
             font-weight: bold;
         }
 
-        /* General mobile-friendly adjustments */
-@media (max-width: 768px) {
-    .histogram-container {
-        height: 250px; /* Reduce the height of the entire graph */
-        padding: 10px;
-    }
 
-    .bar {
-        width: calc(100% / 12); /* Slightly reduce the bar width */
-        margin: 0 2px; /* Reduce space between bars */
-    }
-
-    .bar-graph {
-        height: auto; /* Let the height adjust based on score */
-        padding: 3px; /* Adjust padding for smaller screens */
-    }
-
-    .icon {
-        width: 25px; /* Make icons smaller */
-        height: 25px;
-        margin-top: 3px; /* Adjust margin for smaller screens */
-    }
-
-    .earnings-value {
-        font-size: 12px; /* Reduce the size of the earnings text */
-    }
-
-    .score-value {
-        font-size: 10px; /* Smaller font for scores */
-    }
-
-    .histogram-title {
-        font-size: 16px; /* Smaller title font for smaller screens */
-    }
-
-    .histogram-wrapper {
-        padding: 10px;
-        box-shadow: none; /* Simplify design for mobile */
-    }
-
-    .slider-value {
-        font-size: 14px; /* Adjust slider label font */
-    }
-}
-
-/* Even smaller screens (mobile phones) */
-@media (max-width: 480px) {
-
-
-    .bar {
-        width: calc(100% / 15); /* Make bars narrower for smaller screens */
-    }
-
-    .icon {
-        width: 20px; /* Make icons even smaller */
-        height: 20px;
-    }
-
-    .earnings-value {
-        font-size: 8px; /* Smaller font for earnings */
-        margin-left: -5px;
-        margin-bottom: -1px;
-    }
-
-    .score-value {
-        font-size: 4px; /* Smaller font for scores */
-    }
-
-    .sliders-container {
-        margin-top: 10px;
-    }
-
-    .histogram-container {
-        height: 350px; /* Ensure the container has enough space */
-        padding: 10px;
-    }
-
-    .bar-graph {
-        max-height: 70%; /* Ensure bars do not overflow the container */
-    }
-
-     /* Navigation styling */
-        nav {
-            background-color: #005bb5;
-            display: flex;
-            justify-content: center;
-            padding: 15px 0;
-        }
-
-        nav ul {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-        }
-
-        nav ul li {
-            position: relative;
-            margin: 0 20px;
-        }
-
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            font-weight: 600;
-            padding: 10px 15px;
-            display: block;
-            transition: background-color 0.3s ease;
-        }
-
-        nav ul li a:hover {
-            background-color: #003366;
-            border-radius: 5px;
-        }
-
-        nav ul li ul {
-            display: none;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            background-color: #005bb5;
-            list-style-type: none;
-            padding: 10px 0;
-            border-radius: 5px;
-            min-width: 200px;
-        }
-
-        nav ul li:hover ul {
-            display: block;
-        }
-
-        nav ul li ul li {
-            margin: 0;
-        }
-
-        nav ul li ul li a {
-            padding: 10px 20px;
-            white-space: nowrap;
-        }
-
-}
 
 
    /* General Reset for Consistency */

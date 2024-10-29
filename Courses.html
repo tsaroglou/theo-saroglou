@@ -90,67 +90,6 @@
             max-width: 350px;
             height: auto;
         }
-     /* Navigation styling */
-        nav {
-            background-color: #005bb5;
-            display: flex;
-            justify-content: center;
-            padding: 15px 0;
-        }
-
-        nav ul {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-        }
-
-        nav ul li {
-            position: relative;
-            margin: 0 20px;
-        }
-
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            font-weight: 600;
-            padding: 10px 15px;
-            display: block;
-            transition: background-color 0.3s ease;
-        }
-
-        nav ul li a:hover {
-            background-color: #003366;
-            border-radius: 5px;
-        }
-
-        /* Dropdown menu for Research and Otree Blogs */
-      nav ul li ul {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: #005bb5;
-    list-style-type: none;
-    padding: 10px 0;
-    border-radius: 5px;
-    min-width: 200px; /* Set a minimum width to ensure enough space for the content */
-}
-
-
-        /* Show dropdown when hovering */
-      nav ul li:hover ul {
-    display: block;
-}
-
-        nav ul li ul li {
-            margin: 0;
-        }
-
-       nav ul li ul li a {
-    padding: 10px 20px;
-    white-space: nowrap; /* Ensure text doesn't wrap to a new line */
-}
 
        /* Tablet view adjustments */
 @media (max-width: 768px) {
@@ -239,66 +178,6 @@ footer {
     color: white;
 }
 
-/* Navigation Menu */
-nav {
-    background-color: #005bb5;
-    padding: 15px 0;
-}
-
-nav ul {
-    display: flex;
-    justify-content: center;
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-}
-
-nav ul li {
-    position: relative;
-    margin: 0 20px;
-}
-
-nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-weight: 600;
-    padding: 10px 15px;
-    transition: background-color 0.3s ease;
-}
-
-nav ul li a:hover {
-    background-color: #003366;
-    border-radius: 5px;
-}
-
-/* Dropdown Menu */
-nav ul li ul {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: #005bb5;
-    list-style-type: none;
-    padding: 10px 0;
-    border-radius: 5px;
-    min-width: 200px;
-    z-index: 10;
-    width: max-content; /* Allows dropdown to resize */
-}
-
-nav ul li:hover ul {
-    display: block;
-}
-
-nav ul li ul li {
-    display: block;
-    text-align: left;
-}
-
-nav ul li ul li a {
-    padding: 10px 20px;
-    white-space: nowrap;
-}
 
 /* Explanation Boxes */
 .explanation {
