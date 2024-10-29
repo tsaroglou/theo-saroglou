@@ -247,6 +247,327 @@
             }
         }
 
+         /* General Reset for Consistency */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Desktop and large screens */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+header, footer {
+    text-align: center;
+    padding: 20px 0;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    color: white;
+    margin: 0;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+}
+
+/* Tablet view adjustments */
+@media (max-width: 768px) {
+    header h1, .main-header h1 {
+        font-size: 2rem;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .container {
+        padding: 15px;
+    }
+
+    .button {
+        width: 100%;
+        padding: 12px;
+        font-size: 1rem;
+        margin: 10px 0;
+    }
+
+    .profile-img, .university-logo img {
+        width: 80%;
+        max-width: 250px;
+        margin: 0 auto 20px auto;
+    }
+
+    .about-text, p, section h2, h2 {
+        text-align: center;
+        font-size: 1.1rem;
+    }
+}
+
+/* Mobile view adjustments */
+@media (max-width: 480px) {
+    header h1, .main-header h1 {
+        font-size: 1.6rem;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .button {
+        padding: 10px;
+        font-size: 0.9rem;
+    }
+
+    .profile-img, .university-logo img {
+        width: 70%;
+        max-width: 200px;
+    }
+
+    .container {
+        padding: 10px;
+    }
+
+    h2, p {
+        font-size: 0.9rem;
+        padding: 0 10px;
+    }
+}
+
+/* Base Responsive Adjustments */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+header, footer {
+    text-align: center;
+    padding: 20px 0;
+}
+
+/* Global Header and Footer */
+header h1 {
+    font-size: 2.5rem;
+    color: white;
+    margin: 0;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+}
+
+/* Navigation Menu */
+nav {
+    background-color: #005bb5;
+    padding: 15px 0;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    position: relative;
+    margin: 0 20px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 10px 15px;
+    transition: background-color 0.3s ease;
+}
+
+nav ul li a:hover {
+    background-color: #003366;
+    border-radius: 5px;
+}
+
+nav ul li ul {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #005bb5;
+    list-style-type: none;
+    padding: 10px 0;
+    border-radius: 5px;
+    min-width: 200px;
+}
+
+nav ul li:hover ul {
+    display: block;
+}
+
+/* Responsive Adjustments by Screen Size */
+
+/* Tablet view (up to 768px) */
+@media (max-width: 768px) {
+    header h1, .main-header h1 {
+        font-size: 2rem;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .container {
+        padding: 15px;
+    }
+
+    /* Adjust buttons, images, and text */
+    .button, .experiment-box {
+        width: 100%;
+        padding: 12px;
+        font-size: 1rem;
+        margin: 10px 0;
+    }
+
+    .profile-img, .university-logo img {
+        width: 80%;
+        max-width: 250px;
+        margin: 0 auto 20px auto;
+    }
+
+    /* Specific adjustments for experiment sections */
+    .histogram-container {
+        height: 250px;
+        padding: 10px;
+    }
+    .bar {
+        width: calc(100% / 8 - 10px);
+    }
+
+    /* Text adjustments */
+    .about-text, p, section h2, h2 {
+        text-align: center;
+        font-size: 1.1rem;
+    }
+}
+
+/* Mobile view (up to 480px) */
+@media (max-width: 480px) {
+    header h1, .main-header h1 {
+        font-size: 1.6rem;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .button, .experiment-box {
+        padding: 10px;
+        font-size: 0.9rem;
+        width: 100%;
+    }
+
+    .profile-img, .university-logo img {
+        width: 70%;
+        max-width: 200px;
+    }
+
+    /* Text adjustments for readability */
+    .container {
+        padding: 10px;
+    }
+
+    h2, p, .about-text {
+        font-size: 0.9rem;
+        padding: 0 10px;
+    }
+
+    /* Experiment and Histogram Adjustments */
+    .histogram-container {
+        height: 200px;
+        padding: 5px;
+    }
+    .bar {
+        width: calc(100% / 6 - 10px);
+    }
+
+    /* Adjust dropdown navigation */
+    nav ul li ul {
+        position: relative;
+        width: 100%;
+        min-width: 0;
+    }
+    nav ul li a {
+        padding: 8px;
+        font-size: 0.9rem;
+    }
+}
+
+/* Adjustments for Unique Sections */
+
+/* Tablet view (up to 768px) */
+@media (max-width: 768px) {
+    /* Experiment Box for Narrow Screens */
+    .experiment-box {
+        background-color: #fff;
+        border-radius: 12px;
+        padding: 15px;
+        margin-top: 20px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+
+    /* Responsive settings for histogram titles */
+    .histogram-title {
+        font-size: 1.5rem;
+        margin: 10px 0;
+    }
+}
+
+/* Mobile view (up to 480px) */
+@media (max-width: 480px) {
+    /* Experiment Box adjustments for very small screens */
+    .experiment-box {
+        background-color: #fff;
+        border-radius: 12px;
+        padding: 10px;
+        margin-top: 15px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+
+    /* Histogram title adjustments for mobile */
+    .histogram-title {
+        font-size: 1.3rem;
+        margin: 8px 0;
+    }
+}
+
     </style>
 </head>
 
