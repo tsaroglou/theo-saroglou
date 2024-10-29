@@ -177,26 +177,77 @@ nav ul li ul li a {
             max-width: 700px;  /* Set a maximum width for the code box */
         }
 
-        /* Media query for mobile devices */
-        @media (max-width: 768px) {
-            .code-section {
-                flex-direction: column; /* Stack vertically on smaller screens */
-            }
-            .explanation, .code-snippet {
-                width: 100%;     /* Full width for both text and code on mobile */
-                margin-right: 0; /* Remove margin on smaller screens */
-            }
-            .code-snippet {
-                margin-top: 10px; /* Add some space between explanation and code on mobile */
-            }
-        }
+      /* General adjustments for tablets (max-width: 768px) */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px; /* Reduce container padding for narrower screens */
+    }
 
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #f9f9f9;
-            margin: 0;
-            padding: 0;
-        }
+    .histogram-container {
+        height: 250px; /* Decrease height for smaller screens */
+    }
+
+    .bar {
+        width: calc(100% / 12); /* Adjust the bar width to fit within the screen */
+        margin: 0 2px; /* Reduce space between bars */
+    }
+
+    .icon {
+        width: 25px;
+        height: 25px;
+    }
+
+    .earnings-value, .score-value {
+        font-size: 10px; /* Smaller font for earnings and score values */
+    }
+
+    .experiment-box {
+        width: 90%; /* Reduce experiment box width on smaller screens */
+    }
+
+    /* Adjust navigation */
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav ul li {
+        margin-bottom: 10px;
+    }
+}
+
+/* Adjustments for mobile devices (max-width: 480px) */
+@media (max-width: 480px) {
+    .container {
+        padding: 5px; /* Further reduce padding for mobile devices */
+    }
+
+    header h1 {
+        font-size: 1.8rem; /* Smaller header font size for mobile */
+    }
+
+    .bar {
+        width: calc(100% / 15); /* Narrower bars for small screens */
+    }
+
+    .icon {
+        width: 20px;
+        height: 20px;
+    }
+
+    .earnings-value {
+        font-size: 8px;
+    }
+
+    .experiment-box {
+        width: 95%; /* Full width for experiment box */
+    }
+
+    .histogram-container {
+        height: 200px;
+    }
+}
+
 
         .container {
             width: 90%;

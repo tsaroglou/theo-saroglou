@@ -167,14 +167,19 @@
 
         /* Responsive Design */
        @media (max-width: 768px) {
-        /* Center profile container */
-        .profile-container {
-            flex-direction: column;
-            align-items: center; /* Ensure everything is centered */
-            text-align: center;
-            padding: 0 10px; /* Add some padding to prevent elements from going out of bounds */
-        }
+    .buttons {
+        flex-direction: column;
+        align-items: center;
+    }
 
+    .button {
+        width: 100%;
+        text-align: center;
+        padding: 15px;
+        margin: 10px 0;
+        font-size: 1rem;
+    }
+}
         /* Adjust profile image */
         .profile-img {
             width: 80%; /* Scale the image relative to the screen */

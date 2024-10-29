@@ -8,8 +8,8 @@
     <!-- Google Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap">
 
+
     <style>
-        /* Apply the new font */
         body {
             font-family: 'Poppins', sans-serif;
             background-color: #f4f4f4;
@@ -17,14 +17,12 @@
             padding: 0;
         }
 
-        /* Container for layout consistency */
         .container {
             width: 90%;
             max-width: 1200px;
             margin: 0 auto;
         }
 
-        /* Header styling */
         .main-header {
             background-color: #003366;
             color: white;
@@ -42,7 +40,6 @@
             margin: 10px 0 0 0;
         }
 
-         /* Footer styling */
         footer {
             background-color: #333;
             color: white;
@@ -60,7 +57,6 @@
             text-decoration: none;
         }
 
-        /* University logo styling */
         .university-logo {
             text-align: center;
             margin-bottom: 20px;
@@ -71,7 +67,6 @@
             height: auto;
         }
 
-        /* Navigation styling */
         nav {
             background-color: #005bb5;
             display: flex;
@@ -84,6 +79,7 @@
             padding: 0;
             margin: 0;
             display: flex;
+            flex-wrap: wrap; /* Allow wrapping on smaller screens */
         }
 
         nav ul li {
@@ -105,35 +101,31 @@
             border-radius: 5px;
         }
 
-        /* Dropdown menu for Research and Otree Blogs */
-      nav ul li ul {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: #005bb5;
-    list-style-type: none;
-    padding: 10px 0;
-    border-radius: 5px;
-    min-width: 200px; /* Set a minimum width to ensure enough space for the content */
-}
+        nav ul li ul {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #005bb5;
+            list-style-type: none;
+            padding: 10px 0;
+            border-radius: 5px;
+            min-width: 200px;
+        }
 
-
-        /* Show dropdown when hovering */
-      nav ul li:hover ul {
-    display: block;
-}
+        nav ul li:hover ul {
+            display: block;
+        }
 
         nav ul li ul li {
             margin: 0;
         }
 
-       nav ul li ul li a {
-    padding: 10px 20px;
-    white-space: nowrap; /* Ensure text doesn't wrap to a new line */
-}
+        nav ul li ul li a {
+            padding: 10px 20px;
+            white-space: nowrap;
+        }
 
-        /* About section styling */
         .about-section {
             padding: 20px 0;
         }
@@ -165,7 +157,6 @@
             margin-bottom: 10px;
         }
 
-        /* Button styling */
         .buttons {
             margin-top: 20px;
         }
@@ -186,25 +177,6 @@
             background-color: #005bb5;
         }
 
-        /* Footer styling */
-        footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 10px 0;
-            margin-top: 40px;
-        }
-
-        footer p {
-            margin: 0;
-        }
-
-        footer a {
-            color: #0073e6;
-            text-decoration: none;
-        }
-
-        /* Responsive Design */
         @media (max-width: 768px) {
             .profile-container {
                 flex-direction: column;
