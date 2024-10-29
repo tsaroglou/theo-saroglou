@@ -620,11 +620,6 @@ nav a {
         font-size: 2rem;
     }
 
-    nav ul {
-        flex-direction: column;
-        align-items: left;
-    }
-
     .container {
         padding: 15px;
     }
@@ -637,13 +632,23 @@ nav a {
 
     .explanation {
         max-width: 100%; /* Full width on smaller screens */
-        padding: 10px;
+        padding: 0px;
         font-size: 0.95rem;
     }
 
     .code-snippet {
         font-size: 0.95rem;
+        max-width: 100%; /* Full width on mobile */
+
     }
+
+     .code-section {
+            display: flex;
+            max-width: 100%; /* Full width on mobile */
+            justify-content: space-evenly;
+            margin-bottom: 3px;
+            flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+        }
 
     .profile-img, .university-logo img {
         width: 80%;
@@ -685,8 +690,8 @@ nav a {
 
 
     nav ul {
-        flex-direction: unset;
-        align-items: right;
+        flex-direction: row;
+        align-items: left;
     }
 
     .container {
@@ -709,7 +714,8 @@ nav a {
 
     /* Specific adjustments for experiment sections */
     .histogram-container {
-        height: 300px;
+        height: 350px;
+        width: fit-content;
         padding: 10px;
         overflow: hidden; /* Ensures bars don’t overflow the container */
     }
@@ -733,6 +739,7 @@ nav a {
     .experiment-box {
         background-color: #fff;
         border-radius: 12px;
+        width: fit-content;
         padding: 15px;
         margin-top: 20px;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -747,7 +754,7 @@ nav a {
     }
 
     nav ul {
-        flex-direction: column;
+        flex-direction: row;
         align-items: left;
     }
 
@@ -760,6 +767,8 @@ nav a {
 
     .code-snippet {
         font-size: 0.85rem; /* Smaller font for mobile readability */
+        max-width: 100%; /* Full width on mobile */
+
     }
 
     .profile-img, .university-logo img {
@@ -773,7 +782,7 @@ nav a {
 
     .explanation {
         max-width: 100%; /* Full width on mobile */
-        padding: 8px;
+        padding: 0px;
         font-size: 0.85rem;
     }
 
@@ -782,6 +791,14 @@ nav a {
         height: auto;
         padding: 10px;
     }
+
+      .code-section {
+            display: flex;
+            max-width: 100%; /* Full width on mobile */
+            justify-content: space-evenly;
+            margin-bottom: 3px;
+            flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+        }
 
     .bar {
         width: calc(100% / 24 - 5px); /* Narrower for mobile */
@@ -818,6 +835,8 @@ nav a {
     /* Code Box Sizing */
     .code-snippet {
         font-size: 0.8rem;
+        max-width: 100%; /* Full width on mobile */
+
     }
 
     .button, .experiment-box {
