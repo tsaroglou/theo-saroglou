@@ -190,7 +190,7 @@
             width: 100%;
             text-align: center;
             background-color: #007bff;
-            border-radius: 10px 10px 0 0;
+            border-radius: 6px 6px 0 0;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
             color: white;
             display: flex;
@@ -666,20 +666,44 @@ nav a {
         text-align: center;
     }
 
+     .icon {
+            width: 20px;
+            border-radius: 40%;
+            margin-top: 7px;
+            transition: transform 0.3s ease;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
       nav ul {
         flex-direction: column;
         align-items: center;
     }
 
     .histogram-container {
-        height: auto;
+        height: 450px;
         padding: 15px;
     }
 
     .bar {
-        width: calc(100% / 20 - 5px); /* Adjusts bar width for tablets */
+        width: calc(100% / 40 - 5px); /* Adjusts bar width for tablets */
         max-height: 100%; /* Keeps columns within container */
+        margin-left: 10px;
+        margin-right: 0;
     }
+      .bar-graph {
+            width: 100%;
+            text-align: center;
+            background-color: #007bff;
+            border-radius: 5px 5px 0 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            position: relative;
+        }
 
     h2, h3, .about-text, p {
         font-size: 1.1rem;
@@ -697,6 +721,12 @@ nav a {
     nav ul {
         flex-direction: column;
         align-items: center;
+    }
+
+       nav ul li ul {
+        position: page;
+        width: 100%;
+        min-width: 0;
     }
 
     .container {
@@ -724,10 +754,7 @@ nav a {
         padding: 10px;
         overflow: hidden; /* Ensures bars don’t overflow the container */
     }
-    .bar {
-        width: calc(100% / 20 - 10px);
-        max-height: 100%; /* Keeps bars within the container */
-    }
+
 
     /* Text adjustments */
     .about-text, p, section h2, h2 {
@@ -800,6 +827,16 @@ nav a {
 
     }
 
+      .icon {
+            width: 20px;
+            border-radius: 40%;
+            margin-top: 7px;
+            transition: transform 0.3s ease;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
       .code-section {
             display: flex;
              width: fit-content; /* Full width on mobile */
@@ -811,11 +848,26 @@ nav a {
     .bar {
         width: calc(100% / 30 - 5px); /* Narrower for mobile */
         max-height: 100%;
+        margin-left: 10px;
+        margin-right: 0;
     }
+
+      .bar-graph {
+            width: 100%;
+            text-align: center;
+            background-color: #007bff;
+            border-radius: 5px 5px 0 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            position: relative;
+        }
 
     /* Dropdown Menu Adjustments */
      nav ul li ul {
-        position: relative;
+        position: page;
         width: 100%;
         min-width: 0;
     }
