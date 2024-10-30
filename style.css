@@ -23,7 +23,7 @@
            margin-top: 20px;
            width: 100%; /* You can adjust this value to make the box smaller */
            margin: 0 auto; /* Center the box horizontally */
-}
+       }
 
         .histogram-wrapper {
             width: 50%;
@@ -244,7 +244,7 @@
         section h2 {
             color: #003366;
             font-size: 2rem;
-            margin-bottom: 20px;
+            margin-bottom: 40px;
         }
 
         input[type="range"] {
@@ -304,16 +304,35 @@
             margin-top: 20px;
             color: #333;
         }
-        .code-section {
-            display: flex;
-            justify-content: space-evenly;
-            margin-bottom: 20px;
-            flex-wrap: wrap; /* Allow items to wrap on smaller screens */
-        }
+      .code-section {
+          display: flex;
+          flex-direction: row; /* Ensure row layout on desktop */
+          justify-content: space-between;
+          gap: 20px;
+          margin-bottom: 20px;
+          flex-wrap: nowrap; /* Prevent wrapping on larger screens */
+      }
         .explanation {
-            width: 45%;       /* Adjust width of the text on desktop */
+            width: 55%;       /* Adjust width of the text on desktop */
             margin-right: 10px;
-            font-size: 24px;
+        }
+
+         .code-snippet {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+            width: 45%;       /* Adjust width of the code box on desktop */
+        }
+
+        .explanation p {
+            font-size: 18px; /* Set base font size for paragraphs */
+        }
+
+        .explanation h2 {
+            font-size: 24px; /* Set base font size for headings */
+            margin-bottom: 10px; /* Add space below heading */
         }
 
         /* Section styling */
@@ -335,17 +354,9 @@
             width: 90%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
-        }
-        .code-snippet {
-            background-color: #333;
-            color: #fff;
             padding: 10px;
-            border-radius: 5px;
-            overflow-x: auto;
-            width: 45%;       /* Adjust width of the code box on desktop */
-            max-width: 700px;  /* Set a maximum width for the code box */
         }
+
 
          .sliders-container {
             margin-top: 20px;
@@ -417,15 +428,18 @@
             text-align: center;
             padding: 10px 0;
             margin-top: 40px;
+
         }
 
         footer p {
             margin: 0;
+            text-align: center;
         }
 
         footer a {
             color: #0073e6;
             text-decoration: none;
+            text-align: center;
         }
 
         .university-logo {
@@ -520,6 +534,7 @@ header h1 {
 footer {
     background-color: #333;
     color: white;
+    text-align: center;
 }
 
 /* Navigation Menu */
@@ -602,6 +617,16 @@ nav a {
     font-size: 0.9rem; /* Adjust font size */
 }
 
+.desktop-only {
+    display: block;
+    width: 120px;
+    margin-top: 20px;
+    border-radius: 50%;
+}
+
+.mobile-profile-img-container {
+    display: none; /* Hide mobile profile image container by default */
+}
 
 /* Mobile view (up to 500px) */
 @media (max-width: 500px) {
@@ -615,6 +640,27 @@ nav a {
         width: 100%;
         max-width: none;
     }
+
+   .desktop-only {
+        display: none;
+    }
+
+    /* Show mobile profile image container and align it next to navigation */
+    .mobile-profile-img-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: -20px;
+    }
+
+    /* Style the profile image for mobile */
+    .mobile-profile-img-container .profile-img {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        margin-left: 0px;
+    }
+
 
     .code-snippet {
         font-size: 0.85rem; /* Smaller font for mobile readability */
@@ -667,7 +713,7 @@ nav a {
             top: -25px; /* Adjust top to move earnings closer to the bar */
             width: 100%;
             text-align: center;
-            font-size: 6pt !important;
+            font-size: 5pt !important;
             font-weight: bold;
             color: #ffffff;
         }
@@ -743,7 +789,7 @@ nav a {
     /* 6. Style for dropdown links */
     nav ul li ul li a {
         padding: 10px;
-        white-space: nowrap;
+        white-space: normal;
         font-size: 0.9rem;
     }
 
@@ -752,14 +798,24 @@ nav a {
         padding: 8px;
         font-size: 0.9rem;
     }
-}
 
-
-        .container, .code-section, .experiment-box, .explanation, .code-snippet {
+      .container, .experiment-box, .explanation, .code-snippet {
     width: 100%; /* Full width on mobile */
     max-width: 100%; /* Prevent overflow */
     box-sizing: border-box; /* Ensure padding doesn’t affect total width */
 }
+
+        .code-section {
+             width: 100%; /* Full width on mobile */
+             max-width: 100%; /* Prevent overflow */
+            box-sizing: border-box; /* Ensure padding doesn’t affect total width */
+            display: flex;
+            justify-content: space-evenly;
+            margin-bottom: 20px;
+            flex-direction: column;
+        }
+}
+
 
 
 
@@ -781,9 +837,14 @@ nav a {
         width: 100%;
     }
 
-    .profile-img, .university-logo img {
+    .university-logo img {
         width: 70%;
         max-width: 200px;
+    }
+
+     .profile-img {
+        width: 100%;
+        max-width: 350px;
     }
 
     /* Text adjustments for readability */
