@@ -657,11 +657,10 @@ nav a {
 
     /* Style the profile image for mobile */
     .mobile-profile-img-container .profile-img {
-        width: 110px;
-        height: 110px;
+        width: 130px;
+        height: 130px;
         border-radius: 40%;
         margin-left: 4px;
-        margin-right: 2px;
 
     }
 
