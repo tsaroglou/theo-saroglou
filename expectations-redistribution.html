@@ -8,14 +8,11 @@
     <!-- Google Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap">
     <link rel="stylesheet" href="style.css">
-
 </head>
 <body>
    <header class="main-header">
         <div class="container">
             <h1>Job Market Paper</h1>
-
-
          </div>
     </header>
 
@@ -44,243 +41,98 @@
             </li>
             <li><a href="contact.html">Contact</a></li>
         </ul>
-        <!-- Mobile-only profile image positioned next to navigation -->
         <div class="mobile-profile-img-container">
             <img src="images/theodoros-2.jpg" alt="Theodoros Saroglou" class="profile-img">
         </div>
     </nav>
 
     <section>
- <div class="container">
-  <center>   <h2>High Hopes or Hard Truths? <br>
-Expectations, Merit Beliefs, and Redistribution Preferences</h2>
-
-                 <a href="https://drive.google.com/uc?export=download&id=15lxuaEBufnksHqYiRjtwu-WyMValNuQ1" class="button">Download PDF</a>
-
-</center>
-         <h3>Background and Motivation</h3>
-
-    <p>
-       The research builds on existing literature demonstrating that individuals who attribute income inequality to merit are less likely to support redistribution, while those who believe luck plays a role in outcomes tend to favor higher redistributive policies. Often, the winners of the income distribution hold stronger meritocratic beliefs than their less privileged counterparts, resulting in lower preferences for redistribution. This experiment specifically explores the cognitive mechanisms behind these preferences, focusing on how individuals adjust their beliefs about merit and fairness based on whether their performance meets their initial expectations.
-    </p>
-
-    <p>
-        The study examines how people’s redistribution preferences are shaped by their own expectations and self-beliefs in a controlled setting that isolates the effect of self-image concerns. By removing direct monetary incentives, the study aims to reveal whether beliefs about fairness and merit influence redistribution preferences solely to protect self-image.
-    </p>
-    <h3>Experimental Design</h3>
-    <p>
-        The experiment involved three main groups: a control group and two treatment groups with different levels of “noise” affecting participants’ performance scores. In the Profitable Noise treatment, noise in the grading mechanism increased scores randomly, resulting in an advantage for participants, while the Neutral Noise treatment added noise without consistently benefiting or harming participants. In the control group, no noise was introduced, allowing scores to reflect participants' actual test performance.
-    </p>
-    <p>
-        Participants first set initial expectations by predicting their own performance on a Raven’s Progressive Matrices test. This prediction served as a baseline self-belief, allowing the study to capture discrepancies between expected and actual performance. Participants then took the test, after which they were given feedback on their scores and asked to vote on a redistribution rate that would only affect payments for other participants.
-    </p>
-
-
-      <div class="container">
-
-        <!-- Interactive Graph -->
-        <div class="experiment-box">
-            <div class="histogram-wrapper">
-                <div class="histogram-title">Interactive Distribution of Scores</div>
-                <div class="histogram-container" id="iconsHistogramInteractive">
-                    <div class="horizontal-line"></div>
-
-                    <!-- 10 income bars with alternating icons -->
-                    <div class="bar">
-                        <div class="bar-graph" style="height: 80px;">
-                            <span class="earnings-value">€0.50</span>
-                            <div class="score-value">4</div>
-                        </div>
-                        <img src="images/blue_human.png" class="icon">
-                    </div>
-
-                    <div class="bar">
-                        <div class="bar-graph" style="height: 100px;">
-                            <span class="earnings-value">€0.67</span>
-                            <div class="score-value">5</div>
-                        </div>
-                        <img src="images/blue_human.png" class="icon">
-                    </div>
-
-                    <div class="bar">
-                        <div class="bar-graph" style="height: 120px;">
-                            <span class="earnings-value">€0.84</span>
-                            <div class="score-value">6</div>
-                        </div>
-                        <img src="images/red_human.png" class="icon">
-                    </div>
-
-                    <div class="bar">
-                        <div class="bar-graph" style="height: 140px;">
-                            <span class="earnings-value">€1.00</span>
-                            <div class="score-value">7</div>
-                        </div>
-                        <img src="images/red_human.png" class="icon">
-                    </div>
-
-                    <div class="bar">
-                        <div class="bar-graph" style="height: 180px;">
-                            <span class="earnings-value">€1.33</span>
-                            <div class="score-value">8</div>
-                        </div>
-                        <img src="images/yellow_human.png" class="icon">
-                    </div>
-
-                    <div class="bar">
-                        <div class="bar-graph" style="height: 200px;">
-                            <span class="earnings-value">€1.50</span>
-                            <div class="score-value">9</div>
-                        </div>
-                        <img src="images/yellow_human.png" class="icon">
-                    </div>
-
-                    <div class="bar">
-                        <div class="bar-graph" style="height: 220px;">
-                            <span class="earnings-value">€1.67</span>
-                            <div class="score-value">10</div>
-                        </div>
-                        <img src="images/green_human.png" class="icon">
-                    </div>
-
-                    <div class="bar">
-                        <div class="bar-graph" style="height: 240px;">
-                            <span class="earnings-value">€1.84</span>
-                            <div class="score-value">11</div>
-                        </div>
-                        <img src="images/green_human.png" class="icon">
-                    </div>
-
-                    <div class="bar">
-                        <div class="bar-graph" style="height: 260px;">
-                            <span class="earnings-value">€2.00</span>
-                            <div class="score-value">12</div>
-                        </div>
-                        <img src="images/human.png" class="icon">
-                    </div>
-
-                    <div class="bar">
-                        <div class="bar-graph" style="height: 280px;">
-                            <span class="earnings-value">€2.50</span>
-                            <div class="score-value">15</div>
-                        </div>
-                        <img src="images/human.png" class="icon">
-                    </div>
-                </div>
-            </div>
-
-
-            <!-- Tax Slider -->
-            <div class="sliders-container">
-                <p>Adjust Tax Rate</p>
-                <input type="range" id="taxRateSlider" min="0" max="100" value="0">
-                <p class="slider-value">Tax Rate: <span id="taxRateValue">0%</span></p>
-
-            </div>
-
-        </div>
-<center> <figcaption>Interactive Example of Redistribution Voting.</figcaption>
-</center>
-    </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const taxRateSlider = document.getElementById('taxRateSlider');
-            const taxRateValue = document.getElementById('taxRateValue');
-            const bars = document.querySelectorAll('.bar-graph');
-            const earnings = [
-                0.50, 0.67, 0.84, 1.00, 1.33, 1.50, 1.67, 1.84, 2.00, 2.50
-            ]; // Original earnings
-            const heights = [
-                80, 100, 120, 140, 180, 200, 220, 240, 260, 280
-            ]; // Original heights (px)
-            const numBars = bars.length;
-
-            taxRateSlider.addEventListener('input', function () {
-                const taxRate = parseFloat(this.value);
-                taxRateValue.innerText = `${taxRate}%`;
-
-                let totalDeduction = 0;
-                const newEarnings = earnings.map((earning, index) => {
-                    const deducted = earning * taxRate / 100;
-                    totalDeduction += deducted;
-                    return earning - deducted;
-                });
-
-                // Redistribute the total deducted equally among all bars
-                const redistribution = totalDeduction / numBars;
-                const adjustedEarnings = newEarnings.map(earning => earning + redistribution);
-
-                bars.forEach((bar, index) => {
-                    const newHeightPx = (adjustedEarnings[index] / 2.5) * 280 ;  // Adjust heights based on max height and earnings
-                    bar.style.height = `${newHeightPx}px`;
-                    bar.querySelector('.earnings-value').innerText = `€${adjustedEarnings[index].toFixed(2)}`;
-                });
-            });
-        });
-    </script>
-
-    <h3>Key Findings</h3>
-    <ul>
-        <li>
-            <strong>Attribution of Success to Merit or Luck:</strong> Participants who exceeded their expectations in the Profitable Noise treatment were more likely to attribute their high performance to personal merit and voted for lower redistribution rates. Conversely, participants in the Neutral Noise treatment who scored lower than expected attributed their results to luck, leading them to vote for higher redistribution rates. This aligns with the concept of self-image maintenance, where individuals favor explanations that protect their self-worth.
-        </li>
-        <li>
-            <strong>Role of Expectations and Cognitive Biases:</strong> Participants who entered the experiment with high expectations were more likely to demonstrate confirmation bias if their performance met or exceeded these expectations. The figure below illustrates that overconfident participants who expected high scores but underperformed tended to support higher redistribution, possibly as a means of attributing outcomes to external factors like luck.
-        </li>
-        <li>
-            <strong>Personal vs. Group-Level Beliefs:</strong> The experiment further distinguished between personal merit beliefs and group merit beliefs, showing that participants could attribute personal outcomes to luck or merit while holding different beliefs about the fairness of the group’s distribution. For example, some participants perceived their performance as a product of merit but viewed the group distribution as luck-driven, leading to differing redistribution preferences at the personal and group levels.
-        </li>
-        <li>
-            <strong>Self-Serving Beliefs and Winner’s Bias:</strong> The study found that participants who outperformed their expectations displayed a "winner’s bias," ascribing success to their own merit. This bias persisted even without monetary incentives, suggesting that self-serving beliefs about merit can be driven by self-image concerns alone. This finding reinforces prior research on winner’s bias, highlighting its robustness in the absence of financial motivations.
-        </li>
-        <li>
-            <strong>Cognitive Sophistication and Belief Adjustment:</strong> The study also observed differences in belief updating between naive and sophisticated thinkers. While naive participants were more likely to adjust beliefs based solely on performance scores, sophisticated thinkers considered both their scores and the alignment between their actual performance and initial expectations. This finding underscores the role of cognitive sophistication in belief manipulation, suggesting that more cognitively advanced individuals may be more adept at sustaining positive self-images even when results do not fully align with expectations.
-        </li>
-    </ul>
-        <div class="experiment-box">
+        <div class="container">
             <center>
-        <img src="images/quartile graph.png" alt="Quartile Graph showing redistribution preferences" width="800" class="responsive-image">
+                <h2>High Hopes or Hard Truths? <br> Expectations, Merit Beliefs, and Redistribution Preferences</h2>
+                <a href="https://drive.google.com/uc?export=download&id=15lxuaEBufnksHqYiRjtwu-WyMValNuQ1" class="button">Download PDF</a>
+            </center>
 
-   </center>
-        </div>
-   <center>  <figcaption>Redistribution preferences by income quartile, over treatment and overconfidence.</figcaption></center>
-    <h3>Implications</h3>
-    <p>
-        The results underscore the importance of self-image in shaping economic preferences, suggesting that beliefs about merit and luck are not simply rational responses to outcomes but are also influenced by a need to maintain a positive self-image. This finding has implications for policy-making, particularly in contexts where public support for redistribution is essential for policy implementation. Policies that highlight the role of systemic inequality or the impact of external factors on individual success could potentially reduce winner’s bias and foster greater support for redistributive measures.
-    </p>
-    <p>
-        The study also suggests that efforts to mitigate self-serving biases should address cognitive factors that drive belief-based biases. For instance, educational programs that encourage accurate belief updating and reduce overconfidence could help individuals adopt a more balanced perspective on inequality and merit. This approach could lead to greater empathy for others’ economic circumstances, ultimately supporting fairer redistributive policies.
-    </p>
-    <h3>Conclusion</h3>
-    <p>
-        In conclusion, this study provides critical insights into the psychological drivers of redistribution preferences, revealing how self-image concerns and motivated reasoning contribute to beliefs about merit, fairness, and inequality. By isolating the role of expectations in winner’s bias, the experiment demonstrates that individuals adjust their beliefs about success and fairness to protect self-image, even in the absence of financial incentives. The findings highlight the nuanced relationship between personal and group merit beliefs, showing that self-serving biases can operate at multiple levels.
-    </p>
-    <p>
-        These insights advance our understanding of economic behavior, suggesting that individuals’ attitudes toward redistribution are shaped not only by rational considerations of fairness but also by cognitive mechanisms that support a favorable self-image. In light of these findings, policies aimed at fostering social equity should consider the cognitive and psychological factors underlying winner’s bias and other belief-based biases, paving the way for a more inclusive approach to addressing inequality.
-    </p>
+            <h3>Background and Motivation</h3>
+            <p>
+                In my research, I investigate the psychological mechanisms underlying redistribution preferences, focusing specifically on how beliefs about merit and luck influence these preferences. People generally accept inequality if they believe it arises from merit; however, they tend to support redistribution when they view inequality as stemming from luck. My study builds on this dynamic, examining the "winner's bias," where high earners tend to lower their redistribution preferences, and explores how self-image and expectations shape these merit-based beliefs.
+            </p>
 
-           <center>    <p><b>Other projects: </b></p> </center>
+            <h3>Experimental Design</h3>
+            <p>
+                The experiment includes a control group and two treatments that introduce varying levels of “noise” affecting participants' incomes. In the Profitable Noise treatment, random positive noise tends to increase incomes, often benefiting participants, while the Neutral Noise treatment introduces neutral noise, which doesn’t favor anyone. In the control group, incomes directly reflect performance without added noise.
+            </p>
+            <p>
+                Participants begin by setting performance expectations for a cognitive test, establishing a baseline for their self-assessment. After the test, they vote on a redistribution rate that affects others but not themselves, allowing me to isolate self-image influences without financial incentives. I also incorporate a Bayesian weighting procedure in this design to analyze belief updates.
+            </p>
 
-        <div class="buttons">
+            <h3>Key Findings</h3>
+            <ul>
+                <li>
+                    <strong>Merit-Based Redistribution Preferences:</strong> I find that participants’ redistribution preferences vary significantly depending on their treatment condition and outcomes. In the Profitable Noise treatment, where participants received a boost to their performance, they tended to vote for lower redistribution rates, suggesting an alignment between positive feedback and reduced support for redistribution. In contrast, participants in the Neutral Noise treatment, who did not receive performance boosts and often performed below expectations, demonstrated an increased preference for redistribution. These results highlight how favorable or unfavorable conditions affect individuals' redistribution preferences, likely influenced by a desire to maintain or protect self-image.
+                </li>
+                <li>
+                    <strong>Expectations and Cognitive Bias:</strong> The study shows that initial expectations strongly influence redistribution preferences, especially among those with high expectations. When participants with high initial expectations performed well, they demonstrated a stronger "winner's bias," reducing their support for redistribution and reinforcing a sense of merit. Overconfident participants, in particular, showed a reluctance to adjust their preferences according to their ideological beliefs, suggesting that self-image concerns can override cognitive sophistication and prevent participants from aligning their redistribution preferences with broader ideological views.
+                </li>
+                <li>
+                    <strong>Personal vs. Group-Level Redistribution Preferences:</strong> My findings reveal a notable difference between personal redistribution preferences and perceptions of group-level merit. Many participants adjusted their redistribution preferences to reflect their self-assessment but held different views when considering group outcomes. This selective application of merit-based reasoning suggests that participants may separate personal outcomes from group dynamics, adapting their preferences in ways that preserve their self-image while applying different standards for others. Such selective reasoning likely influences broader redistribution attitudes and personal views on fairness.
+                </li>
+                <li>
+                    <strong>Bayesian Weighting and Motivated Reasoning:</strong> Using a novel Bayesian weighting procedure, I examine how reasoning styles—optimistic versus pessimistic—impact redistribution preferences. Optimistic participants, who tended to see higher incomes as reflective of ability, showed lower preferences for redistribution, reinforcing a merit-based interpretation. Pessimistic participants, in contrast, often responded cautiously to feedback, favoring higher redistribution and attributing outcomes more readily to luck. This variation suggests that individuals' cognitive styles influence how they interpret income and fairness, which in turn shapes their redistribution preferences. The study indicates that motivated reasoning is not uniform but varies based on cognitive approach and self-image maintenance.
+                </li>
+            </ul>
+
+            <h3>Figures and Insights</h3>
+            <div class="experiment-box">
+                <center>
+                    <img src="images/quartile%20graph.png" alt="Quartile Graph showing redistribution preferences" width="800" class="responsive-image">
+                </center>
+                <center>
+                    <figcaption>Figure A: Redistribution preferences by income quartile, over treatment and overconfidence.</figcaption>
+                </center>
+                <p>
+                    Figure A demonstrates that overconfident participants in the Neutral Noise group tended to favor higher redistribution, attributing outcomes to luck. In contrast, those in the Profitable Noise treatment, benefitting from positive noise, showed lower redistribution preferences, consistent with maintaining self-image through merit attributions.
+                </p>
+                <center>
+                    <img src="images/ideology_tax_vote.png" alt="Ideology and Inequality Findings" width="800" class="responsive-image">
+                </center>
+                <center>
+                    <figcaption>Figure B: Redistribution Rate Votes across Ideological Groups and Income Inequality.</figcaption>
+                </center>
+                <p>
+                    Figure B highlights how ideological preferences are influenced by overconfidence, with overconfident participants showing deviations from their ideological stance in redistribution preferences. In contrast, modest participants aligned their redistribution votes with their ideology, suggesting that overconfidence disrupts ideological consistency, favoring self-serving interpretations of outcomes.
+                </p>
+            </div>
+
+            <h3>Implications and Conclusion</h3>
+            <p>
+                This research underscores the impact of self-image maintenance on beliefs about merit and redistribution preferences. The findings reveal that the winner's bias persists largely due to self-image concerns, with individuals often adjusting their redistribution preferences based on personal and psychological motivations rather than objective assessments. Expectations play a crucial role, especially for those whose outcomes deviate from their initial beliefs, highlighting the importance of motivated thinking in shaping economic preferences.
+            </p>
+            <p>
+                These insights suggest that policies aimed at promoting redistribution could benefit from acknowledging the psychological underpinnings of merit beliefs. Emphasizing external, systemic factors in economic outcomes may help counteract winner's bias, fostering broader public support for equitable policies. Additionally, educational interventions that encourage accurate belief updating could mitigate overconfidence, leading individuals to adopt a more balanced understanding of inequality. Considering how ideology and motivated thinking interact could provide further insights into designing policies that resonate across ideological lines.
+            </p>
+            <p>
+                Ultimately, this research highlights that redistribution preferences are influenced not solely by fairness concerns but also by cognitive mechanisms supporting self-image. Addressing these psychological factors is crucial for designing policies that foster social equity and effectively tackle inequality.
+            </p>
+
+            <center><p><b>Other projects: </b></p></center>
+
+            <div class="buttons">
                 <a href="altruism-self-deception.html" class="button">Altruism and Self-Deception</a>
                 <a href="social-image-project-choice.html" class="button">Project Choice and Social Image</a>
                 <a href="parenthood-imputation.html" class="button">Imputing Parenthood Status</a>
             </div>
-    </div>
-
         </div>
+    </section>
 
-</section>
-
-
-    <!-- Footer Section -->
     <footer>
         <div class="container">
             <p>&copy; 2024 Theo Saroglou | <a href="contact.html">Contact Me</a></p>
         </div>
     </footer>
 
-<div class="university-logo">
+    <div class="university-logo">
         <img src="images/Logo_Universitat_de_Barcelona.png" alt="Universitat de Barcelona Logo">
     </div>
 </body>
+</html>
