@@ -448,7 +448,7 @@
         }
 
         .university-logo img {
-            max-width: 350px;
+            max-width: 700px;
             height: auto;
         }
 
@@ -678,7 +678,7 @@ nav a {
         }
     .profile-img, .university-logo img {
         width: 70%;
-        max-width: 200px;
+        max-width: 600px;
         align-content: center;
     }
 
@@ -844,12 +844,12 @@ nav a {
 
     .university-logo img {
         width: 70%;
-        max-width: 200px;
+        max-width: 400px;
     }
 
      .profile-img {
         width: 100%;
-        max-width: 350px;
+        max-width: 270px;
     }
 
     /* Text adjustments for readability */
